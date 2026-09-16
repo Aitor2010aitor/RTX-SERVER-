@@ -12,8 +12,8 @@
 --─██████████████─██████████████───────██████───────██████████████─██████──────────██████─
 --────────────────────────────────────────────────────────────────────────────────────────
 
---[[CONFIGURA LOS CONTROLES DE NOCLIP ABAJO
-USA EL ENLACE DE ABAJO PARA ENCONTRAR LOS VALORES DE LAS TECLAS QUE NECESITAS
+--[[SET NO CLIP CONTROLS BELOW
+USE LINK BELOW TO FIND THE KEYCODE VALUES YOU NEED
 https://ikeycode.vercel.app/ ]]
 --Estadísticas requeridas----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -33,7 +33,7 @@ credits = [[
 --─██░░░░░░░░░░██─██░░░░░░░░░░██───────██░░██───────██░░░░░░░░░░██─██░░██──██████████░░██─
 --─██████████████─██████████████───────██████───────██████████████─██████──────────██████─
 
-		 Csyon SubMenu para YimMenu
+		 Csyon SubMenú para YimMenú
 ]]
 
 local function MPX()
@@ -49,11 +49,11 @@ end
 
 local function SPX()
 	local PI = ENTITY.GET_ENTITY_MODEL(PLAYER.PLAYER_PED_ID())
-	if PI == joaat("Player_Zero") then
+	if PI == joaat("Jugador_Zero") then
 		return "SP0_"
-	elseif PI == joaat("Player_One") then
+	elseif PI == joaat("Jugador_Activadoe") then
 		return "SP1_"
-	elseif PI == joaat("Player_Two") then
+	elseif PI == joaat("Jugador_Two") then
 		return "SP2_"
 	else
 		return "SP0_"
@@ -66,7 +66,7 @@ local currentlevel = stats.get_int(MPX() .. "CHAR_RANK_FM")
 local currentrp = stats.get_int(MPX() .. "CHAR_XP_FM")
 local currentcrewlevel = stats.get_int("MPPLY_CURRENT_CREW_RANK")
 
-script.register_looped("Stats Updater", function(script)
+script.register_looped("Estadísticas Updater", function(script)
     local success, err = pcall(function()
         local newlevel = stats.get_int(MPX() .. "CHAR_RANK_FM")
         local newrp = stats.get_int(MPX() .. "CHAR_XP_FM")
@@ -80,7 +80,7 @@ script.register_looped("Stats Updater", function(script)
     end)
     
     if not success then
-        gui.show_message("Error al actualizar estadísticas", "No se pudieron actualizar las estadísticas: " .. tostring(err))
+        gui.show_message("Estadísticas Update Error", "Fallido to Update Estadísticas: " .. tostring(err))
     end
 end)
 
@@ -91,45 +91,45 @@ FMMCL = "fmmc_launcher"
 FMC2020 = "fm_mission_controller_2020"
 HIP = "heist_island_planning"
 
---Globales, locales y variables--
+--Globals & Locals & Variables--
 
 FMg = 262145 -- free mode global ("CASH_MULTIPLIER") //correct
-CSg1    = 1575046					-- cambiar sesión (tipo) 1 					// Guide:   NETWORK::UGC_SET_USING_OFFLINE_CONTENT(false);
-CSg2    = 1574589 						-- cambiar sesión (cambio) 2 				// Guide:   MP_POST_MATCH_TRANSITION_SCENE
-CSg3    = 1574589 + 2 					-- cambiar sesión (salir) 3 					// Guide:   MP_POST_MATCH_TRANSITION_SCENE
+CSg1    = 1575046					-- change session (type) 1 					// Guide:   NETWORK::UGC_SET_USING_OFFLINE_CONTENT(false);
+CSg2    = 1574589 						-- change session (switch) 2 				// Guide:   MP_POST_MATCH_TRANSITION_SCENE
+CSg3    = 1574589 + 2 					-- change session (quit) 3 					// Guide:   MP_POST_MATCH_TRANSITION_SCENE
 
 -- Golpe del Apartamento
-ACg1 = 1935929 + 1 + 1 -- global del jugador del apartamento 1 cut global ("fmmc_launcher")
-ACg2 = 1935929 + 1 + 2 -- global del jugador del apartamento 2 cut global ("fmmc_launcher")
-ACg3 = 1935929 + 1 + 3 -- global del jugador del apartamento 3 cut global ("fmmc_launcher")
-ACg4 = 1935929 + 1 + 4 -- global del jugador del apartamento 4 cut global ("fmmc_launcher")
-ACg5 = 1937897 + 3008 + 1 -- local del jugador del apartamento 1 cut global ("fmmc_launcher")
-AUAJg1 = FMg + 9184 -- global para desbloquear todos los trabajos del apartamento 1 ("ROOT_ID_HASH_THE_FLECCA_JOB")
-AUAJg2 = FMg + 9189 -- global para desbloquear todos los trabajos del apartamento 2 ("ROOT_ID_HASH_THE_PRISON_BREAK")
-AUAJg3 = FMg + 9196 -- global para desbloquear todos los trabajos del apartamento 3 ("ROOT_ID_HASH_THE_HUMANE_LABS_RAID")
-AUAJg4 = FMg + 9202 -- global para desbloquear todos los trabajos del apartamento 4 ("ROOT_ID_HASH_SERIES_A_FUNDING")
-AUAJg5 = FMg + 9208 -- global para desbloquear todos los trabajos del apartamento 5 ("ROOT_ID_HASH_THE_PACIFIC_STANDARD_JOB")
-AIFl3 = 19808 -- local para terminar instantáneamente el golpe del apartamento 1
-AIFl4 = 19808 + 1062 -- local para terminar instantáneamente el golpe del apartamento 2
-AIFl5 = 19808 + 1740 + 1 -- local para terminar instantáneamente el golpe del apartamento 3
+ACg1 = 1935929 + 1 + 1 -- global apartment player 1 cut global ("fmmc_launcher")
+ACg2 = 1935929 + 1 + 2 -- global apartment player 2 cut global ("fmmc_launcher")
+ACg3 = 1935929 + 1 + 3 -- global apartment player 3 cut global ("fmmc_launcher")
+ACg4 = 1935929 + 1 + 4 -- global apartment player 4 cut global ("fmmc_launcher")
+ACg5 = 1937897 + 3008 + 1 -- local apartment player 1 cut global ("fmmc_launcher")
+AUAJg1 = FMg + 9184 -- apartment unlock all jobs global 1 ("ROOT_ID_HASH_THE_FLECCA_JOB")
+AUAJg2 = FMg + 9189 -- apartment unlock all jobs global 2 ("ROOT_ID_HASH_THE_PRISON_BREAK")
+AUAJg3 = FMg + 9196 -- apartment unlock all jobs global 3 ("ROOT_ID_HASH_THE_HUMANE_LABS_RAID")
+AUAJg4 = FMg + 9202 -- apartment unlock all jobs global 4 ("ROOT_ID_HASH_SERIES_A_FUNDING")
+AUAJg5 = FMg + 9208 -- apartment unlock all jobs global 5 ("ROOT_ID_HASH_THE_PACIFIC_STANDARD_JOB")
+AIFl3 = 19808 -- apartment instant finish local 1
+AIFl4 = 19808 + 1062 -- apartment instant finish local 2
+AIFl5 = 19808 + 1740 + 1 -- apartment instant finish local 3
 AIFl6 = 31981 + 1 + 68
-AFHl = 11837 + 24 -- local para hackeo de Fleeca
-AFDl = 10125 + 11 -- local para taladro de Fleeca
-AHSo = 19808 + 2  -- saltar punto de control del golpe del apartamento
+AFHl = 11837 + 24 -- apartment fleeca hack local
+AFDl = 10125 + 11 -- apartment fleeca drill local
+AHSo = 19808 + 2  -- Apartment heist skip checkpoint
 -- Golpe del Casino Diamond
-DCRBl = 217 -- local para recargar el panel del Casino Diamond
-DCCg1 = 1972483 + 1497 + 736 + 92 + 1 -- jugador del Casino Diamond 1 cut global ("gb_casino_heist_planning")
-DCCg2 = 1972483 + 1497 + 736 + 92 + 2 -- jugador del Casino Diamond 2 cut global ("gb_casino_heist_planning")
-DCCg3 = 1972483 + 1497 + 736 + 92 + 3 -- jugador del Casino Diamond 3 cut global ("gb_casino_heist_planning")
-DCCg4 = 1972483 + 1497 + 736 + 92 + 4 -- jugador del Casino Diamond 4 cut global ("gb_casino_heist_planning")
+DCRBl = 217 -- diamond casino reload board local
+DCCg1 = 1972483 + 1497 + 736 + 92 + 1 -- diamond casino player 1 cut global ("gb_casino_heist_planning")
+DCCg2 = 1972483 + 1497 + 736 + 92 + 2 -- diamond casino player 2 cut global ("gb_casino_heist_planning")
+DCCg3 = 1972483 + 1497 + 736 + 92 + 3 -- diamond casino player 3 cut global ("gb_casino_heist_planning")
+DCCg4 = 1972483 + 1497 + 736 + 92 + 4 -- diamond casino player 4 cut global ("gb_casino_heist_planning")
 DCCl = FMg + 28401 -- ("CH_LESTER_CUT")
 DCCh = FMg + 28437 - 1 --("2027377935")
 DCCd = FMg + 28432 - 1 --("88090906")
 DCCgun = FMg + 28427 - 1 --("74718927")
-DCFHl = 54118 -- local para hackeo de huella del Casino Diamond
-DCKHl = 55188 -- local para hackeo del teclado del Casino Diamond
-DCDVDl1 = 10109 + 7 -- local para taladro de la puerta de la cámara del Casino Diamond 1 --("DLC_HEIST_MINIGAME_FLEECA_DRILLING_SCENE") in ("fm_mission_controller")
-DCDVDl2 = 10109 + 37 -- local para taladro de la puerta de la cámara del Casino Diamond 2 --("fm_mission_controller")
+DCFHl = 54118 -- diamond casino fingerprint hack local
+DCKHl = 55188 -- diamond casino keypad hack local
+DCDVDl1 = 10109 + 7 -- diamond casino drill vault door local 1 --("DLC_HEIST_MINIGAME_FLEECA_DRILLING_SCENE") in ("fm_mission_controller")
+DCDVDl2 = 10109 + 37 -- diamond casino drill vault door local 2 --("fm_mission_controller")
 DCXf1 = 19808
 DCXf2 = 19808 + 1062
 DCXf3 = 19808 + 1740 + 1
@@ -137,51 +137,51 @@ DCXf4 = 19808 + 2686
 DCXf5 = 28722 + 1
 DCXf6 = 1981 + 1 + 68
 -- Golpe de Cayo Perico
-CPRSl = 1578 -- local para recargar la pantalla de Cayo Perico
-CPCg1 = 1980404 + 831 + 56 + 1  -- jugador de Cayo Perico 1 cut global --("heist_island_planning")
-CPCg2 = 1980404 + 831 + 56 + 2 -- jugador de Cayo Perico 2 cut global --("heist_island_planning")
-CPCg3 = 1980404 + 831 + 56 + 3 -- jugador de Cayo Perico 3 cut global --("heist_island_planning")
-CPCg4 = 1980404 + 831 + 56 + 4 -- jugador de Cayo Perico 4 cut global --("heist_island_planning")
-CPFHl = 26217 -- local para hackeo de huella de Cayo Perico ("heist") in ("fm_mission_controller_2020")
-CPPCCl = 32349 + 3  -- local para corte con cortadora de plasma de Cayo Perico ("DLC_H4_anims_glass_cutter_Sounds") in ("fm_mission_controller_2020")
-CPSTCl = 31109 -- local para corte del tubo de drenaje de Cayo Perico ("IntroFinished") in ("fm_mission_controller_2020")
-CPXf1 = 56070 -- local para terminar instantáneamente Cayo Perico 1
-CPXf2 = 56070 + 1776 + 1 -- local para terminar instantáneamente Cayo Perico 2
+CPRSl = 1578 -- cayo perico reload screen local
+CPCg1 = 1980404 + 831 + 56 + 1  -- cayo perico player 1 cut global --("heist_island_planning")
+CPCg2 = 1980404 + 831 + 56 + 2 -- cayo perico player 2 cut global --("heist_island_planning")
+CPCg3 = 1980404 + 831 + 56 + 3 -- cayo perico player 3 cut global --("heist_island_planning")
+CPCg4 = 1980404 + 831 + 56 + 4 -- cayo perico player 4 cut global --("heist_island_planning")
+CPFHl = 26217 -- cayo perico fingerprint hack local ("heist") in ("fm_mission_controller_2020")
+CPPCCl = 32349 + 3  -- cayo perico plasma cutter cut local ("DLC_H4_anims_glass_cutter_Sounds") in ("fm_mission_controller_2020")
+CPSTCl = 31109 -- cayo perico drainage pipe cut local ("IntroFinished") in ("fm_mission_controller_2020")
+CPXf1 = 56070 -- cayo perico instant finish local 1
+CPXf2 = 56070 + 1776 + 1 -- cayo perico instant finish local 2
 -- Golpe del Juicio Final
-DDSHl = 1312 + 135 -- local para hackeo del escenario del Juicio Final
-DCg1 = 1968511 + 812 + 50 + 1  -- jugador del Juicio Final 1 cut global --("gb_gang_ops_planning")
-DCg2 = 1968511 + 812 + 50 + 2 -- jugador del Juicio Final 2 cut global --("gb_gang_ops_planning")
-DCg3 = 1968511 + 812 + 50 + 3  -- jugador del Juicio Final 3 cut global --("gb_gang_ops_planning")
-DCg4 = 1968511 + 812 + 50 + 4 -- jugador del Juicio Final 4 cut global --("gb_gang_ops_planning")
-IHPB = 56070 --Instant Heist Passed Local Base (Casino And CayoPerico)
-IHPL = 56070 + 1776 + 1 --Instant Heist Passed Locals (Casino And CayoPerico)
+DDSHl = 1312 + 135 -- doomsday doomsday scenario hack local
+DCg1 = 1968511 + 812 + 50 + 1  -- doomsday player 1 cut global --("gb_gang_ops_planning")
+DCg2 = 1968511 + 812 + 50 + 2 -- doomsday player 2 cut global --("gb_gang_ops_planning")
+DCg3 = 1968511 + 812 + 50 + 3  -- doomsday player 3 cut global --("gb_gang_ops_planning")
+DCg4 = 1968511 + 812 + 50 + 4 -- doomsday player 4 cut global --("gb_gang_ops_planning")
+IHPB = 56070 --Instant Golpe Passed Local Base (Casino And CayoPerico)
+IHPL = 56070 + 1776 + 1 --Instant Golpe Passed Locals (Casino And CayoPerico)
 NLCl = 213 + 32 + 1  --("nightclub_office_cutscene") in ("am_mp_nightclub")
 SNOW = FMg + 4413
 halloweatherAddress = FMg + 32246
 
---BV = Valor balístico----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--BV = Ballastic Valor----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 BV = 262145 + 20113
---CCBL = Límite de compra de fichas del casino-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--CCBL = Casino Chips Buy Limit-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 CCBL0 = 22581 + 26623
 CCBL1 = 22581 + 26623
 
---BAS=Tamaño de la bolsa------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--BAS=Bag Size------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 BAS1 = FMg + 29300
 
---PSV=Estatua de la pantera-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--PSV=Panther Statue-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 PSV = FMg + 29552
 
---PDIAMOND=Diamante rosa---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--PDIAMOND=Pink Diamond---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 PDIAMOND = 22581 + 29549
 
---BB=Bonos al portador---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--BB=Bearer Bonds---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 BB = FMg + 29549
 
---RN=Collar de rubíes--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--RN=Ruby Necklace--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 RN = FMg + 29548
 
@@ -312,7 +312,7 @@ local function displayVehNames()
         local vehName = vehicles.get_vehicle_display_name(joaat(veh))
         table.insert(vehNames, vehName)
     end
-    vehSound_index, used = ImGui.ListBox("##Vehicle Names", vehSound_index, vehNames, #filteredNames)
+    vehSound_index, used = ImGui.ListBox("##Vehículo Nombres", vehSound_index, vehNames, #filteredNames)
 end
 
 local function helpmarker(colorFlag, text, color)
@@ -352,7 +352,7 @@ local function widgetToolTip(colorFlag, text, color)
 end
 
 local function resetLastVehState()
-    -- función provisional
+    -- placeholder func
 end
 
 local function onVehEnter()
@@ -408,18 +408,18 @@ end)
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-gui.show_message("Csyon SubMenu", "¡Script de Csyon cargado correctamente!")
+gui.show_message("Csyon SubMenú", "Csyon Script loaded successfully!")
 
-CSYON = gui.get_tab("**CSYON SubMenu 1.73**					  	**Created By CSYON**")
+CSYON = gui.get_tab("**CSYON SubMenú 1.73**					  	**Created By CSYON**")
 
-CSYON:add_text("		Versión de compilación del juego 3889.0		")
+CSYON:add_text("		Game Build Versión 3889.0		")
 CSYON:add_text("					v9.4				")
 
-CSYON:add_text("Tu nivel                " .. stats.get_int(MPX() .. "CHAR_RANK_FM"))
+CSYON:add_text("Your level                " .. stats.get_int(MPX() .. "CHAR_RANK_FM"))
 
-CSYON:add_text("Tu cantidad de RP      " .. stats.get_int(MPX() .. "CHAR_XP_FM"))
+CSYON:add_text("Your RP Valor      " .. stats.get_int(MPX() .. "CHAR_XP_FM"))
 
-CSYON:add_text("Nivel actual de la Crew   " .. stats.get_int("MPPLY_CURRENT_CREW_RANK"))
+CSYON:add_text("Current Crew Nivel   " .. stats.get_int("MPPLY_CURRENT_CREW_RANK"))
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -448,18 +448,18 @@ vehicle_name = vehicles.get_vehicle_display_name(ENTITY.GET_ENTITY_MODEL(current
             ImGui.Text("Vehículo: "..mfr_name.." "..vehicle_name)
             ImGui.Spacing()
             driftMode, _ = ImGui.Checkbox("Activar modo drift", driftMode, true)
-            helpmarker(false, "Esto hará que tu coche pierda agarre. Mantén pulsado [Mayús izquierda] para hacer drift")
+            helpmarker(false, "This will make your car lose grip. Hold [Left Shift] to drift")
             if driftMode then
                 DriftTires = false
                 ImGui.Spacing()
-                ImGui.Text("Intensidad:")
+                ImGui.Text("Intensity:")
                 ImGui.PushItemWidth(250)
                 DriftIntensity, _ = ImGui.SliderInt("##Intensity", DriftIntensity, 0, 3)
-                widgetToolTip(false, "0: Sin agarre (muy rígido).\n1: Equilibrado (recomendado).\n2: Drift débil.\n3: Drift muy débil.")
+                widgetToolTip(false, "0: No Grip (very stiff).\n1: Balanced (Recommended).\n2: Weak Drift.\n3: Weakest Drift.")
                 ImGui.PopItemWidth()
             end
-            DriftTires, _ = ImGui.Checkbox("Equipar neumáticos de drift", DriftTires, true)
-            helpmarker(false, "Esto equipará neumáticos de drift al pulsar [Mayús izquierda]. Se restablecerán al soltar el botón.")
+            DriftTires, _ = ImGui.Checkbox("Equip Drift Tires", DriftTires, true)
+            helpmarker(false, "This will equip your car with drift tires whenver you press [Left Shift]. Your tires will be reset when you release the button.")
             if DriftTires then
                 driftMode = false
             end
@@ -472,37 +472,37 @@ vehicle_name = vehicles.get_vehicle_display_name(ENTITY.GET_ENTITY_MODEL(current
             -- ImGui.Unindent()
             -- if fCamberUsed then
             --     _, _,_, currentVehPtr = onVehEnter()
-            --     currentVehPtr:add(vehOffsets.fc):set_float(fCamber)
+            --     currentVehPtr:add(vehDesactivadosets.fc):set_float(fCamber)
             -- end
             -- if rCamberUsed then
             --     _, _,_, currentVehPtr = onVehEnter()
-            --     currentVehPtr:add(vehOffsets.rc):set_float(rCamber)
+            --     currentVehPtr:add(vehDesactivadosets.rc):set_float(rCamber)
             -- end
-            ImGui.Spacing();ImGui.Text("CONSEJO: No puedes usar ambas opciones a la vez.\10Elige una de las dos. Experimenta y encuentra el\10estilo que más te guste.")
+            ImGui.Spacing();ImGui.Text("TIP: You can not use both options together.\10Choose one of the two. Experiment and find the\10style that suits you.")
         else
-            ImGui.TextWrapped("\10Solo puedes hacer drift con coches, camiones y quads.\10\10")
+            ImGui.TextWrapped("\10You can only drift cars, trucks and quad bikes.\10\10")
         end
 
         ImGui.Separator();ImGui.Spacing();launchCtrl, _ = ImGui.Checkbox("Control de lanzamiento", launchCtrl, true)
-        widgetToolTip(false, "Cuando el vehículo esté completamente parado, mantén pulsados [Acelerar] + [Freno] durante 3 segundos y después suelta el freno.")
+        widgetToolTip(false, "When your vehicle is completely stopped, press and hold [Accelerate] + [Brake] for 3 seconds then let go of the brakes.")
 
         ImGui.SameLine();ImGui.Dummy(31, 1);ImGui.SameLine();speedBoost, _ = ImGui.Checkbox("NOS", speedBoost, true)
-        widgetToolTip(false, "Un aumento de velocidad que simula óxido nitroso. Da más potencia y aumenta la velocidad máxima al pulsar [Mayús izquierda].")
+        widgetToolTip(false, "A speed boost that simulates nitrous. Dars you more power and increases your top speed when pressing [Left Shift].")
         if speedBoost then
             -- if not pussyShaver() then
                 sfx, ptfx = true, true
-                ImGui.SameLine();nosvfx, _ = ImGui.Checkbox("Efectos visuales", nosvfx, true)
-                widgetToolTip(false, "Activa un efecto visual en pantalla al usar NOS.")
+                ImGui.SameLine();nosvfx, _ = ImGui.Checkbox("VFX", nosvfx, true)
+                widgetToolTip(false, "Activars a visual effect on your screen when using NOS.")
             -- else
-                -- gui.show_error("Csyon Tokyo Drift", "This option doesn't work on sex toys... I mean, electric vehicles.")
+                -- gui.show_error("Csyon Tokyo Drift", "Esta opción doesn't work on sex toys... I mean, electric vehicles.")
                 -- speedBoost = false
             -- end
         else
             sfx, ptfx, nosvfx = false, false, false
         end
 
-        loud_radio, used = ImGui.Checkbox("Subwoofer potente", loud_radio, true)
-        widgetToolTip(false, "Hace que la radio de tu vehículo suene más fuerte desde el exterior. Para notar la diferencia, activa esta opción y acércate al coche con el motor y la radio encendidos.")
+        loud_radio, used = ImGui.Checkbox("Big Subwoofer", loud_radio, true)
+        widgetToolTip(false, "Makes your vehicle's radio sound louder from the outside. To notice the difference, activate this option then stand close to your car while the engine is running and the radio is on.")
         if loud_radio then
             script.run_in_fiber(function()
                 AUDIO.SET_VEHICLE_RADIO_LOUD(current_vehicle, true)
@@ -513,15 +513,15 @@ vehicle_name = vehicles.get_vehicle_display_name(ENTITY.GET_ENTITY_MODEL(current
             end)
         end
 
-        ImGui.SameLine();ImGui.Dummy(32, 1);ImGui.SameLine();nosPurge, _ = ImGui.Checkbox("Purga del NOS", nosPurge, true)
-        widgetToolTip(false, "Pulsa [X] en el teclado o [A] en el mando para purgar el NOS al estilo Fast & Furious.")
+        ImGui.SameLine();ImGui.Dummy(32, 1);ImGui.SameLine();nosPurge, _ = ImGui.Checkbox("NOS Purge", nosPurge, true)
+        widgetToolTip(false, "Press [X] on keyboard or [A] on controller to purge your NOS Fast & Furious style.")
 
-        popsNbangs, _ = ImGui.Checkbox("Pops y petardeos", popsNbangs, true)
-        widgetToolTip(false, "Activa petardeos del escape cuando sueltas [Acelerar] a altas RPM.")
+        popsNbangs, _ = ImGui.Checkbox("Pops & Bangs", popsNbangs, true)
+        widgetToolTip(false, "Activars exhaust pops whenever you let go of [Accelerate] from high RPM.")
 
         if popsNbangs then
-            ImGui.SameLine();ImGui.Dummy(37, 1);ImGui.SameLine();louderPops, _ = ImGui.Checkbox("Pops más fuertes", louderPops, true)
-            widgetToolTip(false, "Hace que los pops y petardeos suenen extremadamente fuertes.")
+            ImGui.SameLine();ImGui.Dummy(37, 1);ImGui.SameLine();louderPops, _ = ImGui.Checkbox("Louder Pops", louderPops, true)
+            widgetToolTip(false, "Makes your pops & bangs sound extremely loud.")
             if not louderPops then
                 popsnd, sndRef = "BOOT_POP", "DLC_VW_BODY_DISPOSAL_SOUNDS"
                 flame_size = 0.42069
@@ -531,17 +531,17 @@ vehicle_name = vehicles.get_vehicle_display_name(ENTITY.GET_ENTITY_MODEL(current
             end
         end
 
-        hornLight, _ = ImGui.Checkbox("Luces largas con el claxon", hornLight, true)
-        widgetToolTip(false, "Activa las luces largas al tocar el claxon.")
+        hornLight, _ = ImGui.Checkbox("High Beams on Claxon", hornLight, true)
+        widgetToolTip(false, "Flash high beams when honking.")
 
-        ImGui.SameLine();autobrklight, _ = ImGui.Checkbox("Luces de freno automáticas", autobrklight, true)
-        widgetToolTip(false, "Activa automáticamente las luces de freno cuando el coche está parado.")
+        ImGui.SameLine();autobrklight, _ = ImGui.Checkbox("Auto Brake Luces", autobrklight, true)
+        widgetToolTip(false, "Automatically turns on the brake lights when your car is stopped.")
 
-        holdF, _ = ImGui.Checkbox("Mantener el motor encendido", holdF, true)
-        widgetToolTip(false, "Recupera la salida de vehículos de GTA IV: mantén [F] para apagar el motor antes de salir o pulsa normalmente para salir y dejarlo encendido.")
+        holdF, _ = ImGui.Checkbox("Keep Motor Activado", holdF, true)
+        widgetToolTip(false, "Brings back GTA IV's vehicle exit: Hold [F] to turn off the engine before exiting the vehicle or press normally to exit and keep it running.")
 
-        ImGui.SameLine();ImGui.Dummy(25, 1);ImGui.SameLine();noJacking, _ = ImGui.Checkbox("¡No puedes tocar esto!", noJacking, true)
-        widgetToolTip(false, "Evita que los NPC y otros jugadores te roben el vehículo.")
+        ImGui.SameLine();ImGui.Dummy(25, 1);ImGui.SameLine();noJacking, _ = ImGui.Checkbox("Can't Touch This!", noJacking, true)
+        widgetToolTip(false, "Prevent NPC and players from carjacking you.")
         if noJacking then
             script.run_in_fiber(function()
                 if not PED.GET_PED_CONFIG_FLAG(self.get_ped(), 398) then
@@ -557,7 +557,7 @@ vehicle_name = vehicles.get_vehicle_display_name(ENTITY.GET_ENTITY_MODEL(current
             end)
         end
 
-        rgbLights, rgbToggled = ImGui.Checkbox("Faros RGB", rgbLights, true)
+        rgbLights, rgbToggled = ImGui.Checkbox("RGB Headlights", rgbLights, true)
         if rgbToggled then
             script.run_in_fiber(function()
                 if not VEHICLE.IS_TOGGLE_MOD_ON(current_vehicle, 22) then
@@ -571,7 +571,7 @@ vehicle_name = vehicles.get_vehicle_display_name(ENTITY.GET_ENTITY_MODEL(current
         if rgbLights then
             ImGui.SameLine();
             ImGui.PushItemWidth(120)
-            lightSpeed, used = ImGui.SliderInt("Velocidad RGB", lightSpeed, 1, 3)
+            lightSpeed, used = ImGui.SliderInt("RGB Velocidad", lightSpeed, 1, 3)
             ImGui.PopItemWidth()
         end
         ImGui.Spacing()
@@ -580,19 +580,19 @@ vehicle_name = vehicles.get_vehicle_display_name(ENTITY.GET_ENTITY_MODEL(current
                 open_sounds_window = true
             else
                 open_sounds_window = false
-                gui.show_error("Tokyo Drift", "Esta opción solo funciona con vehículos terrestres.")
+                gui.show_error("Tokyo Drift", "Esta opción only works on road vehicles.")
             end
         end
         if open_sounds_window then
             ImGui.SetNextWindowPos(740, 300, ImGuiCond.Appearing)
             ImGui.SetNextWindowSizeConstraints(100, 100, 600, 800)
-            ImGui.Begin("Sonidos del vehículo",  ImGuiWindowFlags.AlwaysAutoResize | ImGuiWindowFlags.NoTitleBar | ImGuiWindowFlags.NoCollapse)
+            ImGui.Begin("Vehículo Sounds",  ImGuiWindowFlags.AlwaysAutoResize | ImGuiWindowFlags.NoTitleBar | ImGuiWindowFlags.NoCollapse)
             if ImGui.Button("Cerrar") then
                 open_sounds_window = false
             end
             ImGui.Spacing();ImGui.Spacing()
             ImGui.PushItemWidth(250)
-            search_term, used = ImGui.InputTextWithHint("", "Buscar nombres de vehículos", search_term, 32)
+            search_term, used = ImGui.InputTextWithHint("", "Buscar Vehículo Nombres", search_term, 32)
             if ImGui.IsItemActive() then
                 is_typing = true
             else
@@ -603,13 +603,13 @@ vehicle_name = vehicles.get_vehicle_display_name(ENTITY.GET_ENTITY_MODEL(current
             ImGui.PopItemWidth()
             local selected_name = filteredNames[vehSound_index + 1]
             ImGui.Spacing()
-            if ImGui.Button("Usar este sonido") then
+            if ImGui.Button("Use This Sound") then
                 script.run_in_fiber(function()
                     AUDIO.FORCE_USE_AUDIO_GAME_OBJECT(current_vehicle, selected_name)
                 end)
             end
             ImGui.SameLine()
-            if ImGui.Button("Restaurar predeterminado") then
+            if ImGui.Button("Restore Predeterminado") then
                 script.run_in_fiber(function()
                     AUDIO.FORCE_USE_AUDIO_GAME_OBJECT(current_vehicle, vehicles.get_vehicle_display_name(ENTITY.GET_ENTITY_MODEL(current_vehicle)))
                 end)
@@ -625,10 +625,10 @@ vehicle_name = vehicles.get_vehicle_display_name(ENTITY.GET_ENTITY_MODEL(current
             engineDestroyed = false
         end
         if engineDestroyed then
-            engineButton_label = "Reparar motor"
+            engineButton_label = "Fix Motor"
             engine_hp          = 1000
         else
-            engineButton_label = "Destruir motor"
+            engineButton_label = "Destroy Motor"
             engine_hp          = -4000
         end
         if ImGui.Button(engineButton_label) then
@@ -643,7 +643,7 @@ vehicle_name = vehicles.get_vehicle_display_name(ENTITY.GET_ENTITY_MODEL(current
         --     end
         -- end
     else
-        ImGui.Text("\n¡Súbete a un vehículo!")
+        ImGui.Text("\nPlease get in a vehicle!")
     end
         ImGui.Unindent()
         ImGui.EndPopup()
@@ -661,7 +661,7 @@ script.register_looped("game input", function()
         end
         if speedBoost and PAD.IS_CONTROL_PRESSED(0, 71) then
             if validModel or is_boat or is_bike then
-            -- evita caer de morros al usar NOS en el aire
+            -- prevent face planting when using NOS mid-air
                 PAD.DISABLE_CONTROL_ACTION(0, 60, true)
                 PAD.DISABLE_CONTROL_ACTION(0, 61, true)
                 PAD.DISABLE_CONTROL_ACTION(0, 62, true)
@@ -723,7 +723,7 @@ script.register_looped("TDFT", function(script)
                     if PED.IS_PED_SITTING_IN_ANY_VEHICLE(self.get_ped()) then
                         if PAD.IS_DISABLED_CONTROL_PRESSED(0, tdBtn) and PAD.IS_CONTROL_PRESSED(0, 71) then
                             if VEHICLE.GET_VEHICLE_ENGINE_HEALTH(current_vehicle) < 300 then
-                                failSound = AUDIO.PLAY_SOUND_FROM_ENTITY(-1, "Engine_fail", current_vehicle, "DLC_PILOT_ENGINE_FAILURE_SOUNDS", true, 0)
+                                failSound = AUDIO.PLAY_SOUND_FROM_ENTITY(-1, "Motor_fail", current_vehicle, "DLC_PILOT_ENGINE_FAILURE_SOUNDS", true, 0)
                                 repeat
                                     script:sleep(50)
                                 until
@@ -810,7 +810,7 @@ script.register_looped("LCTRL", function(lct)
                         ENTITY.FREEZE_ENTITY_POSITION(current_vehicle, true)
                         timerA = timerA + 1
                         if timerA >= 150 then
-                            gui.show_success("Csyon's SubMenu", "Control de lanzamiento Activated!")
+                            gui.show_success("Csyon's SubMenú", "Control de lanzamiento Activard!")
                             AUDIO.PLAY_SOUND_FRONTEND(-1, notif_sound, notif_ref, true)
                             repeat
                                 lct:sleep(100)
@@ -849,7 +849,7 @@ script.register_looped("LCTRL", function(lct)
     end
 end)
 
-script.register_looped("Luces de freno automáticas", function()
+script.register_looped("Auto Brake Luces", function()
     if autobrklight then
         if isDriving() then
             if VEHICLE.IS_VEHICLE_DRIVEABLE(current_vehicle) and VEHICLE.IS_VEHICLE_STOPPED(current_vehicle) and VEHICLE.GET_IS_VEHICLE_ENGINE_RUNNING(current_vehicle) then
@@ -1198,8 +1198,8 @@ end)
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-AGCT = Self:add_checkbox("Unlock Gender Change")
-script.register_looped("UnlockGenderChange", function(script)
+AGCT = Self:add_checkbox("Desbloquear Gender Change")
+script.register_looped("DesbloquearGenderChange", function(script)
 	script:yield()
 	if AGCT:is_enabled() then
 		stats.set_int(MPX() .. "ALLOW_GENDER_CHANGE", 52)
@@ -1208,7 +1208,7 @@ script.register_looped("UnlockGenderChange", function(script)
 	end
 end)
 
-Self:add_button("Remove Published And Players Job Liked To You", function()
+Self:add_button("Eliminar Published And Jugadores Job Liked To You", function()
 	stats.set_int("MPPLY_AWD_FM_CR_DM_MADE", 0)
 	stats.set_int("MPPLY_AWD_FM_CR_RACES_MADE", 0)
 	stats.set_int("MPPLY_NUM_CAPTURES_CREATED", 0)
@@ -1218,8 +1218,8 @@ Self:add_button("Remove Published And Players Job Liked To You", function()
 	stats.set_int("MPPLY_FM_MISSION_LIKES", 0)
 end)
 
-RTPT = Self:add_checkbox("Remove Transaction Error")
-script.register_looped("Remove Transaction Error", function(script)
+RTPT = Self:add_checkbox("Eliminar Transaction Error")
+script.register_looped("Eliminar Transaction Error", function(script)
 	script:yield()
 	if RTPT:is_enabled() then
 		globals.set_int(4516981, 0)
@@ -1229,11 +1229,11 @@ script.register_looped("Remove Transaction Error", function(script)
 	end
 end)
 
-Self:add_button("Remove Orbital Cannon Cooldown", function()
+Self:add_button("Eliminar Orbital Cannon Enfriamiento", function()
 	stats.set_int(MPX() .. "ORBITAL_CANNON_COOLDOWN", 0)
 end)
 
-Self:add_button("Refil Nightclub Popularity", function()
+Self:add_button("Refil Nocheclub Popularity", function()
 	stats.set_int(MPX() .. "CLUB_POPULARITY", 1000)
 end)
 
@@ -1280,12 +1280,12 @@ Self:add_text("Bad Sport")
 BadSportCombo = 0
 Self:add_imgui(function()
 	ImGui.PushItemWidth(140)
-	BadSportCombo = ImGui.Combo("##BadSport", BadSportCombo, { "Remove", "Add" }, 2)
+	BadSportCombo = ImGui.Combo("##BadSport", BadSportCombo, { "Eliminar", "Añadir" }, 2)
 end)
 
 local function BadSport(State, Overall, Bool)
 	script.run_in_fiber(function(script)
-		gui.show_message("Bad Sport", "Change Session  to Apply")
+		gui.show_message("Bad Sport", "Change Sesión  to Aplicar")
 		script:sleep(1000)
 		stats.set_int("MPPLY_BADSPORT_MESSAGE", State)
 		stats.set_int("MPPLY_BADSPORT_MESSAGE", State)
@@ -1302,9 +1302,9 @@ Self:add_sameline()
 
 Self:add_button("Execute Bad Sport", function()
 	if BadSportCombo == 0 then
-		BadSport(0, 0, false) -- Removes Bad Sport
+		BadSport(0, 0, false) -- Eliminars Bad Sport
 	else
-		BadSport(1, 3000, true) -- Add's Bad Sport
+		BadSport(1, 3000, true) -- Añadir's Bad Sport
 	end
 end)
 
@@ -1315,7 +1315,7 @@ StoryCharacters = CSYON:add_tab("Story Mode")
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 local singleplayer_global  = 113969
-local crew_unlocked_bitset = singleplayer_global + 1 + 116 --MISC::REGISTER_INT_TO_SAVE(&(Global_113969.f_1.f_116), "Crew_Unlocked_Bitset");
+local crew_unlocked_bitset = singleplayer_global + 1 + 116 --MISC::REGISTER_INT_TO_SAVE(&(Global_113969.f_1.f_116), "Crew_Desbloqueared_Bitset");
 local car_mods_bitset      = singleplayer_global + 2366 + 539 + 2241 --STREAMING::REQUEST_NAMED_PTFX_ASSET("scr_indep_wheelsmoke"); shop_controller.c
 
 CurrentSPMoneyValue = stats.get_int(SPX() .. "TOTAL_CASH")
@@ -1328,25 +1328,25 @@ end)
 
 StoryCharacters:add_separator()
 
-StoryCharacters:add_button("Add 1 Mil Cash $", function()
+StoryCharacters:add_button("Añadir 1 Mil Cash $", function()
 	stats.set_int(SPX() .. "TOTAL_CASH", stats.get_int(SPX() .. "TOTAL_CASH") + 1000000)
 end)
 
-StoryCharacters:add_button("Add 10 Mil Cash $", function()
+StoryCharacters:add_button("Añadir 10 Mil Cash $", function()
 	stats.set_int(SPX() .. "TOTAL_CASH", stats.get_int(SPX() .. "TOTAL_CASH") + 10000000)
 end)
 
-StoryCharacters:add_button("Add 100 Mil Cash $", function()
+StoryCharacters:add_button("Añadir 100 Mil Cash $", function()
 	stats.set_int(SPX() .. "TOTAL_CASH", stats.get_int(SPX() .. "TOTAL_CASH") + 100000000)
 end)
 
-StoryCharacters:add_button("Add 1 Bil Cash $", function()
+StoryCharacters:add_button("Añadir 1 Bil Cash $", function()
 	stats.set_int(SPX() .. "TOTAL_CASH", stats.get_int(SPX() .. "TOTAL_CASH") + 1000000000)
 end)
 
 StoryCharacters:add_separator()
 
-StoryCharacters:add_button("Max Current Character Skills", function()
+StoryCharacters:add_button("Máximo Current Character Skills", function()
 	stats.set_int(SPX() .. "SPECIAL_ABILITY_UNLOCKED", 100)
 	stats.set_float(SPX() .. "DIST_RUNNING", 175 * 100)
 	stats.set_int(SPX() .. "TIME_UNDERWATER", 30 * 60 * 1000 * 100)
@@ -9371,15 +9371,15 @@ local rp = {
 	1787576850,
 }
 
-RankSetter = Recoverys:add_tab("Set Ranks")
+RankSetter = Recoverys:add_tab("Set Nivels")
 
-RankSetter:add_text("Your current Rank is " .. stats.get_int(MPX() .. "CHAR_RANK_FM"))
+RankSetter:add_text("Your current Nivel is " .. stats.get_int(MPX() .. "CHAR_RANK_FM"))
 
 RankSetter:add_separator()
 
-local rpLevel = RankSetter:add_input_int("Rank")
+local rpLevel = RankSetter:add_input_int("Nivel")
 
-RankSetter:add_button("Set Rank", function()
+RankSetter:add_button("Set Nivel", function()
 	local rankValue = rpLevel:get_value()
 
 	if rankValue <= 0 or rankValue > 8000 then
@@ -9390,25 +9390,25 @@ RankSetter:add_button("Set Rank", function()
 	else
 		stats.set_int(MPX() .. "CHAR_SET_RP_GIFT_ADMIN", rp[rankValue] or 0)
 		gui.show_message(
-			"Rank Correction",
-			"Your Rank was set to " .. rankValue .. ", changing session and applying RP."
+			"Nivel Correction",
+			"Your Nivel was set to " .. rankValue .. ", changing session and applying RP."
 		)
 	end
 end)
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-CrewRankSetter = Recoverys:add_tab("Set Crew Ranks")
+CrewRankSetter = Recoverys:add_tab("Set Crew Nivels")
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-CrewRankSetter:add_text("Your Current Crew Rank is " .. stats.get_int("MPPLY_CURRENT_CREW_RANK"))
+CrewRankSetter:add_text("Your Current Crew Nivel is " .. stats.get_int("MPPLY_CURRENT_CREW_RANK"))
 
 CrewRankSetter:add_separator()
 
-local rpLevel = CrewRankSetter:add_input_int("Rank")
+local rpLevel = CrewRankSetter:add_input_int("Nivel")
 
-CrewRankSetter:add_button("Set Slot 1 Crew Rank", function()
+CrewRankSetter:add_button("Set Slot 1 Crew Nivel", function()
 	local rankValue = rpLevel:get_value()
 
 	if rankValue <= 0 or rankValue > 8000 then
@@ -9418,11 +9418,11 @@ CrewRankSetter:add_button("Set Slot 1 Crew Rank", function()
 		)
 	else
 		stats.set_int("MPPLY_CREW_LOCAL_XP_0", rp[rankValue] or 0)
-		gui.show_message("Crew Rank Setter", "Your Crew Slot 1 Rank was set to " .. rankValue .. ", .")
+		gui.show_message("Crew Nivel Setter", "Your Crew Slot 1 Nivel was set to " .. rankValue .. ", .")
 	end
 end)
 
-CrewRankSetter:add_button("Set Slot 2 Crew Rank", function()
+CrewRankSetter:add_button("Set Slot 2 Crew Nivel", function()
 	local rankValue = rpLevel:get_value()
 
 	if rankValue <= 0 or rankValue > 8000 then
@@ -9432,11 +9432,11 @@ CrewRankSetter:add_button("Set Slot 2 Crew Rank", function()
 		)
 	else
 		stats.set_int("MPPLY_CREW_LOCAL_XP_1", rp[rankValue] or 0)
-		gui.show_message("Crew Rank Setter", "Your Crew Slot 2 Rank was set to " .. rankValue .. ", .")
+		gui.show_message("Crew Nivel Setter", "Your Crew Slot 2 Nivel was set to " .. rankValue .. ", .")
 	end
 end)
 
-CrewRankSetter:add_button("Set Slot 3 Crew Rank", function()
+CrewRankSetter:add_button("Set Slot 3 Crew Nivel", function()
 	local rankValue = rpLevel:get_value()
 
 	if rankValue <= 0 or rankValue > 8000 then
@@ -9446,11 +9446,11 @@ CrewRankSetter:add_button("Set Slot 3 Crew Rank", function()
 		)
 	else
 		stats.set_int("MPPLY_CREW_LOCAL_XP_2", rp[rankValue] or 0)
-		gui.show_message("Crew Rank Setter", "Your Crew Slot 3 Rank was set to " .. rankValue .. ", .")
+		gui.show_message("Crew Nivel Setter", "Your Crew Slot 3 Nivel was set to " .. rankValue .. ", .")
 	end
 end)
 
-CrewRankSetter:add_button("Set Slot 4 Crew Rank", function()
+CrewRankSetter:add_button("Set Slot 4 Crew Nivel", function()
 	local rankValue = rpLevel:get_value()
 
 	if rankValue <= 0 or rankValue > 8000 then
@@ -9460,11 +9460,11 @@ CrewRankSetter:add_button("Set Slot 4 Crew Rank", function()
 		)
 	else
 		stats.set_int("MPPLY_CREW_LOCAL_XP_3", rp[rankValue] or 0)
-		gui.show_message("Crew Rank Setter", "Your Crew Slot 4 Rank was set to " .. rankValue .. ", .")
+		gui.show_message("Crew Nivel Setter", "Your Crew Slot 4 Nivel was set to " .. rankValue .. ", .")
 	end
 end)
 
-CrewRankSetter:add_button("Set Slot 5 Crew Rank", function()
+CrewRankSetter:add_button("Set Slot 5 Crew Nivel", function()
 	local rankValue = rpLevel:get_value()
 
 	if rankValue <= 0 or rankValue > 8000 then
@@ -9474,13 +9474,13 @@ CrewRankSetter:add_button("Set Slot 5 Crew Rank", function()
 		)
 	else
 		stats.set_int("MPPLY_CREW_LOCAL_XP_4", rp[rankValue] or 0)
-		gui.show_message("Crew Rank Setter", "Your Crew Slot 5 Rank was set to " .. rankValue .. ", .")
+		gui.show_message("Crew Nivel Setter", "Your Crew Slot 5 Nivel was set to " .. rankValue .. ", .")
 	end
 end)
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-Tunables = CSYON:add_tab("Tunable Options")
+Tunables = CSYON:add_tab("Tunable Opciones")
 
 rpmvalue = globals.get_float(262145 + 1)
 Tunables:add_imgui(function()
@@ -9540,7 +9540,7 @@ end)
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-OnlineServices = CSYON:add_tab("Online Services")
+OnlineServices = CSYON:add_tab("Activadoline Services")
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -9570,7 +9570,7 @@ prize_wheel_win_state = 309
 prize_wheel_prize = 14
 prize_wheel_prize_state = 45
 
-CasinoServices:add_button("Bypass Casino Cooldown", function()
+CasinoServices:add_button("Bypass Casino Enfriamiento", function()
 	stats.set_int("MPPLY_CASINO_CHIPS_WON_GD", 0)
 	stats.set_int("MPPLY_CASINO_CHIPS_WONTIM", 0)
 	stats.set_int("MPPLY_CASINO_GMBLNG_GD", 0)
@@ -9585,20 +9585,20 @@ CasinoServices:add_separator()
 CasinoServices:add_text("Casino Chips")
 chipsVal = 1800
 CasinoServices:add_imgui(function()
-	chipsVal, used = ImGui.SliderInt("Límite de compra de fichas del casino", chipsVal, 1800, 2147483647)
+	chipsVal, used = ImGui.SliderInt("Casino Chips Buy Limit", chipsVal, 1800, 2147483647)
 	if used then
 		globals.set_int(CCBL0, chipsVal)
 		globals.set_int(CCBL1, chipsVal)
 	end
 end)
 
-bypass_casino_bans = CasinoServices:add_checkbox("Bypass Casino Cooldown")
+bypass_casino_bans = CasinoServices:add_checkbox("Bypass Casino Enfriamiento")
 CasinoServices:add_text("Winning too much too quickly might get you banned, enable this at your own risk.")
 CasinoServices:add_separator()
 
 CasinoServices:add_separator()
 CasinoServices:add_text("Roulette")
-force_roulette_wheel = CasinoServices:add_checkbox("Force Roulette Wheel to Land On Red 18")
+force_roulette_wheel = CasinoServices:add_checkbox("Force Roulette Wheel to Land Activado Red 18")
 
 CasinoServices:add_separator()
 CasinoServices:add_text("Slot Machine")
@@ -9622,7 +9622,7 @@ end)
 CasinoServices:add_separator()
 CasinoServices:add_text("Lucky Wheel")
 
-CasinoServices:add_button("Give Podium Vehicle", function()
+CasinoServices:add_button("Dar Podium Vehículo", function()
 	script.run_in_fiber(function(script)
 		if SCRIPT.GET_NUMBER_OF_THREADS_RUNNING_THE_SCRIPT_WITH_THIS_HASH(joaat("casino_lucky_wheel")) ~= 0 then
 			locals.set_int("casino_lucky_wheel", prize_wheel_win_state + prize_wheel_prize, 18)
@@ -9631,7 +9631,7 @@ CasinoServices:add_button("Give Podium Vehicle", function()
 	end)
 end)
 CasinoServices:add_sameline()
-CasinoServices:add_button("Give Mystery Prize", function()
+CasinoServices:add_button("Dar Mystery Prize", function()
 	script.run_in_fiber(function(script)
 		if SCRIPT.GET_NUMBER_OF_THREADS_RUNNING_THE_SCRIPT_WITH_THIS_HASH(joaat("casino_lucky_wheel")) ~= 0 then
 			locals.set_int("casino_lucky_wheel", prize_wheel_win_state + prize_wheel_prize, 11)
@@ -9640,7 +9640,7 @@ CasinoServices:add_button("Give Mystery Prize", function()
 	end)
 end)
 CasinoServices:add_sameline()
-CasinoServices:add_button("Give $50,000", function()
+CasinoServices:add_button("Dar $50,000", function()
 	script.run_in_fiber(function(script)
 		if SCRIPT.GET_NUMBER_OF_THREADS_RUNNING_THE_SCRIPT_WITH_THIS_HASH(joaat("casino_lucky_wheel")) ~= 0 then
 			locals.set_int("casino_lucky_wheel", prize_wheel_win_state + prize_wheel_prize, 19)
@@ -9649,7 +9649,7 @@ CasinoServices:add_button("Give $50,000", function()
 	end)
 end)
 CasinoServices:add_sameline()
-CasinoServices:add_button("Give 25,000 Chips", function()
+CasinoServices:add_button("Dar 25,000 Chips", function()
 	script.run_in_fiber(function(script)
 		if SCRIPT.GET_NUMBER_OF_THREADS_RUNNING_THE_SCRIPT_WITH_THIS_HASH(joaat("casino_lucky_wheel")) ~= 0 then
 			locals.set_int("casino_lucky_wheel", prize_wheel_win_state + prize_wheel_prize, 15)
@@ -9657,7 +9657,7 @@ CasinoServices:add_button("Give 25,000 Chips", function()
 		end
 	end)
 end)
-CasinoServices:add_button("Give 15,000RP", function()
+CasinoServices:add_button("Dar 15,000RP", function()
 	script.run_in_fiber(function(script)
 		if SCRIPT.GET_NUMBER_OF_THREADS_RUNNING_THE_SCRIPT_WITH_THIS_HASH(joaat("casino_lucky_wheel")) ~= 0 then
 			locals.set_int("casino_lucky_wheel", prize_wheel_win_state + prize_wheel_prize, 17)
@@ -9666,7 +9666,7 @@ CasinoServices:add_button("Give 15,000RP", function()
 	end)
 end)
 CasinoServices:add_sameline()
-CasinoServices:add_button("Give Discount", function()
+CasinoServices:add_button("Dar Discount", function()
 	script.run_in_fiber(function(script)
 		if SCRIPT.GET_NUMBER_OF_THREADS_RUNNING_THE_SCRIPT_WITH_THIS_HASH(joaat("casino_lucky_wheel")) ~= 0 then
 			locals.set_int("casino_lucky_wheel", prize_wheel_win_state + prize_wheel_prize, 4)
@@ -9675,7 +9675,7 @@ CasinoServices:add_button("Give Discount", function()
 	end)
 end)
 CasinoServices:add_sameline()
-CasinoServices:add_button("Give Clothing", function()
+CasinoServices:add_button("Dar Clothing", function()
 	script.run_in_fiber(function(script)
 		if SCRIPT.GET_NUMBER_OF_THREADS_RUNNING_THE_SCRIPT_WITH_THIS_HASH(joaat("casino_lucky_wheel")) ~= 0 then
 			locals.set_int("casino_lucky_wheel", prize_wheel_win_state + prize_wheel_prize, 8)
@@ -9728,7 +9728,7 @@ if bypass_casino_bans:is_enabled() then
 end
 
 CasinoServices:add_text("Poker")
-force_poker_cards = CasinoServices:add_checkbox("Force all Players Hands to Royal Flush")
+force_poker_cards = CasinoServices:add_checkbox("Force all Jugadores Hands to Royal Flush")
 CasinoServices:add_sameline()
 set_dealers_poker_cards = CasinoServices:add_checkbox("Force Dealer's Hand to Bad Beat")
 set_dealers_poker_cards:set_enabled(true)
@@ -9790,7 +9790,7 @@ CasinoServices:add_button("Set Dealer's Hand To Bust", function()
             gui.show_message("CasinoPacino", "Taking control of the blackjack script.") --If you see this spammed, someone if fighting you for control.
             script:yield()
         end
-        local blackjack_table = locals.get_int("blackjack", blackjack_table_players + 1 + (player_id * 8) + 4) --The Player's current table he is sitting at.
+        local blackjack_table = locals.get_int("blackjack", blackjack_table_players + 1 + (player_id * 8) + 4) --The Jugador's current table he is sitting at.
         if blackjack_table ~= -1 then
             locals.set_int("blackjack", blackjack_cards + blackjack_decks + 1 + (blackjack_table * 13) + 1, 11)
             locals.set_int("blackjack", blackjack_cards + blackjack_decks + 1 + (blackjack_table * 13) + 2, 12)
@@ -9802,7 +9802,7 @@ end)
 
 if SCRIPT.GET_NUMBER_OF_THREADS_RUNNING_THE_SCRIPT_WITH_THIS_HASH(joaat("blackjack")) ~= 0 then
         local dealers_card = 0
-        local blackjack_table = locals.get_int("blackjack", blackjack_table_players + 1 + (PLAYER.PLAYER_ID() * 8) + 4) --The Player's current table he is sitting at.
+        local blackjack_table = locals.get_int("blackjack", blackjack_table_players + 1 + (PLAYER.PLAYER_ID() * 8) + 4) --The Jugador's current table he is sitting at.
         if blackjack_table ~= -1 then
             dealers_card = locals.get_int("blackjack", blackjack_cards + blackjack_decks + 1 + (blackjack_table * 13) + 1) --Dealer's facedown card.
             dealers_card_gui_element:set_value(get_cardname_from_index(dealers_card))
@@ -9867,39 +9867,39 @@ if SCRIPT.GET_NUMBER_OF_THREADS_RUNNING_THE_SCRIPT_WITH_THIS_HASH(joaat("blackja
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-DLCUnlocker = CSYON:add_tab("Unlocks")
+DLCUnlocker = CSYON:add_tab("Desbloquears")
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-DLCUnlocker:add_button("Unlock Police Cars Trade Price", function()
+DLCUnlocker:add_button("Desbloquear Policía Cars Trade Price", function()
 	stats.set_int(MPX() .. "MOST_TIME_ON_3_PLUS_STARS", 300000)
 	stats.set_int(MPX() .. "SALV23_SCOPE_BS", -1)
 	stats.set_int(MPX() .. "SALV23_INST_PROG", -1)
 	stats.set_int(MPX() .. "SALV23_GEN_BS", -1)
 end)
 
-DLCUnlocker:add_button("Salvage Heist fix", function()
+DLCUnlocker:add_button("Salvage Golpe fix", function()
 	stats.set_int(MPX() .. "SALV23_GEN_BS", 0)
 end)
 
-DLCUnlocker:add_button("Unlock Xmas 2023 Gifts", function()
+DLCUnlocker:add_button("Desbloquear Xmas 2023 Gifts", function()
 	globals.set_int(262145 + 35157, 1) --XMASGIFTS2023
 	globals.set_int(262145 + 35158, 1) --NEWYEARSGIFTS2023
 end)
 
-DLCUnlocker:add_button("Unlock Taxi Livery for Eudora", function()
+DLCUnlocker:add_button("Desbloquear Taxi Livery for Eudora", function()
 	stats.set_masked_int(MPX() .. "DLC22022PSTAT_INT536", 10, 16, 8)
 end)
 
-DLCUnlocker:add_button("Unlock Taxi Livery for Broadway", function()
+DLCUnlocker:add_button("Desbloquear Taxi Livery for Broadway", function()
 	stats.set_int(MPX() .. "AWD_TAXIDRIVER", 50)
 end)
 
 DLCUnlocker:add_separator()
-DLCUnlocker:add_text("Removed Vehicles")
+DLCUnlocker:add_text("Eliminard Vehículos")
 
-DVT = DLCUnlocker:add_checkbox("Enable Deleted Vehicles")
-script.register_looped("Deleted Vehicles", function(script)
+DVT = DLCUnlocker:add_checkbox("Activar Eliminard Vehículos")
+script.register_looped("Eliminard Vehículos", function(script)
 	script:yield()
 	if DVT:is_enabled() then
 		globals.set_int(262145 + 22565, 1)
@@ -10308,7 +10308,7 @@ EventsFeatures = CSYON:add_tab("Events")
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-Weather = CSYON:add_tab("Weather")
+Weather = CSYON:add_tab("Clima")
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -10329,11 +10329,11 @@ end)
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-HalloweenWeatherlel = Weather:add_tab("Halloween Weather Toggle")
+HalloweenWeatherlel = Weather:add_tab("Halloween Clima Toggle")
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-Hellowwween = HalloweenWeatherlel:add_checkbox("Halloween Weather")
+Hellowwween = HalloweenWeatherlel:add_checkbox("Halloween Clima")
 script.register_looped("halloweather", function(script)
 	script:yield()
 	if Hellowwween:is_enabled() then
@@ -10349,7 +10349,7 @@ YetiHuntEvent = EventsFeatures:add_tab("Yeti Hunt")
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-YetiHuntEvent:add_button("Enable Yeti Hunt Event", function()
+YetiHuntEvent:add_button("Activar Yeti Hunt Event", function()
 	globals.set_int(FMg + 35041, 1) -- enable the event 1833904680
 end)
 
@@ -10383,7 +10383,7 @@ WM29Event = EventsFeatures:add_tab("WM29 Event")
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-WM29Event:add_button("Enable Event", function()
+WM29Event:add_button("Activar Event", function()
 	if globals.get_int(1882780 + (1 + (PLAYER.PLAYER_ID() * 149)) + 82) ~= 1 then
 		return
 	end
@@ -10416,7 +10416,7 @@ WM29Event:add_button("Enable Event", function()
 	freemodescript:set_int(freemodescript, 15827 + 181 + 1 + 1, 0x75F9)
 end)
 
-WM29Event:add_button("Teleport", function()
+WM29Event:add_button("Teletransportar", function()
 	PED.SET_PED_COORDS_KEEP_VEHICLE(self.get_ped(), -889.3795166015625, -447.8448181152344, 171.81410217285156)
 end)
 
@@ -10426,20 +10426,20 @@ GoachEvent = EventsFeatures:add_tab("Goach Event")
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-GoachEvent:add_button("Enable Goach Event", function()
+GoachEvent:add_button("Activar Goach Event", function()
 	globals.set_int(2699171 + 3 + 1, 171)
 	globals.set_int(2699171 + 2, 6)
 end)
 
----Full Account Unlocker Tool---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+---Full Account Desbloquearer Tool---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-FRESH = Recoverys:add_tab("Full Account Unlocks")
+FRESH = Recoverys:add_tab("Full Account Desbloquears")
 
---Character's Stats-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--Character's Estadísticas-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-CSU = FRESH:add_tab("Character's Stats")
+CSU = FRESH:add_tab("Character's Estadísticas")
 
-CSU:add_button("Max Character Skills", function()
+CSU:add_button("Máximo Character Skills", function()
 	stats.set_int(MPX() .. "SCRIPT_INCREASE_DRIV", 100)
 	stats.set_int(MPX() .. "SCRIPT_INCREASE_FLY", 100)
 	stats.set_int(MPX() .. "SCRIPT_INCREASE_LUNG", 100)
@@ -10449,32 +10449,32 @@ CSU:add_button("Max Character Skills", function()
 	stats.set_int(MPX() .. "SCRIPT_INCREASE_STRN", 100)
 end)
 
-Achievements = CSU:add_tab("Achievements")
+Achievements = CSU:add_tab("Logros")
 
 Acv0 = false
 AG = 4525223 + 1
 
-Achievements:add_button("Unlock All Achievements", function()
+Achievements:add_button("Desbloquear todo Logros", function()
 		script.run_in_fiber(function(script)
 		for i = 0, 77 do
 			script:sleep(200)
 			globals.set_int(AG, i)
 			if i == 77 then
-				gui.show_message("Achivements", "Unlocked 77 Achivements")
+				gui.show_message("Achivements", "Desbloqueared 77 Achivements")
 			end
 		end
 	end)
 end)
 
-CsyonsAchivements = Achievements:add_tab("Unlock One By One")
+CsyonsAchivements = Achievements:add_tab("Desbloquear Activadoe By Activadoe")
 
 CsyonsAchivements:add_button("Welcome to Los Santos", function()
 	globals.set_int(AG, 1)
 end)
-CsyonsAchivements:add_button("A Friendship Resurrected", function()
+CsyonsAchivements:add_button("A Amigoship Resurrected", function()
 	globals.set_int(AG, 2)
 end)
-CsyonsAchivements:add_button("A Fair Day's Pay", function()
+CsyonsAchivements:add_button("A Fair Día's Pay", function()
 	globals.set_int(AG, 3)
 end)
 CsyonsAchivements:add_button("The Moment of Truth", function()
@@ -10498,7 +10498,7 @@ end)
 CsyonsAchivements:add_button("The Government Gimps", function()
 	globals.set_int(AG, 10)
 end)
-CsyonsAchivements:add_button("The Big One!", function()
+CsyonsAchivements:add_button("The Big Activadoe!", function()
 	globals.set_int(AG, 11)
 end)
 CsyonsAchivements:add_button("Solid Gold, Baby!", function()
@@ -10510,7 +10510,7 @@ end)
 CsyonsAchivements:add_button("San Andreas Sightseer", function()
 	globals.set_int(AG, 14)
 end)
-CsyonsAchivements:add_button("All's Fare in Love and War", function()
+CsyonsAchivements:add_button("Todos's Fare in Love and War", function()
 	globals.set_int(AG, 15)
 end)
 CsyonsAchivements:add_button("TP Industries Arms Race", function()
@@ -10531,7 +10531,7 @@ end)
 CsyonsAchivements:add_button("Red Mist", function()
 	globals.set_int(AG, 21)
 end)
-CsyonsAchivements:add_button("Show Off", function()
+CsyonsAchivements:add_button("Show Desactivado", function()
 	globals.set_int(AG, 22)
 end)
 CsyonsAchivements:add_button("Kifflom!", function()
@@ -10558,13 +10558,13 @@ end)
 CsyonsAchivements:add_button("Wanted:Alive Or Alive", function()
 	globals.set_int(AG, 30)
 end)
-CsyonsAchivements:add_button("Los Santos Customs", function()
+CsyonsAchivements:add_button("Los Santos Personalizados", function()
 	globals.set_int(AG, 31)
 end)
 CsyonsAchivements:add_button("Cerrar Shave", function()
 	globals.set_int(AG, 32)
 end)
-CsyonsAchivements:add_button("Off the Plane", function()
+CsyonsAchivements:add_button("Desactivado the Plane", function()
 	globals.set_int(AG, 33)
 end)
 CsyonsAchivements:add_button("Three-Bit Gangster", function()
@@ -10582,10 +10582,10 @@ end)
 CsyonsAchivements:add_button("The Midnight Club", function()
 	globals.set_int(AG, 38)
 end)
-CsyonsAchivements:add_button("Unnatural Selection", function()
+CsyonsAchivements:add_button("Unnatural Seleccionarion", function()
 	globals.set_int(AG, 39)
 end)
-CsyonsAchivements:add_button("Backseat Driver", function()
+CsyonsAchivements:add_button("Atrásseat Driver", function()
 	globals.set_int(AG, 40)
 end)
 CsyonsAchivements:add_button("Run Like The Wind", function()
@@ -10621,13 +10621,13 @@ end)
 CsyonsAchivements:add_button("Be Prepared", function()
 	globals.set_int(AG, 51)
 end)
-CsyonsAchivements:add_button("In the Name of Science", function()
+CsyonsAchivements:add_button("In the Nombre of Science", function()
 	globals.set_int(AG, 52)
 end)
 CsyonsAchivements:add_button("Dead Presidents", function()
 	globals.set_int(AG, 53)
 end)
-CsyonsAchivements:add_button("Parole Day", function()
+CsyonsAchivements:add_button("Parole Día", function()
 	globals.set_int(AG, 54)
 end)
 CsyonsAchivements:add_button("Shot Caller", function()
@@ -10654,7 +10654,7 @@ end)
 CsyonsAchivements:add_button("Humans of Los Santos", function()
 	globals.set_int(AG, 62)
 end)
-CsyonsAchivements:add_button("First Time Director", function()
+CsyonsAchivements:add_button("First Hora Director", function()
 	globals.set_int(AG, 63)
 end)
 CsyonsAchivements:add_button("Animal Lover", function()
@@ -10687,7 +10687,7 @@ end)
 CsyonsAchivements:add_button("The Doomsday Scenario", function()
 	globals.set_int(AG, 73)
 end)
-CsyonsAchivements:add_button("A World Worth Saving", function()
+CsyonsAchivements:add_button("A Mundo Worth Saving", function()
 	globals.set_int(AG, 74)
 end)
 CsyonsAchivements:add_button("Orbital Obliteration", function()
@@ -10707,9 +10707,9 @@ local current_objectives_global = 2359296
 local weekly_words_global = 2739243
 local objectives_state_global = 1574745
 
-FRESH:add_button("Complete All Daily & Weekly Challenges", function()
+FRESH:add_button("Completar Todos Daily & Weekly Challenges", function()
 	script.run_in_fiber(function(script)
-			for i = 0, 2 do --Unlock all daily rewards.
+			for i = 0, 2 do --Desbloquear all daily rewards.
 			local objective = globals.get_int(current_objectives_global + (1 + (0 * 5571)) + 681 + 4245 + (1 + (i * 3)))
 			globals.set_int(objectives_state_global + 1 + (1 + (i * 1)), objective)
 		end
@@ -10717,7 +10717,7 @@ FRESH:add_button("Complete All Daily & Weekly Challenges", function()
 		globals.set_int(
 			weekly_words_global + (1 + (0 * 6)) + 1,
 			globals.get_int(weekly_words_global + (1 + (0 * 6)) + 2)
-		) --Unlock Weekly Objective
+		) --Desbloquear Weekly Objective
 	end)
 end)
 
@@ -10735,19 +10735,19 @@ local function Text(text)
 	FRESH:add_text(text, function() end)
 end
 Text("==========================")
-Text("One Click Unlocker Section")
+Text("Activadoe Click Desbloquearer Section")
 Text("==========================")
-Text("Rewards,Unlocks,Progess And")
-Text("Achievements")
+Text("Rewards,Desbloquears,Progess And")
+Text("Logros")
 Text("Make Sure You have 50 mil In Every")
 Text("Business")
-Text("In The Game Before Applying In Do a")
+Text("In The Game Before Aplicaring In Do a")
 Text("Sale Of ")
 Text("Each Business And Do a Round In")
-Text("Shooting Range After You Activate It")
-Text("Join a New Session To Apply ")
+Text("Shooting Range After You Activar It")
+Text("Unirse a New Sesión To Aplicar ")
 Text("==========================")
-FRESH:add_button("Unlock All", function()
+FRESH:add_button("Desbloquear todo", function()
 	unlock_packed_bools(110, 113) --Red Check Pajamas, Green Check Pajamas, Black Check Pajamas, I Heart LC T-shirt
 	unlock_packed_bools(115, 115) --Roosevelt
 	unlock_packed_bools(124, 124) --Sanctus
@@ -10759,9 +10759,9 @@ FRESH:add_button("Unlock All", function()
 	unlock_packed_bools(3616, 3616) --Please Stop Me Mask
 	unlock_packed_bools(3750, 3750) --Stocking
 	unlock_packed_bools(3765, 3769) --The Fleeca Job, The Prison Break, The Humane Labs Raid, Series A Funding, The Pacific Standard Job (Elite Challenges)
-	unlock_packed_bools(3770, 3781) --'Death Defying' T-shirt, 'For Hire' T-shirt, 'Gimme That' T-shirt, 'Asshole' T-shirt, 'Can't Touch This' T-shirt, 'Decorated' T-shirt, 'Psycho Killer' T-shirt, 'One Man Army' T-shirt, 'Shot Caller' T-shirt, 'Showroom' T-shirt, 'Elite Challenge' T-Shirt, 'Elite Lousy' T-Shirt
+	unlock_packed_bools(3770, 3781) --'Death Defying' T-shirt, 'For Hire' T-shirt, 'Gimme That' T-shirt, 'Asshole' T-shirt, 'Can't Touch This' T-shirt, 'Decorated' T-shirt, 'Psycho Killer' T-shirt, 'Activadoe Man Army' T-shirt, 'Shot Caller' T-shirt, 'Showroom' T-shirt, 'Elite Challenge' T-Shirt, 'Elite Lousy' T-Shirt
 	unlock_packed_bools(3783, 3802) --Fake Dix White T-Shirt, Fake Dix Gold T-Shirt, Fake Didier Sachs T-Shirt, Fake Enema T-Shirt, Fake Le Chien No2 T-Shirt, Fake Le Chien Crew T-Shirt, Fake Santo Capra T-Shirt, Fake Vapid T-Shirt, Fake Perseus T-Shirt, Fake Sessanta Nove T-Shirt, 'Vinewood Zombie' T-shirt, 'Meltdown' T-shirt, 'I Married My Dad' T-shirt, 'Die Already 4' T-shirt, 'The Shoulder Of Orion II' T-shirt, 'Nelson In Naples' T-shirt, 'The Many Wives of Alfredo Smith' T-shirt, 'An American Divorce' T-shirt, 'The Loneliest Robot' T-shirt, 'Capolavoro' T-shirt
-	unlock_packed_bools(4247, 4269) --'Magnetics Script' Hat, 'Magnetics Block' Hat, 'Low Santos' Hat, 'Boars' Hat, 'Benny's' Hat, 'Westside' Hat, 'Eastside' Hat, 'Strawberry' Hat, 'S.A.' Hat, 'Davis' Hat, 'Vinewood Zombie' T-shirt, 'Knife After Dark' T-shirt, 'The Simian' T-shirt, 'Zombie Liberals In The Midwest' T-shirt, 'Twilight Knife' T-shirt, 'Butchery and Other Hobbies' T-shirt, 'Cheerleader Massacre 3' T-shirt, 'Cannibal Clown' T-shirt, 'Hot Serial Killer Stepmom' T-shirt, 'Splatter And Shot' T-shirt, 'Meathook For Mommy' T-shirt, 'Psycho Swingers' T-shirt, 'Vampires On The Beach' T-shirt
+	unlock_packed_bools(4247, 4269) --'Magnetics Script' Hat, 'Magnetics Block' Hat, 'Low Santos' Hat, 'Boars' Hat, 'Benny's' Hat, 'Westside' Hat, 'Eastside' Hat, 'Strawberry' Hat, 'S.A.' Hat, 'Davis' Hat, 'Vinewood Zombie' T-shirt, 'Knife After Dark' T-shirt, 'The Simian' T-shirt, 'Zombie Liberals In The Midwest' T-shirt, 'Twilight Knife' T-shirt, 'Butchery and Other Hobbies' T-shirt, 'Cheerleader Masaacre 3' T-shirt, 'Cannibal Clown' T-shirt, 'Hot Serial Killer Stepmom' T-shirt, 'Splatter And Shot' T-shirt, 'Meathook For Mommy' T-shirt, 'Psycho Swingers' T-shirt, 'Vampires Activado The Beach' T-shirt
 	unlock_packed_bools(4300, 4327) --Brown Corpse Bride Bobblehead, White Corpse Bride Bobblehead, Pink Corpse Bride Bobblehead, White Mask Slasher Bobblehead, Red Mask Slasher Bobblehead, Yellow Mask Slasher Bobblehead, Blue Zombie Bobblehead, Green Zombie Bobblehead, Pale Zombie Bobblehead, Possessed Urchin Bobblehead, Demonic Urchin Bobblehead, Gruesome Urchin Bobblehead, Tuxedo Frank Bobblehead, Purple Suit Frank Bobblehead, Stripped Suit Frank Bobblehead, Black Mummy Bobblehead, White Mummy Bobblehead, Brown Mummy Bobblehead, Pale Werewolf Bobblehead, Dark Werewolf Bobblehead, Gray Werewolf Bobblehead, Fleshy Vampire Bobblehead, Bloody Vampire Bobblehead, B&W Vampire Bobblehead, Halloween Loop 1, Halloween Loop 2, Franken Stange, Lurcher
 	unlock_packed_bools(4333, 4335) --Naughty Cap, Nice Cap, Abominable Snowman
 	unlock_packed_bools(7467, 7495) --'Accountant' T-shirt, 'Bahama Mamas' T-shirt, 'Drone' T-shirt, 'Grotti' T-shirt, 'Golf' T-shirt, 'Maisonette' T-shirt, 'Manopause' T-shirt, 'Marlowe' T-shirt, 'Meltdown' T-shirt, 'Pacific Bluffs' T-shirt, 'Prolaps' T-shirt, 'Tennis' T-shirt, 'Toe Shoes' T-shirt, 'Crest' T-shirt, 'Vanilla Unicorn' T-shirt, Pastel Blue Pajamas, Pastel Yellow Pajamas, Pastel Pink Pajamas, Pastel Green Pajamas, Vibrant Check Pajamas, Blue Check Pajamas, Red Swirl Motif Pajamas, White Graphic Pajamas, Blue Swirl Pajamas, Yellow Swirl Pajamas, Red Swirl Pajamas, Navy Pinstripe Pajamas, Bold Pinstripe Pajamas, Orange Pinstripe Pajamas
@@ -10771,83 +10771,83 @@ FRESH:add_button("Unlock All", function()
 	unlock_packed_bools(9362, 9385) --Western Brand White T-Shirt, Western Brand Black T-Shirt, Western Logo White T-Shirt, Western Logo Black T-Shirt, Steel Horse Solid Logo T-Shirt, Steel Horse Logo T-Shirt, Steel Horse Brand White T-Shirt, Steel Horse Brand Black T-Shirt, Nagasaki White T-Shirt, Nagasaki White and Red T-Shirt, Nagasaki Black T-Shirt, Purple Helmets Black T-Shirt, Principe Black T-Shirt, Black Steel Horse Hoodie, Steel Horse Brand White T-Shirt, Western Black Hoodie, Western Logo White T-Shirt, Nagasaki White Hoodie, Nagasaki White and Red Hoodie, Nagasaki Black Hoodie, Purple Helmets Black Hoodie, Principe Logo, Crosswalk T-Shirt, R* Crosswalk T-Shirt
 	unlock_packed_bools(9426, 9440) --Base5 T-Shirt, Bitch'n' Dog Food T-Shirt, BOBO T-Shirt, Bounce FM T-Shirt, Crocs Bar T-Shirt, Emotion 98.3 T-Shirt, Fever 105 T-Shirt, Flash T-Shirt, Homies Sharp T-Shirt, K-DST T-Shirt, KJAH Radio T-Shirt, K-ROSE T-Shirt, Victory Fist T-Shirt, Vinyl Countdown T-Shirt, Vivisection T-Shirt
 	unlock_packed_bools(9443, 9443) --Unicorn
-	unlock_packed_bools(9461, 9481) --Ballistic Equipment, LS UR T-Shirt, Non-Stop-Pop FM T-Shirt, Radio Los Santos T-Shirt, Los Santos Rock Radio T-Shirt, Blonded Los Santos 97.8 FM T-Shirt, West Coast Talk Radio T-Shirt, Radio Mirror Park T-Shirt, Rebel Radio T-Shirt, Channel X T-Shirt, Vinewood Boulevard Radio T-Shirt, FlyLo FM T-Shirt, Space 103.2 T-Shirt, West Coast Classics T-Shirt, East Los FM T-Shirt, The Lab T-Shirt, The Lowdown 91.1 T-Shirt, WorldWide FM T-Shirt, Soulwax FM T-Shirt, Blue Ark T-Shirt, Blaine County Radio T-Shirt
+	unlock_packed_bools(9461, 9481) --Ballistic Equipment, LS UR T-Shirt, Non-Stop-Pop FM T-Shirt, Radio Los Santos T-Shirt, Los Santos Rock Radio T-Shirt, Blonded Los Santos 97.8 FM T-Shirt, West Coast Talk Radio T-Shirt, Radio Mirror Park T-Shirt, Rebel Radio T-Shirt, Channel X T-Shirt, Vinewood Boulevard Radio T-Shirt, FlyLo FM T-Shirt, Space 103.2 T-Shirt, West Coast Classics T-Shirt, East Los FM T-Shirt, The Lab T-Shirt, The Lowdown 91.1 T-Shirt, MundoWide FM T-Shirt, Soulwax FM T-Shirt, Blue Ark T-Shirt, Blaine County Radio T-Shirt
 	unlock_packed_bools(15381, 15382) --APC SAM Battery, Ballistic Equipment
 	unlock_packed_bools(15388, 15423) --Black Ammu-Nation Cap, Black Ammu-Nation Hoodie, Black Ammu-Nation T-Shirt, Black Coil Cap, Black Coil T-Shirt, Black Hawk & Little Hoodie, Black Hawk & Little Logo T-Shirt, Black Hawk & Little T-Shirt, Black Shrewsbury Hoodie, Black Vom Feuer Cap, Black Warstock Hoodie, Green Vom Feuer T-Shirt, Red Hawk & Little Cap, Warstock Cap, White Ammu-Nation T-Shirt, White Coil Hoodie, White Coil T-Shirt, White Hawk & Little Hoodie, White Hawk & Little T-Shirt, White Shrewsbury T-Shirt, White Shrewsbury Cap, White Shrewsbury Hoodie, White Shrewsbury Logo T-Shirt, White Vom Feuer Cap, White Vom Feuer Hoodie, Wine Coil Cap, Yellow Vom Feuer Logo T-Shirt, Yellow Vom Feuer T-Shirt, Yellow Warstock T-Shirt, Blue R* Class of '98, Red R* Class of '98, Noise Rockstar Logo T-Shirt, Noise T-Shirt, Razor T-Shirt, Black Rockstar Camo, White Rockstar Camo
-	unlock_packed_bools(15425, 15439) --Knuckleduster Pocket T-Shirt, Rockstar Logo Blacked Out T-Shirt, Rockstar Logo White Out T-Shirt, Half-track 20mm Quad Autocannon, Weaponized Tampa Dual Remote Minigun, Weaponized Tampa Rear-Firing Mortar, Weaponized Tampa Front Missile Launchers, Dune FAV 40mm Grenade Launcher, Dune FAV 7.62mm Minigun, Insurgent Pick-Up Custom .50 Cal Minigun, Insurgent Pick-Up Custom Heavy Armor Plating, Technical Custom 7.62mm Minigun, Technical Custom Ram-bar, Technical Custom Brute-bar, Technical Custom Heavy Chassis Armor
-	unlock_packed_bools(15447, 15474) --Oppressor Missiles, Fractal Livery Set, Digital Livery Set, Geometric Livery Set, Nature Reserve Livery, Naval Battle Livery, Anti-Aircraft Trailer Dual 20mm Flak, Anti-Aircraft Trailer Homing Missile Battery, Mobile Operations Center Rear Turrets, Incendiary Rounds, Hollow Point Rounds, Armor Piercing Rounds, Full Metal Jacket Rounds, Explosive Rounds, Pistol Mk II Mounted Scope, Pistol Mk II Compensator, SMG Mk II Holographic Sight, SMG Mk II Heavy Barrel, Heavy Sniper Mk II Night Vision Scope, Heavy Sniper Mk II Thermal Scope, Heavy Sniper Mk II Heavy Barrel, Combat MG Mk II Holographic Sight, Combat MG Mk II Heavy Barrel, Assault Rifle Mk II Holographic Sight, Assault Rifle Mk II Heavy Barrel, Carbine Rifle Mk II Holographic Sight, Carbine Rifle Mk II Heavy Barrel, Proximity Mines
-	unlock_packed_bools(15491, 15499) --Weaponized Tampa Heavy Chassis Armor, Brushstroke Camo Mk II Weapon Livery, Skull Mk II Weapon Livery, Sessanta Nove Mk II Weapon Livery, Perseus Mk II Weapon Livery, Leopard Mk II Weapon Livery, Zebra Mk II Weapon Livery, Geometric Mk II Weapon Livery, Boom! Mk II Weapon Livery
-	unlock_packed_bools(15552, 15560) --Bronze Greatest Dancer Trophy, Bronze Number One Nightclub Trophy, Bronze Battler Trophy, Silver Greatest Dancer Trophy, Silver Number One Nightclub Trophy, Silver Battler Trophy, Gold Greatest Dancer Trophy, Gold Number One Nightclub Trophy, Gold Battler Trophy
+	unlock_packed_bools(15425, 15439) --Knuckleduster Pocket T-Shirt, Rockstar Logo Blacked Out T-Shirt, Rockstar Logo White Out T-Shirt, Half-track 20mm Quad Autocannon, Armaized Tampa Dual Remote Mínimoigun, Armaized Tampa Rear-Firing Mortar, Armaized Tampa Front Missile Launchers, Dune FAV 40mm Grenade Launcher, Dune FAV 7.62mm Mínimoigun, Insurgent Pick-Up Personalizado .50 Cal Mínimoigun, Insurgent Pick-Up Personalizado Heavy Armadura Plating, Technical Personalizado 7.62mm Mínimoigun, Technical Personalizado Ram-bar, Technical Personalizado Brute-bar, Technical Personalizado Heavy Chassis Armadura
+	unlock_packed_bools(15447, 15474) --Oppressor Missiles, Fractal Livery Set, Digital Livery Set, Geometric Livery Set, Nature Reserve Livery, Naval Battle Livery, Anti-Aircraft Trailer Dual 20mm Flak, Anti-Aircraft Trailer Homing Missile Battery, Mobile Operations Center Rear Turrets, Incendiary Rounds, Hollow Point Rounds, Armadura Piercing Rounds, Full Metal Jacket Rounds, Explosive Rounds, Pistol Mk II Mounted Scope, Pistol Mk II Compensator, SMG Mk II Holographic Sight, SMG Mk II Heavy Barrel, Heavy Sniper Mk II Noche Vision Scope, Heavy Sniper Mk II Thermal Scope, Heavy Sniper Mk II Heavy Barrel, Combat MG Mk II Holographic Sight, Combat MG Mk II Heavy Barrel, Assault Rifle Mk II Holographic Sight, Assault Rifle Mk II Heavy Barrel, Carbine Rifle Mk II Holographic Sight, Carbine Rifle Mk II Heavy Barrel, Proximity Mínimoes
+	unlock_packed_bools(15491, 15499) --Armaized Tampa Heavy Chassis Armadura, Brushstroke Camo Mk II Arma Livery, Skull Mk II Arma Livery, Sessanta Nove Mk II Arma Livery, Perseus Mk II Arma Livery, Leopard Mk II Arma Livery, Zebra Mk II Arma Livery, Geometric Mk II Arma Livery, Boom! Mk II Arma Livery
+	unlock_packed_bools(15552, 15560) --Bronze Greatest Dancer Trophy, Bronze Number Activadoe Nocheclub Trophy, Bronze Battler Trophy, Silver Greatest Dancer Trophy, Silver Number Activadoe Nocheclub Trophy, Silver Battler Trophy, Gold Greatest Dancer Trophy, Gold Number Activadoe Nocheclub Trophy, Gold Battler Trophy
 	unlock_packed_bools(18099, 18099) --The Forest
 	unlock_packed_bools(18116, 18118) --The Data Breaches, The Bogdan Problem, The Doomsday Scenario (Elite Challenges)
 	unlock_packed_bools(18121, 18125) --Green Wireframe Bodysuit, Orange Wireframe Bodysuit, Blue Wireframe Bodysuit, Pink Wireframe Bodysuit, Yellow Wireframe Bodysuit
 	unlock_packed_bools(18134, 18137) --Hideous Krampus Mask, Fearsome Krampus Mask, Odious Krampus Mask, Heinous Krampus Mask
 	unlock_packed_bools(22124, 22132) --Maisonette Los Santos T-Shirt, Studio Los Santos T-Shirt, Galaxy T-Shirt, Gefängnis T-Shirt, Omega T-Shirt, Technologie T-Shirt, Paradise T-Shirt, The Palace T-Shirt, Tony's Fun House T-Shirt
-	unlock_packed_bools(22137, 22139) --Nightclub Hotspot Trophy
-	unlock_packed_bools(24963, 25000) --Apocalypse Cerberus, Future Shock Cerberus, Apocalypse Brutus, Nightmare Cerberus, Apocalypse ZR380, Future Shock Brutus, Impaler, Bolt Burger Hunger T-Shirt, Apocalypse Sasquatch - Livery set, Rat-Truck, Glendale, Slamvan, Dominator, Issi Classic, Spacesuit Alien T-Shirt set, Gargoyle, Future Shock Deathbike - Light Armor w/ Shield, Blue Lights, Electric Blue Lights, Mint Green Lights, Lime Green Lights, Yellow Lights, Golden Shower Lights, Orange Lights, Red Lights, Pony Pink Lights, Hot Pink Lights, Purple Lights, Blacklight Lights, Taxi Custom, Dozer, Clown Van, Trashmaster, Barracks Semi, Mixer, Space Docker, Tractor, Nebula Bodysuit set
+	unlock_packed_bools(22137, 22139) --Nocheclub Hotspot Trophy
+	unlock_packed_bools(24963, 25000) --Apocalypse Cerberus, Future Shock Cerberus, Apocalypse Brutus, Nochemare Cerberus, Apocalypse ZR380, Future Shock Brutus, Impaler, Bolt Burger Hunger T-Shirt, Apocalypse Sasquatch - Livery set, Rat-Truck, Glendale, Slamvan, Dominator, Issi Classic, Spacesuit Alien T-Shirt set, Gargoyle, Future Shock Deathbike - Light Armadura w/ Shield, Blue Luces, Electric Blue Luces, Mínimot Green Luces, Lime Green Luces, Yellow Luces, Golden Shower Luces, Orange Luces, Red Luces, Pony Pink Luces, Hot Pink Luces, Purple Luces, Blacklight Luces, Taxi Personalizado, Dozer, Clown Van, Trashmaster, Barracks Semi, Mixer, Space Docker, Tractor, Nebula Bodysuit set
 	unlock_packed_bools(25002, 25002) --Up-n-Atomizer
 	unlock_packed_bools(25005, 25006) --Epsilon Robes, Kifflom T-Shirt
 	unlock_packed_bools(25008, 25009) --The Rookie
 	unlock_packed_bools(25018, 25099) --Black & White Bones Festive Sweater, Slasher Festive Sweater, Black & Red Bones Festive Sweater, Red Bones Festive Sweater, Burger Shot Festive Sweater, Red Bleeder Festive Sweater, Blue Bleeder Festive Sweater, Blue Cluckin' Festive Sweater, Green Cluckin' Festive Sweater, Blue Slaying Festive Sweater, Green Slaying Festive Sweater, Hail Santa Festive Sweater, Merry Sprunkmas Festive Sweater, Ice Cold Sprunk Festive Sweater, Albany T-Shirt, Albany Vintage T-Shirt, Annis T-Shirt, Benefactor T-Shirt, BF T-Shirt, Bollokan T-Shirt, Bravado T-Shirt, Brute T-Shirt, Buckingham T-Shirt, Canis T-Shirt, Chariot T-Shirt, Cheval T-Shirt, Classique T-Shirt, Coil T-Shirt, Declasse T-Shirt, Dewbauchee T-Shirt, Dilettante T-Shirt, Dinka T-Shirt, Dundreary T-Shirt, Emperor T-Shirt, Enus T-Shirt, Fathom T-Shirt, Gallivanter T-Shirt, Grotti T-Shirt, Hijak T-Shirt, HVY T-Shirt, Imponte T-Shirt, Invetero T-Shirt, Jobuilt T-Shirt, Karin T-Shirt, Lampadati T-Shirt, Maibatsu T-Shirt, Mamba T-Shirt, Mammoth T-Shirt, MTL T-Shirt, Obey T-Shirt, Ocelot T-Shirt, Overflod T-Shirt, Pegassi T-Shirt, Pfister T-Shirt, Progen T-Shirt, Rune T-Shirt, Schyster T-Shirt, Shitzu T-Shirt, Truffade T-Shirt, Ubermacht T-Shirt, Vapid T-Shirt, Vulcar T-Shirt, Weeny T-Shirt, Willard T-Shirt, Albany Nostalgia T-Shirt, Albany USA T-Shirt, Albany Dealership T-Shirt, Annis JPN T-Shirt, BF Surfer T-Shirt, Bollokan Prairie T-Shirt, Bravado Stylized T-Shirt, Brute Impregnable T-Shirt, Brute Heavy Duty T-Shirt, Buckingham Luxe T-Shirt, Canis USA T-Shirt, Canis American Legend T-Shirt, Canis Wolf T-Shirt, Cheval Marshall T-Shirt, Coil USA T-Shirt, Coil Raiden T-Shirt, Declasse Logo T-Shirt, Declasse Girl T-Shirt
-	unlock_packed_bools(25101, 25109) --Nightmare Brutus, Apocalypse Scarab, Future Shock Scarab, Nightmare Scarab, Future Shock ZR380, Nightmare ZR380, Apocalypse Imperator, Future Shock Imperator, Nightmare Imperator
-	unlock_packed_bools(25111, 25134) --Future Shock Deathbike - Reinforced Armor w/ Shield, Future Shock Deathbike - Heavy Armor w/ Shield, Future Shock Sasquatch - Livery set, Nightmare Sasquatch - Livery set, Apocalypse Cerberus - Livery set, Future Shock Cerberus - Livery set, All variants of Sasquatch - Light Armor, All variants of Sasquatch - Reinforced Armor, All variants of Sasquatch - Heavy Armor, Nightmare Cerberus - Livery set, Apocalypse Bruiser - Livery set, Future Shock Bruiser - Livery set, Nightmare Bruiser - Livery set, Apocalypse Slamvan - Livery set, All variants of Cerberus - Body Spikes, Future Shock Slamvan - Livery set, All variants of Cerberus - Light Armor, All variants of Cerberus - Reinforced Armor, All variants of Cerberus - Heavy Armor, Nightmare Slamvan - Livery set, Apocalypse Brutus - Livery set, Future Shock Brutus - Livery set, Nightmare Brutus - Livery set, Apocalypse Scarab - Livery set
-	unlock_packed_bools(25136, 25179) --All variants of Bruiser - Body Spikes, Future Shock Scarab - Livery set, Nightmare Scarab - Livery set, All variants of Bruiser - Light Armor, All variants of Bruiser - Reinforced Armor, All variants of Bruiser - Heavy Armor, Apocalypse Dominator - Livery set, Future Shock Dominator - Livery set, Nightmare Dominator - Livery set, Apocalypse Impaler - Livery set, Future Shock Impaler - Livery set, Nightmare Impaler - Livery set, All variants of Slamvan - Body Spikes, Apocalypse Imperator - Livery set, Future Shock Imperator - Livery set, All variants of Slamvan - Light Armor, All variants of Slamvan - Reinforced Armor, All variants of Slamvan - Heavy Armor, Nightmare Imperator - Livery set, Apocalypse ZR380 - Livery set, Future Shock ZR380 - Livery set, Nightmare ZR380 - Livery set, Apocalypse Issi - Livery set, Future Shock Issi - Livery set, All variants of Brutus - Light Armor, All variants of Brutus - Reinforced Armor, All variants of Brutus - Heavy Armor, Nightmare Issi - Livery set, Apocalypse Deathbike - Livery set, Future Shock Deathbike - Livery set, Nightmare Deathbike - Livery set, All variants of Sasquatch - Heavy Armored Front, Apocalypse Scarab - Body Spikes set, Future Shock Scarab - Body Spikes set, Nightmare Scarab - Body Spikes set, All variants of Sasquatch - Heavy Armored Hood, All variants of Sasquatch - Mohawk Exhausts, All variants of Scarab - Light Armor, All variants of Scarab - Reinforced Armor, All variants of Scarab - Heavy Armor, All variants of Sasquatch - Dual Mohawk Exhausts, Apocalypse & Nightmare Sasquatch - Rear Spears Left, Optics Headset Mask set, All variants of Dominator - Body Spikes
-	unlock_packed_bools(25181, 25237) --Apocalypse & Nightmare Sasquatch - Rear Spears Right, Apocalypse & Nightmare Sasquatch - Skull Cross, All variants of Dominator - Light Armor, All variants of Dominator - Reinforced Armor, All variants of Dominator - Heavy Armor, Apocalypse & Nightmare Sasquatch - Ram Skull Cross, Apocalypse & Nightmare Sasquatch - Blonde Doll Cross, All variants of Impaler - Body Spikes, Apocalypse & Nightmare Sasquatch - Brunette Doll Cross, Apocalypse & Nightmare Cerberus - Bastioned Ram-bars, All variants of Impaler - Light Armor, All variants of Impaler - Reinforced Armor, All variants of Impaler - Heavy Armor, All variants of Cerberus - Bolstered Hood Cage, All variants of Cerberus - Reinforced Riot Hood, All variants of Cerberus - Juggernaut Hood, Apocalypse & Nightmare Cerberus - War Spearheads, All variants of Imperator - Body Spikes, Apocalypse & Nightmare Cerberus - War Spear Kit, Apocalypse & Nightmare Cerberus - Nade Spearheads, Apocalypse & Nightmare Cerberus - Nade Spear Kit, All variants of Imperator - Light Armor, All variants of Imperator - Reinforced Armor, All variants of Imperator - Heavy Armor, Apocalypse & Nightmare Cerberus - Skull Spearheads, Apocalypse & Nightmare Cerberus - Skull Spear Kit, Apocalypse & Nightmare Cerberus - Arrow Spearheads, Apocalypse & Nightmare Cerberus - Arrow Spear Kit, All variants of ZR380 - Body Spikes, Apocalypse & Nightmare Cerberus - Tridents, Apocalypse & Nightmare Cerberus - Wasteland Ritual, All variants of ZR380 - Light Armor, All variants of ZR380 - Reinforced Armor, All variants of ZR380 - Heavy Armor, Future Shock Cerberus - Panel Detail, Future Shock Cerberus - Crane Pipes, All variants of Issi - Body Spikes, Future Shock Cerberus - Hedgehog, Future Shock Cerberus - Hedgehog MK2, Future Shock Bruiser - Heavy Plated Armored Grille / Apocalypse & Nightmare Bruiser - Diamond Heavy Armor Grille, All variants of Issi - Light Armor, All variants of Issi - Reinforced Armor, All variants of Issi - Heavy Armor, All variants of Bruiser - Twin Oval Exhaust, Cluckin' Bell Mask, All variants of Bruiser - Long Triple Rear Exhausts, All variants of Bruiser - Front & Rear Triple Exhausts, All variants of Deathbike - Light Armor, All variants of Deathbike - Reinforced Armor, All variants of Deathbike - Heavy Armor, Kinetic Mines, Apocalypse Bruiser - Skull & Cross / Nightmare Bruiser - Painted Skull & Cross, Spike Mines, Slick Mines, Sticky Mines, EMP Mines, RC Bandito
-	unlock_packed_bools(25244, 25400) --Robot Bodysuit set, Hero Bodysuit set, Shapes Bodysuit set, Contours Bodysuit set, Martian Bodysuit set, Reptile Bodysuit set, Galaxy Bodysuit set, Space Creature Suits, Space Cyclops Suits, Space Horror Suits, Retro Spacesuits, Astronaut Suits, Space Traveler Suits, Character Suits: Pogo Space Monkey, Character Suits: Republican Space Ranger, Death Bird Mask set, Stalker Mask set, Raider Mask set, Marauder Mask set, Paco the Taco Mask, Burger Shot Mask, Space Rangers T-Shirt set, Space Ranger Logo T-Shirt set, Phases T-Shirt set, Rocket Splash T-Shirt set, Two Moons T-Shirt set, Freedom Isn't Free T-Shirt set, Apocalyptic Raider Top set, Apocalyptic Leather Feather Top set, Apocalyptic Mercenary Vest set, Benedict Light Beer Hoodie, Taco Bomb Hoodie, Cluckin' Bell Logo Bomb Hoodie, Patriot Beer Hoodie, Pisswasser Hoodie, Burger Shot Hoodie, Corn Dog Hoodie, Donut Hoodie, Lucky Plucker Hoodie, Logger Light Hoodie, Pizza Hoodie, Fries Hoodie, Mushrooms Hoodie, Redwood Hoodie, eCola Infectious Hoodie, Cluckin' Bell Logo Hoodie, Lemons Hoodie, Tacos Hoodie, Burger Shot Pattern Sweater, Burger Shot Logo Sweater, Burger Shot Sweater, Sprunk Sweater set, Wigwam Sweater, Taco Bomb Chili Sweater, Taco Bomb Sweater set, Cluckin' Bell Logo Bomb Sweater, Blue Cluckin' Bell Sweater, Black Cluckin' Bell Sweater, eCola Sweater set, MeTV Sweater set, Heat Sweater set, Degenatron Sweater, Pisswasser Sweater set, Bolt Burger Sweater, Lucky Plucker Logo Bomb Sweater, Lucky Plucker Sweater, Burger Shot Hockey Shirt set, Cluckin' Bell Hockey Shirt set, Wigwam Hockey Shirt, Redwood Hockey Shirt, Bean Machine Hockey Shirt, Red eCola Hockey Shirt, Black eCola Hockey Shirt, Phat Chips Hockey Shirt set, Sprunk Hockey Shirt set, Sprunk Classic Hockey Shirt, Burger Shot Black T-Shirt, Burger Shot Logo T-Shirt, Cluckin' Bell Logo T-Shirt, Cluckin' Bell Black T-Shirt, Cluckin' Bell Filled Logo T-Shirt, eCola Black T-Shirt, Lucky Plucker T-Shirt, Pisswasser T-Shirt, Sprunk T-Shirt, Taco Bomb Chili T-Shirt, Taco Bomb Black T-Shirt, Up-n-Atom Hamburgers T-Shirt, Up-n-Atom Logo T-Shirt, Wigwam T-Shirt, Degenatron ROYGBIV T-Shirt, CNT T-Shirt, Qub3d T-Shirt, Righteous Slaughter T-Shirt, Space Monkey Full T-Shirt, Space Monkey Pixel T-Shirt, Space Monkey Enemy T-Shirt, Burger Shot Bleeder T-Shirt, Heat Rises T-Shirt, Space Monkey Logo T-Shirt, Space Monkey Suit T-Shirt, Space Monkey Face T-Shirt, Space Monkey Mosaic T-Shirt, Bolt Burger Logo T-Shirt, Exsorbeo 720 T-Shirt, Heat Ball Logo T-Shirt set, Heat Logo T-Shirt set, Heat Pop Art Logo T-Shirt set, MeTV Logo T-Shirt set, MeTV 90s T-Shirt set, Burger Shot Target T-Shirt, eCola Infectious T-Shirt, Up-n-Atom White T-Shirt, Jock Cranley Patriot T-Shirt, CCC TV T-Shirt, Degenatron Logo T-Shirt, eCola White T-Shirt, eCola Pass It On T-Shirt, Tw@ T-Shirt, Chain Pants set, Chain Shorts set, Leather Stitch Pants set, Raider Pants set, Light Ups Shoes set, Flaming Skull Boots set, Skull Harness Boots set, Plated Boots set, Burger Shot Food Cap set, Apocalypse Bruiser - Double Cross Ram Skull / Nightmare Bruiser - Painted Ram Skull & Cross, Burger Shot Logo Cap, Burger Shot Bullseye Cap, Cluckin' Bell Logo Cap set, Apocalypse Bruiser - Cross & Skull Large Blade Kit / Nightmare Bruiser - Painted Skull Large Blade Kit, Cluckin' Bell Logos Cap, Hotdogs Cap set, Taco Bomb Cap set, Apocalypse Bruiser - Ram Skull Nade Kit / Nightmare Bruiser - Painted Ram Skull Nade Kit, Apocalypse Bruiser - Ram Skull Medieval Kit / Nightmare Bruiser - Painted Skull Medieval Kit, Lucky Plucker Cap set, Lucky Plucker Logos Cap set, Apocalypse Bruiser - Ram Skull Medieval Madness / Nightmare Bruiser - Painted Skull Medieval Madness, Apocalypse Bruiser - Barrels & Junk, Pisswasser Cap set, Apocalypse Bruiser - Skeleton Cage, Future Shock Bruiser - Light Cover, Future Shock Bruiser - Spare Tire, Taco Canvas Hat, Burger Shot Canvas Hat, Cluckin' Bell Canvas Hat, Hotdogs Canvas Hat, Shunt Boost, Boost Upgrade 20%, Boost Upgrade 60%, Boost Upgrade 100%, Jump Upgrade 20%, Jump Upgrade 60%, Jump Upgrade 100%
+	unlock_packed_bools(25101, 25109) --Nochemare Brutus, Apocalypse Scarab, Future Shock Scarab, Nochemare Scarab, Future Shock ZR380, Nochemare ZR380, Apocalypse Imperator, Future Shock Imperator, Nochemare Imperator
+	unlock_packed_bools(25111, 25134) --Future Shock Deathbike - Reinforced Armadura w/ Shield, Future Shock Deathbike - Heavy Armadura w/ Shield, Future Shock Sasquatch - Livery set, Nochemare Sasquatch - Livery set, Apocalypse Cerberus - Livery set, Future Shock Cerberus - Livery set, Todos variants of Sasquatch - Light Armadura, Todos variants of Sasquatch - Reinforced Armadura, Todos variants of Sasquatch - Heavy Armadura, Nochemare Cerberus - Livery set, Apocalypse Bruiser - Livery set, Future Shock Bruiser - Livery set, Nochemare Bruiser - Livery set, Apocalypse Slamvan - Livery set, Todos variants of Cerberus - Body Spikes, Future Shock Slamvan - Livery set, Todos variants of Cerberus - Light Armadura, Todos variants of Cerberus - Reinforced Armadura, Todos variants of Cerberus - Heavy Armadura, Nochemare Slamvan - Livery set, Apocalypse Brutus - Livery set, Future Shock Brutus - Livery set, Nochemare Brutus - Livery set, Apocalypse Scarab - Livery set
+	unlock_packed_bools(25136, 25179) --Todos variants of Bruiser - Body Spikes, Future Shock Scarab - Livery set, Nochemare Scarab - Livery set, Todos variants of Bruiser - Light Armadura, Todos variants of Bruiser - Reinforced Armadura, Todos variants of Bruiser - Heavy Armadura, Apocalypse Dominator - Livery set, Future Shock Dominator - Livery set, Nochemare Dominator - Livery set, Apocalypse Impaler - Livery set, Future Shock Impaler - Livery set, Nochemare Impaler - Livery set, Todos variants of Slamvan - Body Spikes, Apocalypse Imperator - Livery set, Future Shock Imperator - Livery set, Todos variants of Slamvan - Light Armadura, Todos variants of Slamvan - Reinforced Armadura, Todos variants of Slamvan - Heavy Armadura, Nochemare Imperator - Livery set, Apocalypse ZR380 - Livery set, Future Shock ZR380 - Livery set, Nochemare ZR380 - Livery set, Apocalypse Issi - Livery set, Future Shock Issi - Livery set, Todos variants of Brutus - Light Armadura, Todos variants of Brutus - Reinforced Armadura, Todos variants of Brutus - Heavy Armadura, Nochemare Issi - Livery set, Apocalypse Deathbike - Livery set, Future Shock Deathbike - Livery set, Nochemare Deathbike - Livery set, Todos variants of Sasquatch - Heavy Armaduraed Front, Apocalypse Scarab - Body Spikes set, Future Shock Scarab - Body Spikes set, Nochemare Scarab - Body Spikes set, Todos variants of Sasquatch - Heavy Armaduraed Hood, Todos variants of Sasquatch - Mohawk Exhausts, Todos variants of Scarab - Light Armadura, Todos variants of Scarab - Reinforced Armadura, Todos variants of Scarab - Heavy Armadura, Todos variants of Sasquatch - Dual Mohawk Exhausts, Apocalypse & Nochemare Sasquatch - Rear Spears Left, Optics Headset Mask set, Todos variants of Dominator - Body Spikes
+	unlock_packed_bools(25181, 25237) --Apocalypse & Nochemare Sasquatch - Rear Spears Right, Apocalypse & Nochemare Sasquatch - Skull Cross, Todos variants of Dominator - Light Armadura, Todos variants of Dominator - Reinforced Armadura, Todos variants of Dominator - Heavy Armadura, Apocalypse & Nochemare Sasquatch - Ram Skull Cross, Apocalypse & Nochemare Sasquatch - Blonde Doll Cross, Todos variants of Impaler - Body Spikes, Apocalypse & Nochemare Sasquatch - Brunette Doll Cross, Apocalypse & Nochemare Cerberus - Bastioned Ram-bars, Todos variants of Impaler - Light Armadura, Todos variants of Impaler - Reinforced Armadura, Todos variants of Impaler - Heavy Armadura, Todos variants of Cerberus - Bolstered Hood Cage, Todos variants of Cerberus - Reinforced Riot Hood, Todos variants of Cerberus - Juggernaut Hood, Apocalypse & Nochemare Cerberus - War Spearheads, Todos variants of Imperator - Body Spikes, Apocalypse & Nochemare Cerberus - War Spear Kit, Apocalypse & Nochemare Cerberus - Nade Spearheads, Apocalypse & Nochemare Cerberus - Nade Spear Kit, Todos variants of Imperator - Light Armadura, Todos variants of Imperator - Reinforced Armadura, Todos variants of Imperator - Heavy Armadura, Apocalypse & Nochemare Cerberus - Skull Spearheads, Apocalypse & Nochemare Cerberus - Skull Spear Kit, Apocalypse & Nochemare Cerberus - Arrow Spearheads, Apocalypse & Nochemare Cerberus - Arrow Spear Kit, Todos variants of ZR380 - Body Spikes, Apocalypse & Nochemare Cerberus - Tridents, Apocalypse & Nochemare Cerberus - Wasteland Ritual, Todos variants of ZR380 - Light Armadura, Todos variants of ZR380 - Reinforced Armadura, Todos variants of ZR380 - Heavy Armadura, Future Shock Cerberus - Panel Detail, Future Shock Cerberus - Crane Pipes, Todos variants of Issi - Body Spikes, Future Shock Cerberus - Hedgehog, Future Shock Cerberus - Hedgehog MK2, Future Shock Bruiser - Heavy Matrículad Armaduraed Grille / Apocalypse & Nochemare Bruiser - Diamond Heavy Armadura Grille, Todos variants of Issi - Light Armadura, Todos variants of Issi - Reinforced Armadura, Todos variants of Issi - Heavy Armadura, Todos variants of Bruiser - Twin Oval Exhaust, Cluckin' Bell Mask, Todos variants of Bruiser - Long Triple Rear Exhausts, Todos variants of Bruiser - Front & Rear Triple Exhausts, Todos variants of Deathbike - Light Armadura, Todos variants of Deathbike - Reinforced Armadura, Todos variants of Deathbike - Heavy Armadura, Kinetic Mínimoes, Apocalypse Bruiser - Skull & Cross / Nochemare Bruiser - Painted Skull & Cross, Spike Mínimoes, Slick Mínimoes, Sticky Mínimoes, EMP Mínimoes, RC Bandito
+	unlock_packed_bools(25244, 25400) --Robot Bodysuit set, Hero Bodysuit set, Shapes Bodysuit set, Contours Bodysuit set, Martian Bodysuit set, Reptile Bodysuit set, Galaxy Bodysuit set, Space Creature Suits, Space Cyclops Suits, Space Horror Suits, Retro Spacesuits, Astronaut Suits, Space Traveler Suits, Character Suits: Pogo Space Monkey, Character Suits: Republican Space Ranger, Death Bird Mask set, Stalker Mask set, Raider Mask set, Marauder Mask set, Paco the Taco Mask, Burger Shot Mask, Space Rangers T-Shirt set, Space Ranger Logo T-Shirt set, Phases T-Shirt set, Rocket Splash T-Shirt set, Two Moons T-Shirt set, Freedom Isn't Free T-Shirt set, Apocalyptic Raider Top set, Apocalyptic Leather Feather Top set, Apocalyptic Mercenary Vest set, Benedict Light Beer Hoodie, Taco Bomb Hoodie, Cluckin' Bell Logo Bomb Hoodie, Patriot Beer Hoodie, Pisswasser Hoodie, Burger Shot Hoodie, Corn Dog Hoodie, Donut Hoodie, Lucky Plucker Hoodie, Logger Light Hoodie, Pizza Hoodie, Fries Hoodie, Mushrooms Hoodie, Redwood Hoodie, eCola Infectious Hoodie, Cluckin' Bell Logo Hoodie, Lemons Hoodie, Tacos Hoodie, Burger Shot Pattern Sweater, Burger Shot Logo Sweater, Burger Shot Sweater, Sprunk Sweater set, Wigwam Sweater, Taco Bomb Chili Sweater, Taco Bomb Sweater set, Cluckin' Bell Logo Bomb Sweater, Blue Cluckin' Bell Sweater, Black Cluckin' Bell Sweater, eCola Sweater set, MeTV Sweater set, Heat Sweater set, Degenatron Sweater, Pisswasser Sweater set, Bolt Burger Sweater, Lucky Plucker Logo Bomb Sweater, Lucky Plucker Sweater, Burger Shot Hockey Shirt set, Cluckin' Bell Hockey Shirt set, Wigwam Hockey Shirt, Redwood Hockey Shirt, Bean Machine Hockey Shirt, Red eCola Hockey Shirt, Black eCola Hockey Shirt, Phat Chips Hockey Shirt set, Sprunk Hockey Shirt set, Sprunk Classic Hockey Shirt, Burger Shot Black T-Shirt, Burger Shot Logo T-Shirt, Cluckin' Bell Logo T-Shirt, Cluckin' Bell Black T-Shirt, Cluckin' Bell Filled Logo T-Shirt, eCola Black T-Shirt, Lucky Plucker T-Shirt, Pisswasser T-Shirt, Sprunk T-Shirt, Taco Bomb Chili T-Shirt, Taco Bomb Black T-Shirt, Up-n-Atom Hamburgers T-Shirt, Up-n-Atom Logo T-Shirt, Wigwam T-Shirt, Degenatron ROYGBIV T-Shirt, CNT T-Shirt, Qub3d T-Shirt, Righteous Slaughter T-Shirt, Space Monkey Full T-Shirt, Space Monkey Pixel T-Shirt, Space Monkey Enemy T-Shirt, Burger Shot Bleeder T-Shirt, Heat Rises T-Shirt, Space Monkey Logo T-Shirt, Space Monkey Suit T-Shirt, Space Monkey Face T-Shirt, Space Monkey Mosaic T-Shirt, Bolt Burger Logo T-Shirt, Exsorbeo 720 T-Shirt, Heat Ball Logo T-Shirt set, Heat Logo T-Shirt set, Heat Pop Art Logo T-Shirt set, MeTV Logo T-Shirt set, MeTV 90s T-Shirt set, Burger Shot Target T-Shirt, eCola Infectious T-Shirt, Up-n-Atom White T-Shirt, Jock Cranley Patriot T-Shirt, CCC TV T-Shirt, Degenatron Logo T-Shirt, eCola White T-Shirt, eCola Pass It Activado T-Shirt, Tw@ T-Shirt, Chain Pants set, Chain Shorts set, Leather Stitch Pants set, Raider Pants set, Light Ups Shoes set, Flaming Skull Boots set, Skull Harness Boots set, Matrículad Boots set, Burger Shot Food Cap set, Apocalypse Bruiser - Double Cross Ram Skull / Nochemare Bruiser - Painted Ram Skull & Cross, Burger Shot Logo Cap, Burger Shot Bullseye Cap, Cluckin' Bell Logo Cap set, Apocalypse Bruiser - Cross & Skull Large Blade Kit / Nochemare Bruiser - Painted Skull Large Blade Kit, Cluckin' Bell Logos Cap, Hotdogs Cap set, Taco Bomb Cap set, Apocalypse Bruiser - Ram Skull Nade Kit / Nochemare Bruiser - Painted Ram Skull Nade Kit, Apocalypse Bruiser - Ram Skull Medieval Kit / Nochemare Bruiser - Painted Skull Medieval Kit, Lucky Plucker Cap set, Lucky Plucker Logos Cap set, Apocalypse Bruiser - Ram Skull Medieval Madness / Nochemare Bruiser - Painted Skull Medieval Madness, Apocalypse Bruiser - Barrels & Junk, Pisswasser Cap set, Apocalypse Bruiser - Skeleton Cage, Future Shock Bruiser - Light Cover, Future Shock Bruiser - Spare Tire, Taco Canvas Hat, Burger Shot Canvas Hat, Cluckin' Bell Canvas Hat, Hotdogs Canvas Hat, Shunt Boost, Boost Upgrade 20%, Boost Upgrade 60%, Boost Upgrade 100%, Jump Upgrade 20%, Jump Upgrade 60%, Jump Upgrade 100%
 	unlock_packed_bools(25405, 25405) --Festive tint (Up-n-Atomizer)
-	unlock_packed_bools(25407, 25511) --Future Shock Bruiser - Crates, Nightmare Bruiser - Large Burger, Nightmare Bruiser - Large Doughnuts, Nightmare Bruiser - Large eCola Cans, All variants of Slamvan - Rear Bumper Reinforced Armor, All variants of Slamvan - Rear Bumper Heavy Armor, Apocalypse Slamvan - Basic Spears, Apocalypse Slamvan - Battle Cross, Apocalypse Slamvan - War Cross, Apocalypse Slamvan - Battle Spears, Apocalypse Slamvan - War Spears, Nightmare Slamvan - Knife Spears, Nightmare Slamvan - Fork & Knife, Apocalypse & Nightmare Brutus - Gassed Up Bar, Apocalypse & Nightmare Brutus - Roadblock, Apocalypse & Nightmare Brutus - Junk Trunk, Apocalypse & Nightmare Brutus - Fire Spitters, Apocalypse & Nightmare Brutus - Hell Chambers, Apocalypse & Nightmare Brutus - Heavy Armored Arches, Apocalypse & Nightmare Brutus - Toothy, Apocalypse & Nightmare Brutus - Armored Spares, Apocalypse & Nightmare Brutus - Armored Supplies, Apocalypse & Nightmare Brutus - Eternally Chained, Apocalypse & Nightmare Brutus - Speared, Future Shock Scarab - Primary Full Armor, All variants of Scarab - Secondary Full Armor, All variants of Scarab - Carbon Full Armor, Future Shock Scarab - Heavy Duty Cooling / Apocalypse & Nightmare Scarab - Air Filtration Vents & Long Range Equipment, Apocalypse & Nightmare Scarab - Rusty Full Armor, Apocalypse & Nightmare Scarab - Rear War Poles, Apocalypse & Nightmare Scarab - Rear Spears, Apocalypse & Nightmare Scarab - Skull Cross, Apocalypse & Nightmare Scarab - Skull Cross w/ War Poles, Apocalypse & Nightmare Scarab - Skull Cross w/ Spears, Apocalypse & Nightmare Scarab - Load'a War Poles, Apocalypse & Nightmare Scarab - Load'a Spears, Apocalypse & Nightmare Scarab - Scarab Mega Cover set, Apocalypse & Nightmare Scarab - Armored Mega Cover set, Apocalypse & Nightmare Scarab - Cage, Apocalypse & Nightmare Scarab - Plated Cage, Future Shock Scarab - Livery Armor, Future Shock Scarab - Primary Full Armor, Future Shock Scarab - Livery Full Armor, Future Shock Scarab - Carbon Full Armor, Future Shock Scarab - Matte Full Armor, Future Shock Scarab - Futuristic Panel Armor, Future Shock Scarab - Plated Livery Full Armor, All variants of Dominator - Triple Front Exhausts, All variants of Dominator - Horn Exhausts, All variants of Dominator - Triple Rear Exhausts, Apocalypse & Nightmare Dominator - Rear Pointing War Poles, Apocalypse & Nightmare Dominator - Front Facing Axes, Apocalypse & Nightmare Dominator - Front Facing Spears, Apocalypse & Nightmare Dominator - Unholy Cross, Apocalypse & Nightmare Dominator - Brutal Unholy Cross, Apocalypse & Nightmare Dominator - Bunch of War Poles, Apocalypse & Nightmare Dominator - Front Pointing War Poles, Apocalypse & Nightmare Dominator - Skull Hood, Apocalypse & Nightmare Impaler - Got Pole?, Apocalypse & Nightmare Impaler - Getting Medieval, Apocalypse & Nightmare Impaler - Wasteland Peacock, Apocalypse & Nightmare Impaler - Shish-Kebbabed, Apocalypse & Nightmare Impaler - It's A Stick Up, Apocalypse & Nightmare Impaler - The Dark Ages, Apocalypse & Nightmare Impaler - Dolly Spearton, Apocalypse & Nightmare Impaler - War Poles, All variants of Imperator - Shakotan Exhaust, Apocalypse & Nightmare Imperator - Whole Lotta Pole, Apocalypse & Nightmare Imperator - Getting Medieval, Apocalypse & Nightmare Imperator - It's A Stick Up, Apocalypse & Nightmare Imperator - Boom On A Spear, Apocalypse & Nightmare Imperator - Village Justice, Apocalypse & Nightmare Imperator - Wasteland Peacock, Apocalypse & Nightmare Imperator - Shish-Kebbabed, Apocalypse & Nightmare Imperator - Junk Pipes, Apocalypse & Nightmare Imperator - Mega Zorst, Apocalypse & Nightmare Imperator - Ride 'Em Cowboy, Apocalypse & Nightmare Imperator - Cannibal Totem, All variants of ZR380 - Side Exhausts, All variants of ZR380 - Spike Exhausts, Apocalypse & Nightmare ZR380 - Mismatch, Future Shock ZR380 - Ray Gun Exhausts, Future Shock ZR380 - Sprint Car Wing, Future Shock ZR380 - Armor Plating Mk. 3, Future Shock ZR380 - Rear Phantom Covers, All variants of Issi - Heavy Duty Ram Bar, Apocalypse & Nightmare Issi - Spear, Apocalypse & Nightmare Issi - Left War Poles, Apocalypse & Nightmare Issi - Dolly Spearton, Apocalypse & Nightmare Issi - Right War Poles, Apocalypse & Nightmare Issi - Skull Cross, Apocalypse & Nightmare Issi - Dolly Spearton Set, Apocalypse & Nightmare Issi - Dual War Poles, Apocalypse & Nightmare Issi - Dolly Spearton W/ War Pole, Apocalypse & Nightmare Issi - Skull Cross W/ Spear, Apocalypse & Nightmare Issi - Skull Cross W/ War Pole, Apocalypse & Nightmare Issi - Skull Cross W/ Dolly, Apocalypse & Nightmare Issi - Left Spear, Apocalypse & Nightmare Issi - Right Spear, Apocalypse & Nightmare Issi - Left Skull Axe, Apocalypse & Nightmare Issi - Right Axe, Apocalypse & Nightmare Issi - Dual Spears, Apocalypse & Nightmare Issi - Spear & Axe, Apocalypse & Nightmare Issi - Axe & Spear, Apocalypse & Nightmare Issi - Dual Axes
+	unlock_packed_bools(25407, 25511) --Future Shock Bruiser - Crates, Nochemare Bruiser - Large Burger, Nochemare Bruiser - Large Doughnuts, Nochemare Bruiser - Large eCola Cans, Todos variants of Slamvan - Rear Bumper Reinforced Armadura, Todos variants of Slamvan - Rear Bumper Heavy Armadura, Apocalypse Slamvan - Basic Spears, Apocalypse Slamvan - Battle Cross, Apocalypse Slamvan - War Cross, Apocalypse Slamvan - Battle Spears, Apocalypse Slamvan - War Spears, Nochemare Slamvan - Knife Spears, Nochemare Slamvan - Fork & Knife, Apocalypse & Nochemare Brutus - Gassed Up Bar, Apocalypse & Nochemare Brutus - Roadblock, Apocalypse & Nochemare Brutus - Junk Trunk, Apocalypse & Nochemare Brutus - Fire Spitters, Apocalypse & Nochemare Brutus - Hell Chambers, Apocalypse & Nochemare Brutus - Heavy Armaduraed Arches, Apocalypse & Nochemare Brutus - Toothy, Apocalypse & Nochemare Brutus - Armaduraed Spares, Apocalypse & Nochemare Brutus - Armaduraed Supplies, Apocalypse & Nochemare Brutus - Eternally Chained, Apocalypse & Nochemare Brutus - Speared, Future Shock Scarab - Primary Full Armadura, Todos variants of Scarab - Secondary Full Armadura, Todos variants of Scarab - Carbon Full Armadura, Future Shock Scarab - Heavy Duty Cooling / Apocalypse & Nochemare Scarab - Air Filtration Vents & Long Range Equipment, Apocalypse & Nochemare Scarab - Rusty Full Armadura, Apocalypse & Nochemare Scarab - Rear War Poles, Apocalypse & Nochemare Scarab - Rear Spears, Apocalypse & Nochemare Scarab - Skull Cross, Apocalypse & Nochemare Scarab - Skull Cross w/ War Poles, Apocalypse & Nochemare Scarab - Skull Cross w/ Spears, Apocalypse & Nochemare Scarab - Load'a War Poles, Apocalypse & Nochemare Scarab - Load'a Spears, Apocalypse & Nochemare Scarab - Scarab Mega Cover set, Apocalypse & Nochemare Scarab - Armaduraed Mega Cover set, Apocalypse & Nochemare Scarab - Cage, Apocalypse & Nochemare Scarab - Matrículad Cage, Future Shock Scarab - Livery Armadura, Future Shock Scarab - Primary Full Armadura, Future Shock Scarab - Livery Full Armadura, Future Shock Scarab - Carbon Full Armadura, Future Shock Scarab - Matte Full Armadura, Future Shock Scarab - Futuristic Panel Armadura, Future Shock Scarab - Matrículad Livery Full Armadura, Todos variants of Dominator - Triple Front Exhausts, Todos variants of Dominator - Claxon Exhausts, Todos variants of Dominator - Triple Rear Exhausts, Apocalypse & Nochemare Dominator - Rear Pointing War Poles, Apocalypse & Nochemare Dominator - Front Facing Axes, Apocalypse & Nochemare Dominator - Front Facing Spears, Apocalypse & Nochemare Dominator - Unholy Cross, Apocalypse & Nochemare Dominator - Brutal Unholy Cross, Apocalypse & Nochemare Dominator - Bunch of War Poles, Apocalypse & Nochemare Dominator - Front Pointing War Poles, Apocalypse & Nochemare Dominator - Skull Hood, Apocalypse & Nochemare Impaler - Got Pole?, Apocalypse & Nochemare Impaler - Getting Medieval, Apocalypse & Nochemare Impaler - Wasteland Peacock, Apocalypse & Nochemare Impaler - Shish-Kebbabed, Apocalypse & Nochemare Impaler - It's A Stick Up, Apocalypse & Nochemare Impaler - The Dark Ages, Apocalypse & Nochemare Impaler - Dolly Spearton, Apocalypse & Nochemare Impaler - War Poles, Todos variants of Imperator - Shakotan Exhaust, Apocalypse & Nochemare Imperator - Whole Lotta Pole, Apocalypse & Nochemare Imperator - Getting Medieval, Apocalypse & Nochemare Imperator - It's A Stick Up, Apocalypse & Nochemare Imperator - Boom Activado A Spear, Apocalypse & Nochemare Imperator - Village Justice, Apocalypse & Nochemare Imperator - Wasteland Peacock, Apocalypse & Nochemare Imperator - Shish-Kebbabed, Apocalypse & Nochemare Imperator - Junk Pipes, Apocalypse & Nochemare Imperator - Mega Zorst, Apocalypse & Nochemare Imperator - Ride 'Em Cowboy, Apocalypse & Nochemare Imperator - Cannibal Totem, Todos variants of ZR380 - Side Exhausts, Todos variants of ZR380 - Spike Exhausts, Apocalypse & Nochemare ZR380 - Mismatch, Future Shock ZR380 - Ray Gun Exhausts, Future Shock ZR380 - Sprint Car Wing, Future Shock ZR380 - Armadura Plating Mk. 3, Future Shock ZR380 - Rear Phantom Covers, Todos variants of Issi - Heavy Duty Ram Bar, Apocalypse & Nochemare Issi - Spear, Apocalypse & Nochemare Issi - Left War Poles, Apocalypse & Nochemare Issi - Dolly Spearton, Apocalypse & Nochemare Issi - Right War Poles, Apocalypse & Nochemare Issi - Skull Cross, Apocalypse & Nochemare Issi - Dolly Spearton Set, Apocalypse & Nochemare Issi - Dual War Poles, Apocalypse & Nochemare Issi - Dolly Spearton W/ War Pole, Apocalypse & Nochemare Issi - Skull Cross W/ Spear, Apocalypse & Nochemare Issi - Skull Cross W/ War Pole, Apocalypse & Nochemare Issi - Skull Cross W/ Dolly, Apocalypse & Nochemare Issi - Left Spear, Apocalypse & Nochemare Issi - Right Spear, Apocalypse & Nochemare Issi - Left Skull Axe, Apocalypse & Nochemare Issi - Right Axe, Apocalypse & Nochemare Issi - Dual Spears, Apocalypse & Nochemare Issi - Spear & Axe, Apocalypse & Nochemare Issi - Axe & Spear, Apocalypse & Nochemare Issi - Dual Axes
 	unlock_packed_bools(25516, 25516) --RC Tank
 	unlock_packed_bools(25520, 25521) --Metal Detector
 	unlock_packed_bools(26811, 26964) --Action Figures, Playing Cards
-	unlock_packed_bools(26968, 27088) --Impotent Rage Outfit, High Roller, Tiger Scuba, Sprunk Racing Suit, Neon Bodysuit, Extreme Strike Vest, The Chimera (Outfit), White Racing Suit, The Reconnaissance (Outfit), Blue Jock Cranley Suit, Italian Biker Suit, The Hazard (Outfit), Mid Strike Vest, Splinter Gorka Suit, The Gunfighter (Outfit), Black Plate Carrier*, Hunter Leather Fur Jacket, Chamois Plate Carrier*, Black Heavy Utility Vest, The Puff (Outfit), Ox Blood Patched Cut, Color Geo PRB Leather, Blue Tactical Blouson, Orange Big Cat*, Color Geo Sweater, Vivid Gradient Puffer, Color Diamond Sweater, Classic SN Print Sweater, Power Motocross, The Buzz (Outfit), Pegassi Racing Jacket, Woodland Camo Parka, Le Chien Print Sweater, The Pincer (Outfit), Vibrant Gradient Shortsleeve, Urban Gradient Shortsleeve, White Chevron SC Track, Slalom Motocross, Blue Savanna Shortsleeve, Green Didier Sachs Field, Candy Motocross, Tutti Frutti Pattern Sweater, The Vespucci (Outfit), Contrast Camo Service Shirt, Tropical Pattern Sweater, Black Service Shirt, SecuroServ 1 (Outfit), Black Sports Blagueurs Hoodie, Gold Shiny T-Shirt, OJ Shortsleeve, Primary Squash Hoodie, Purple Camo Bigness Hoodie, Bold Abstract Bigness Hoodie, Pink SN Hoodie, Red Boating Blazer, Multicolor Leaves Shortsleeve, Neon Leaves Güffy Hoodie, Black Dotted Shortsleeve, Drive Motocross, Red Patterned Shortsleeve, Steel Horse Satin Jacket, Orange Squash Hoodie, Regal Loose Shirt, White Güffy Hoodie, Stealth Utility Vest, Red Floral Sweater, Black & Red Bigness Jersey, The Slick (Outfit), Splat Squash Sweater, Tan Hooded Jacket, Brushstroke Combat Shirt, White & Red Bigness Jersey, Black Combat Top, Lime Longline Hoodie, Red Bold Check, Bold Camo Sand Castle Sweater, Red Combat Shirt, Red Mist XI Dark, Cyan Manor Sweater, Flecktarn Sleeveless Shirt, Forest Camo Battle Vest, LS Jardineros Dark, Liberty Cocks Dark, Angelica T-Shirt, Hinterland Ship Sweater, Wine Sleeveless Shirt, Cobble Sleeveless, Black Dense Logo Sweater*, White Flying Bravo Hoodie, Cat T-Shirt*, Color Geo T-Shirt, Bold Abstract Bigness T-Shirt, Neon Leaves Güffy T-Shirt, Black Baggy Hoodie, White Manor Zigzag T-Shirt, Double P Baseball Shirt, Aqua Camo Rolled Tee, Dark Woodland T-Shirt, White Bigness T-Shirt, Black No Retreat Tank, White Benny's T-Shirt, Red Smuggler Tank, Angels of Death Vivid Tee, Blue Hit & Run Tank, Waves T-Shirt*, Beige Turtleneck, Hinterland Nugget T-Shirt, Mustard Güffy Tank, Nagasaki White and Red Hoodie, Grotti Tee, Western Logo Black Tee, Butchery and other Hobbies, Black Ammu-Nation Hoodie*, Fake Santo Capra T-Shirt, Death Defying T-Shirt, Bahama Mamas, Showroom T-Shirt, LS UR Tee, J Lager Beer Hat, Unicorn, Gingerbread
+	unlock_packed_bools(26968, 27088) --Impotent Rage Outfit, High Roller, Tiger Scuba, Sprunk Racing Suit, Neon Bodysuit, Extreme Strike Vest, The Chimera (Outfit), White Racing Suit, The Reconnaissance (Outfit), Blue Jock Cranley Suit, Italian Biker Suit, The Hazard (Outfit), Mid Strike Vest, Splinter Gorka Suit, The Gunfighter (Outfit), Black Matrícula Carrier*, Hunter Leather Fur Jacket, Chamois Matrícula Carrier*, Black Heavy Utility Vest, The Puff (Outfit), Ox Blood Patched Cut, Color Geo PRB Leather, Blue Tactical Blouson, Orange Big Cat*, Color Geo Sweater, Vivid Gradient Puffer, Color Diamond Sweater, Classic SN Print Sweater, Power Motocross, The Buzz (Outfit), Pegassi Racing Jacket, Woodland Camo Parka, Le Chien Print Sweater, The Pincer (Outfit), Vibrant Gradient Shortsleeve, Urban Gradient Shortsleeve, White Chevron SC Track, Slalom Motocross, Blue Savanna Shortsleeve, Green Didier Sachs Field, Candy Motocross, Tutti Frutti Pattern Sweater, The Vespucci (Outfit), Contrast Camo Service Shirt, Tropical Pattern Sweater, Black Service Shirt, SecuroServ 1 (Outfit), Black Sports Blagueurs Hoodie, Gold Shiny T-Shirt, OJ Shortsleeve, Primary Squash Hoodie, Purple Camo Bigness Hoodie, Bold Abstract Bigness Hoodie, Pink SN Hoodie, Red Boating Blazer, Multicolor Salirs Shortsleeve, Neon Salirs Güffy Hoodie, Black Dotted Shortsleeve, Drive Motocross, Red Patterned Shortsleeve, Steel Horse Satin Jacket, Orange Squash Hoodie, Regal Loose Shirt, White Güffy Hoodie, Stealth Utility Vest, Red Floral Sweater, Black & Red Bigness Jersey, The Slick (Outfit), Splat Squash Sweater, Tan Hooded Jacket, Brushstroke Combat Shirt, White & Red Bigness Jersey, Black Combat Top, Lime Longline Hoodie, Red Bold Check, Bold Camo Sand Castle Sweater, Red Combat Shirt, Red Mist XI Dark, Cyan Manor Sweater, Flecktarn Sleeveless Shirt, Forest Camo Battle Vest, LS Jardineros Dark, Liberty Cocks Dark, Angelica T-Shirt, Hinterland Ship Sweater, Wine Sleeveless Shirt, Cobble Sleeveless, Black Dense Logo Sweater*, White Flying Bravo Hoodie, Cat T-Shirt*, Color Geo T-Shirt, Bold Abstract Bigness T-Shirt, Neon Salirs Güffy T-Shirt, Black Baggy Hoodie, White Manor Zigzag T-Shirt, Double P Baseball Shirt, Aqua Camo Rolled Tee, Dark Woodland T-Shirt, White Bigness T-Shirt, Black No Retreat Tank, White Benny's T-Shirt, Red Smuggler Tank, Angels of Death Vivid Tee, Blue Hit & Run Tank, Waves T-Shirt*, Beige Turtleneck, Hinterland Nugget T-Shirt, Mustard Güffy Tank, Nagasaki White and Red Hoodie, Grotti Tee, Western Logo Black Tee, Butchery and other Hobbies, Black Ammu-Nation Hoodie*, Fake Santo Capra T-Shirt, Death Defying T-Shirt, Bahama Mamas, Showroom T-Shirt, LS UR Tee, J Lager Beer Hat, Unicorn, Gingerbread
 	unlock_packed_bools(27109, 27115) --The Diamond Classic T-Shirt, The Diamond Vintage T-Shirt, Red The Diamond LS T-Shirt, Blue The Diamond Resort LS T-Shirt, Red The Diamond Resort T-Shirt, Blue D Casino T-Shirt, Red The Diamond Classic T-Shirt
 	unlock_packed_bools(27120, 27145) --White The Diamond Hoodie, Black The Diamond Hoodie, Ash The Diamond Hoodie, Gray The Diamond Hoodie, Red The Diamond Hoodie, Orange The Diamond Hoodie, Blue The Diamond Hoodie, Black The Diamond Silk Robe, White The Diamond Cap, Black The Diamond Cap, White LS Diamond Cap, Black LS Diamond Cap, Red The Diamond Cap, Orange The Diamond Cap, Blue LS Diamond Cap, Green The Diamond Cap, Orange LS Diamond Cap, Purple The Diamond Cap, Pink LS Diamond Cap, White The Diamond LS Tee*, Black The Diamond LS Tee, Black The Diamond Resort LS Tee, White The Diamond Resort Tee, Black The Diamond Resort Tee, Black LS Diamond Tee, Black D Casino Tee
 	unlock_packed_bools(27147, 27182) --I've Been Shamed Tee, Blue I've Been Shamed Tee, Fame or Shame Stars Tee, Red Fame or Shame Stars Tee, No Talent Required Tee, Red No Talent Required Tee, Team Tracey Tee, Blue Team Tracey Tee, Monkey Business Tee, Red Monkey Business Tee, Fame or Shame Logo Tee, Blue Fame or Shame Logo Tee, Stars Fame or Shame Robe, Black Fame or Shame Robe, Red Stars Fame or Shame Robe, Red Fame or Shame Robe, White Fame or Shame Robe, Black Fame or Shame Shades, Red Fame or Shame Shades, Blue Fame or Shame Shades, White Fame or Shame Shades, Gold Fame or Shame Mics, Silver Fame or Shame Mics, Red Fame or Shame Kronos, Green Fame or Shame Kronos, Blue Fame or Shame Kronos, Black Fame or Shame Kronos, America Loves You Tee, Blue America Loves You Tee, Fame or Shame No Evil Tee, You're So Original! Tee, Red You're So Original! Tee, Oh No He Didn't! Tee, Blue Oh No He Didn't! Tee, You're Awful Tee, Red You're Awful Tee
-	unlock_packed_bools(27184, 27213) --Invade and Persuade Enemies T-Shirt, Invade and Persuade Oil T-Shirt, Invade and Persuade Tour T-Shirt, Invade and Persuade Green T-Shirt, Invade and Persuade RON T-Shirt, Street Crimes Hoods T-Shirt, Street Crimes Punks T-Shirt, Street Crimes Yokels T-Shirt, Street Crimes Bikers T-Shirt, Street Crimes Action T-Shirt, Street Crimes Boxart T-Shirt, Street Crimes Logo T-Shirt, Claim What's Yours T-Shirt, Choose Your Side T-Shirt, Street Crimes Color Gangs T-Shirt, Street Crimes Red Gangs T-Shirt, White Street Crimes Icons T-Shirt, Black Street Crimes Icons T-Shirt, Invade and Persuade Logo T-Shirt, Mission I T-Shirt, Mission II T-Shirt, Mission IV T-Shirt, Mission III T-Shirt, Invade and Persuade Boxart T-Shirt, Invade and Persuade Invader T-Shirt, Invade and Persuade Suck T-Shirt, Invade and Persuade Jets T-Shirt, Invade and Persuade Gold T-Shirt, Invade and Persuade Hero T-Shirt, Invade and Persuade Barrels T-Shirt
+	unlock_packed_bools(27184, 27213) --Invade and Persuade Enemies T-Shirt, Invade and Persuade Oil T-Shirt, Invade and Persuade Tour T-Shirt, Invade and Persuade Green T-Shirt, Invade and Persuade RON T-Shirt, Street Crimes Hoods T-Shirt, Street Crimes Punks T-Shirt, Street Crimes Yokels T-Shirt, Street Crimes Bikers T-Shirt, Street Crimes Action T-Shirt, Street Crimes Boxart T-Shirt, Street Crimes Logo T-Shirt, Claim What's Yours T-Shirt, Choose Your Side T-Shirt, Street Crimes Color Gangs T-Shirt, Street Crimes Red Gangs T-Shirt, White Street Crimes Icons T-Shirt, Black Street Crimes Icons T-Shirt, Invade and Persuade Logo T-Shirt, Misión I T-Shirt, Misión II T-Shirt, Misión IV T-Shirt, Misión III T-Shirt, Invade and Persuade Boxart T-Shirt, Invade and Persuade Invader T-Shirt, Invade and Persuade Suck T-Shirt, Invade and Persuade Jets T-Shirt, Invade and Persuade Gold T-Shirt, Invade and Persuade Hero T-Shirt, Invade and Persuade Barrels T-Shirt
 	unlock_packed_bools(27247, 27247) --Madam Nazar (Arcade Trophy)
 	unlock_packed_bools(28099, 28148) --Signal Jammers
 	unlock_packed_bools(28158, 28158) --Navy Revolver
-	unlock_packed_bools(28171, 28191) --Green Reindeer Lights Bodysuit, Ho-Ho-Ho Sweater, Traditional Festive Lights Bodysuit, Yellow Reindeer Lights Bodysuit, Neon Festive Lights Bodysuit, Plushie Grindy T-Shirt, Plushie Saki T-Shirt , Plushie Humpy T-Shirt, Plushie Smoker T-Shirt, Plushie Poopie T-Shirt, Plushie Muffy T-Shirt, Plushie Wasabi Kitty T-Shirt, Plushie Princess T-Shirt, Plushie Master T-Shirt, Pixel Pete's T-Shirt, Wonderama T-Shirt, Warehouse T-Shirt, Eight Bit T-Shirt, Insert Coin T-Shirt, Videogeddon T-Shirt, Nazar Speaks T-Shirt
+	unlock_packed_bools(28171, 28191) --Green Reindeer Luces Bodysuit, Ho-Ho-Ho Sweater, Traditional Festive Luces Bodysuit, Yellow Reindeer Luces Bodysuit, Neon Festive Luces Bodysuit, Plushie Grindy T-Shirt, Plushie Saki T-Shirt , Plushie Humpy T-Shirt, Plushie Smoker T-Shirt, Plushie Poopie T-Shirt, Plushie Muffy T-Shirt, Plushie Wasabi Kitty T-Shirt, Plushie Princess T-Shirt, Plushie Master T-Shirt, Pixel Pete's T-Shirt, Wonderama T-Shirt, Warehouse T-Shirt, Eight Bit T-Shirt, Insert Coin T-Shirt, Videogeddon T-Shirt, Nazar Speaks T-Shirt
 	unlock_packed_bools(28194, 28196) --Silent & Sneaky, The Big Con, Aggressive (Elite Challenges)
-	unlock_packed_bools(28197, 28222) --Badlands Revenge II Gunshot T-Shirt, Badlands Revenge II Eagle T-Shirt, Badlands Revenge II Pixtro T-Shirt, Badlands Revenge II Romance T-Shirt, Badlands Revenge II Bear T-Shirt, Badlands Revenge II Help Me T-Shirt & Badlands Revenge II Retro T-Shirt, Race and Chase Decor T-Shirt, Race and Chase Vehicles T-Shirt, Race and Chase Finish T-Shirt, Crotch Rockets T-Shirt, Street Legal T-Shirt & Get Truckin' T-Shirt, Wizard's Ruin Loot T-Shirt, The Wizard's Ruin Rescue T-Shirt, The Wizard's Ruin Vow T-Shirt, Thog Mighty Sword T-Shirt, Thog T-Shirt & Thog Bod T-Shirt, Space Monkey 3 T-Shirt, Space Monkey Space Crafts T-Shirt, Space Monkey Pixel T-Shirt, Space Monkey Boss Fights T-Shirt, Radioactive Space Monkey T-Shirt & Space Monkey Art T-Shirt, Monkey's Paradise T-Shirt, Retro Defender of the Faith T-Shirt, Penetrator T-Shirt, Defender of the Faith T-Shirt, Love Professor His T-Shirt & Love Professor Hers T-Shirt, Love Professor Nemesis T-Shirt, Love Professor Friendzoned T-Shirt, Love Professor Secrets T-Shirt & Love Professor Score T-Shirt, Shiny Wasabi Kitty Claw T-Shirt, Pixtro T-Shirt, Akedo T-Shirt & Arcade Trophy T-Shirt
-	unlock_packed_bools(28224, 28227) --White Dog With Cone T-Shirt, Yellow Dog With Cone T-Shirt, Dog With Cone Slip-Ons & Dog With Cone Chain, Refuse Collectors Outfit, Undertakers Outfit, Valet Outfit
-	unlock_packed_bools(28229, 28249) --Prison Guards, FIB Suits, Black Scuba, Gruppe Sechs Gear, Bugstars Uniforms, Maintenance Outfit, Yung Ancestors Outfit, Firefighter Outfit, Orderly Armor Outfit, Upscale Armor Outfit, Evening Armor Outfit, Reinforced: Padded Combat Outfit, Reinforced: Bulk Combat Outfit, Reinforced: Compact Combat Outfit, Balaclava Crook Outfit, Classic Crook Outfit, High-end Crook Outfit, Infiltration: Upgraded Tech Outfit, Infiltration: Advanced Tech Outfit, Infiltration: Modernized Tech Outfit, Degenatron Glitch T-Shirt
+	unlock_packed_bools(28197, 28222) --Badlands Revenge II Gunshot T-Shirt, Badlands Revenge II Eagle T-Shirt, Badlands Revenge II Pixtro T-Shirt, Badlands Revenge II Romance T-Shirt, Badlands Revenge II Bear T-Shirt, Badlands Revenge II Help Me T-Shirt & Badlands Revenge II Retro T-Shirt, Race and Chase Decor T-Shirt, Race and Chase Vehículos T-Shirt, Race and Chase Finish T-Shirt, Crotch Rockets T-Shirt, Street Legal T-Shirt & Get Truckin' T-Shirt, Wizard's Ruin Loot T-Shirt, The Wizard's Ruin Rescue T-Shirt, The Wizard's Ruin Vow T-Shirt, Thog Mighty Sword T-Shirt, Thog T-Shirt & Thog Bod T-Shirt, Space Monkey 3 T-Shirt, Space Monkey Space Crafts T-Shirt, Space Monkey Pixel T-Shirt, Space Monkey Boss Fights T-Shirt, Radioactive Space Monkey T-Shirt & Space Monkey Art T-Shirt, Monkey's Paradise T-Shirt, Retro Defender of the Faith T-Shirt, Penetrator T-Shirt, Defender of the Faith T-Shirt, Love Professor His T-Shirt & Love Professor Hers T-Shirt, Love Professor Nemesis T-Shirt, Love Professor Amigozoned T-Shirt, Love Professor Secrets T-Shirt & Love Professor Score T-Shirt, Shiny Wasabi Kitty Claw T-Shirt, Pixtro T-Shirt, Akedo T-Shirt & Arcade Trophy T-Shirt
+	unlock_packed_bools(28224, 28227) --White Dog With Cone T-Shirt, Yellow Dog With Cone T-Shirt, Dog With Cone Slip-Activados & Dog With Cone Chain, Refuse Collectors Outfit, Undertakers Outfit, Valet Outfit
+	unlock_packed_bools(28229, 28249) --Prison Guards, FIB Suits, Black Scuba, Gruppe Sechs Gear, Bugstars Uniforms, Principaltenance Outfit, Yung Ancestors Outfit, Firefighter Outfit, Orderly Armadura Outfit, Upscale Armadura Outfit, Evening Armadura Outfit, Reinforced: Padded Combat Outfit, Reinforced: Bulk Combat Outfit, Reinforced: Compact Combat Outfit, Balaclava Crook Outfit, Classic Crook Outfit, High-end Crook Outfit, Infiltration: Upgraded Tech Outfit, Infiltration: Advanced Tech Outfit, Infiltration: Modernized Tech Outfit, Degenatron Glitch T-Shirt
 	unlock_packed_bools(28254, 28255) --Get Metal T-Shirt / Axe of Fury T-Shirt, 11 11 T-Shirt / Axe of Fury T-Shirt
 	unlock_packed_bools(30230, 30251) --Movie Props, Space Interloper Outfit
 	unlock_packed_bools(30254, 30295) --King Of QUB3D T-Shirt, Qubism T-Shirt, God Of QUB3D T-Shirt, QUB3D Boxart T-Shirt, Qub3d Qub3s T-Shirt, Yacht Captain Outfit, BCTR Aged T-Shirt, BCTR T-Shirt, Cultstoppers Aged T-Shirt, Cultstoppers T-Shirt, Daily Globe Aged T-Shirt, Daily Globe T-Shirt, Eyefind Aged T-Shirt, Eyefind T-Shirt, Facade Aged T-Shirt, Facade T-Shirt, Fruit Aged T-Shirt, Fruit T-Shirt, LSHH Aged T-Shirt, LSHH T-Shirt, MyRoom Aged T-Shirt, MyRoom T-Shirt, Rebel Aged T-Shirt, Rebel T-Shirt, Six Figure Aged T-Shirt, Six Figure T-Shirt, Trash Or Treasure Aged T-Shirt, Trash Or Treasure T-Shirt, Tw@ Logo Aged T-Shirt, Tw@ Logo T-Shirt, Vapers Den Aged T-Shirt, Vapers Den T-Shirt, WingIt Aged T-Shirt, WingIt T-Shirt, ZiT Aged T-Shirt, ZiT T-Shirt, Green Dot Tech Mask, Orange Dot Tech Mask, Blue Dot Tech Mask, Pink Dot Tech Mask, Lemon Sports Track Pants, Lemon Sports Track Top
 	unlock_packed_bools(30524, 30557) --Grotti Aged T-Shirt, Lampadati Aged T-Shirt, Ocelot Aged T-Shirt, Overflod Aged T-Shirt, Pegassi Aged T-Shirt, Pfister Aged T-Shirt, Vapid Aged T-Shirt, Weeny Aged T-Shirt, Blue The Diamond Resort LS Aged T-Shirt, KJAH Radio Aged T-Shirt, K-Rose Aged T-Shirt, Emotion 98.3 Aged T-Shirt, KDST Aged T-Shirt, Bounce FM Aged T-Shirt, Fake Vapid Aged T-Shirt, I Married My Dad Aged T-Shirt, ToeShoes Aged T-Shirt, Vanilla Unicorn Aged T-Shirt, Steel Horse Solid Logo Aged T-Shirt, Black Western Logo Aged T-Shirt, White Nagasaki Aged T-Shirt, Black Principe Aged T-Shirt, Noise Aged T-Shirt, Noise Rockstar Logo Aged T-Shirt, Razor Aged T-Shirt, White Rockstar Camo Aged T-Shirt, LSUR Aged T-Shirt, Rebel Radio Aged T-Shirt, Channel X Aged T-Shirt, Albany Vintage Aged T-Shirt, Benefactor Aged T-Shirt, Bravado Aged T-Shirt, Declasse Aged T-Shirt, Dinka Aged T-Shirt
-	unlock_packed_bools(30563, 30693) --Panther Varsity Jacket Cerrard, Panther Tour Jacket, Broker Prolaps Basketball Top, Panic Prolaps Basketball Top, Gussét Frog T-Shirt, Warped Still Slipping T-Shirt, Yellow Still Slipping T-Shirt, Black Rockstar T-Shirt, Black Exsorbeo 720 Logo T-Shirt, Manor PRBG T-Shirt, Manor Tie-dye T-Shirt, Open Wheel Sponsor T-Shirt, Rockstar Yellow Pattern T-Shirt, Rockstar Gray Pattern T-Shirt, Rockstar Rolling T-Shirt, Santo Capra Patterns Sweater, Rockstar Studio Colors Sweater, Bigness Jackal Sweater, Bigness Tie-dye Sweater, Bigness Faces Sweater, Broker Prolaps Basketball Shorts, Panic Prolaps Basketball Shorts, Exsorbeo 720 Sports Shorts, Bigness Tie-dye Sports Pants, Enus Yeti Forwards Cap, 720 Forwards Cap, Exsorbeo 720 Forwards Cap, Güffy Double Logo Forwards Cap, Rockstar Forwards Cap, Blue Bangles (L), Red Bangles (L), Pink Bangles (L), Yellow Bangles (L), Orange Bangles (L), Green Bangles (L), Red & Blue Bangles (L), Yellow & Orange Bangles (L), Green & Pink Bangles (L), Rainbow Bangles (L), Sunset Bangles (L), Tropical Bangles (L), Blue & Pink Glow Shades, Red Glow Shades, Orange Glow Shades, Yellow Glow Shades, Green Glow Shades, Blue Glow Shades, Pink Glow Shades, Blue & Magenta Glow Shades, Purple & Yellow Glow Shades, Blue & Yellow Glow Shades, Pink & Yellow Glow Shades, Red & Yellow Glow Shades, Blue Glow Necklace, Red Glow Necklace, Pink Glow Necklace, Yellow Glow Necklace, Orange Glow Necklace, Green Glow Necklace, Festival Glow Necklace, Carnival Glow Necklace, Tropical Glow Necklace, Hot Glow Necklace, Neon Glow Necklace, Party Glow Necklace, Sunset Glow Necklace, Radiant Glow Necklace, Sunrise Glow Necklace, Session Glow Necklace, Combat Shotgun, Perico Pistol, White Keinemusik T-Shirt, Blue Keinemusik T-Shirt, Moodymann T-Shirt, Palms Trax T-Shirt, Midnight Tint Oversize Shades, Sunset Tint Oversize Shades, Black Tint Oversize Shades, Blue Tint Oversize Shades, Gold Tint Oversize Shades, Green Tint Oversize Shades, Orange Tint Oversize Shades, Red Tint Oversize Shades, Pink Tint Oversize Shades, Yellow Tint Oversize Shades, Lemon Tint Oversize Shades, Gold Rimmed Oversize Shades, White Checked Round Shades, Pink Checked Round Shades, Yellow Checked Round Shades, Red Checked Round Shades, White Round Shades, Black Round Shades, Pink Tinted Round Shades, Blue Tinted Round Shades, Green Checked Round Shades, Blue Checked Round Shades, Orange Checked Round Shades, Green Tinted Round Shades, Brown Square Shades, Yellow Square Shades, Black Square Shades, Tortoiseshell Square Shades, Green Square Shades, Red Square Shades, Pink Tinted Square Shades, Blue Tinted Square Shades, White Square Shades, Pink Square Shades, All White Square Shades, Mono Square Shades, Green Calavera Mask, Navy Calavera Mask, Cherry Calavera Mask, Orange Calavera Mask, Purple Calavera Mask, Dark Blue Calavera Mask, Lavender Calavera Mask, Yellow Calavera Mask, Pink Calavera Mask, Neon Stitch Emissive Mask, Vibrant Stitch Emissive Mask, Pink Stitch Emissive Mask, Blue Stitch Emissive Mask, Neon Skull Emissive Mask, Vibrant Skull Emissive Mask, Pink Skull Emissive Mask, Orange Skull Emissive Mask, Dark X-Ray Emissive Mask, Bright X-Ray Emissive Mask, Purple X-Ray Emissive Mask
-	unlock_packed_bools(30699, 30704) --Palms Trax LS T-Shirt, Moodymann Whatupdoe T-Shirt, Moodymann Big D T-Shirt, Keinemusik Cayo Perico T-Shirt, Still Slipping Blarneys T-Shirt, Still Slipping Friend T-Shirt
-	unlock_packed_bools(31708, 31714) --CircoLoco Records - Blue EP, CircoLoco Records - Green EP, CircoLoco Records - Violet EP, CircoLoco Records - Black EP, Moodymann - Kenny's Backyard Boogie, NEZ - You Wanna?, NEZ ft. Schoolboy Q - Let's Get It
+	unlock_packed_bools(30563, 30693) --Panther Varsity Jacket Cerrard, Panther Tour Jacket, Broker Prolaps Basketball Top, Panic Prolaps Basketball Top, Gussét Frog T-Shirt, Warped Still Slipping T-Shirt, Yellow Still Slipping T-Shirt, Black Rockstar T-Shirt, Black Exsorbeo 720 Logo T-Shirt, Manor PRBG T-Shirt, Manor Tie-dye T-Shirt, Open Wheel Sponsor T-Shirt, Rockstar Yellow Pattern T-Shirt, Rockstar Gray Pattern T-Shirt, Rockstar Rolling T-Shirt, Santo Capra Patterns Sweater, Rockstar Studio Colors Sweater, Bigness Jackal Sweater, Bigness Tie-dye Sweater, Bigness Faces Sweater, Broker Prolaps Basketball Shorts, Panic Prolaps Basketball Shorts, Exsorbeo 720 Sports Shorts, Bigness Tie-dye Sports Pants, Enus Yeti Forwards Cap, 720 Forwards Cap, Exsorbeo 720 Forwards Cap, Güffy Double Logo Forwards Cap, Rockstar Forwards Cap, Blue Bangles (L), Red Bangles (L), Pink Bangles (L), Yellow Bangles (L), Orange Bangles (L), Green Bangles (L), Red & Blue Bangles (L), Yellow & Orange Bangles (L), Green & Pink Bangles (L), Rainbow Bangles (L), Sunset Bangles (L), Tropical Bangles (L), Blue & Pink Glow Shades, Red Glow Shades, Orange Glow Shades, Yellow Glow Shades, Green Glow Shades, Blue Glow Shades, Pink Glow Shades, Blue & Magenta Glow Shades, Purple & Yellow Glow Shades, Blue & Yellow Glow Shades, Pink & Yellow Glow Shades, Red & Yellow Glow Shades, Blue Glow Necklace, Red Glow Necklace, Pink Glow Necklace, Yellow Glow Necklace, Orange Glow Necklace, Green Glow Necklace, Festival Glow Necklace, Carnival Glow Necklace, Tropical Glow Necklace, Hot Glow Necklace, Neon Glow Necklace, Party Glow Necklace, Sunset Glow Necklace, Radiant Glow Necklace, Sunrise Glow Necklace, Sesión Glow Necklace, Combat Shotgun, Perico Pistol, White Keinemusik T-Shirt, Blue Keinemusik T-Shirt, Moodymann T-Shirt, Palms Trax T-Shirt, Midnight Tint Oversize Shades, Sunset Tint Oversize Shades, Black Tint Oversize Shades, Blue Tint Oversize Shades, Gold Tint Oversize Shades, Green Tint Oversize Shades, Orange Tint Oversize Shades, Red Tint Oversize Shades, Pink Tint Oversize Shades, Yellow Tint Oversize Shades, Lemon Tint Oversize Shades, Gold Rimmed Oversize Shades, White Checked Round Shades, Pink Checked Round Shades, Yellow Checked Round Shades, Red Checked Round Shades, White Round Shades, Black Round Shades, Pink Tinted Round Shades, Blue Tinted Round Shades, Green Checked Round Shades, Blue Checked Round Shades, Orange Checked Round Shades, Green Tinted Round Shades, Brown Square Shades, Yellow Square Shades, Black Square Shades, Tortoiseshell Square Shades, Green Square Shades, Red Square Shades, Pink Tinted Square Shades, Blue Tinted Square Shades, White Square Shades, Pink Square Shades, Todos White Square Shades, Mono Square Shades, Green Calavera Mask, Navy Calavera Mask, Cherry Calavera Mask, Orange Calavera Mask, Purple Calavera Mask, Dark Blue Calavera Mask, Lavender Calavera Mask, Yellow Calavera Mask, Pink Calavera Mask, Neon Stitch Emissive Mask, Vibrant Stitch Emissive Mask, Pink Stitch Emissive Mask, Blue Stitch Emissive Mask, Neon Skull Emissive Mask, Vibrant Skull Emissive Mask, Pink Skull Emissive Mask, Orange Skull Emissive Mask, Dark X-Ray Emissive Mask, Bright X-Ray Emissive Mask, Purple X-Ray Emissive Mask
+	unlock_packed_bools(30699, 30704) --Palms Trax LS T-Shirt, Moodymann Whatupdoe T-Shirt, Moodymann Big D T-Shirt, Keinemusik Cayo Perico T-Shirt, Still Slipping Blarneys T-Shirt, Still Slipping Amigo T-Shirt
+	unlock_packed_bools(31708, 31714) --CircoLoco Records - Blue EP, CircoLoco Records - Green EP, CircoLoco Records - Violet EP, CircoLoco Records - Black EP, Moodymann - Kenny's Atrásyard Boogie, NEZ - You Wanna?, NEZ ft. Schoolboy Q - Let's Get It
 	unlock_packed_bools(31736, 31736) --The Frontier Outfit
 	unlock_packed_bools(31755, 31755) --Auto Shop Race 'n Chase
 	unlock_packed_bools(31760, 31764) --Faces of Death T-Shirt, Straight to Video T-Shirt, Monkey See Monkey Die T-Shirt, Trained to Kill T-Shirt, The Director T-Shirt
-	unlock_packed_bools(31766, 31777) --Sprunk Forwards Cap, eCola Forwards Cap, Black Banshee T-Shirt, Blue Banshee T-Shirt, LS Customs T-Shirt, Rockstar Games Typeface T-Shirt, Wasted! T-Shirt, Baseball Bat T-Shirt, Knuckleduster T-Shirt, Rampage T-Shirt, Penitentiary Coveralls, LS Customs Coveralls
-	unlock_packed_bools(31779, 31796) --The Ringleader Outfit, The Knuckles Outfit, The Breaker Outfit, The Dealer Outfit, Bearsy, Banshee Hoodie, eCola Varsity, Sprunk Varsity, LS Customs Varsity, LS Customs Tour Jacket, eCola Bodysuit, Sprunk Bodysuit, Sprunk Chute Bag, eCola Chute Bag, Halloween Chute Bag, Sprunk Chute, eCola Chute, Halloween Chute
+	unlock_packed_bools(31766, 31777) --Sprunk Forwards Cap, eCola Forwards Cap, Black Banshee T-Shirt, Blue Banshee T-Shirt, LS Personalizados T-Shirt, Rockstar Games Typeface T-Shirt, Wasted! T-Shirt, Baseball Bat T-Shirt, Knuckleduster T-Shirt, Rampage T-Shirt, Penitentiary Coveralls, LS Personalizados Coveralls
+	unlock_packed_bools(31779, 31796) --The Ringleader Outfit, The Knuckles Outfit, The Breaker Outfit, The Dealer Outfit, Bearsy, Banshee Hoodie, eCola Varsity, Sprunk Varsity, LS Personalizados Varsity, LS Personalizados Tour Jacket, eCola Bodysuit, Sprunk Bodysuit, Sprunk Chute Bag, eCola Chute Bag, Halloween Chute Bag, Sprunk Chute, eCola Chute, Halloween Chute
 	unlock_packed_bools(31805, 31808) --The Old Hand Outfit, The Overworked Outfit, The Longshoreman Outfit, The Underpaid Outfit
 	unlock_packed_bools(31810, 31824) --Annis ZR350, Pfister Comet S2, Dinka Jester RR, Emperor Vectre, Ubermacht Cypher, Pfister Growler, Karin Calico GTF, Annis Remus, Vapid Dominator ASP, Karin Futo GTX, Dinka RT3000, Vulcar Warrener HKR, Karin Sultan RS Classic, Vapid Dominator GTT, Karin Previon
-	unlock_packed_bools(31826, 31858) --Emperor Forwards Cap / Emperor Backwards Cap, Beige Knit Sneakers, Gray Emperor Classic Hoodie, Pursuit Series (Gameplay), Cyan Check Sleeveless Puffer, Dinka SPL (Wheel Mod), Blue Hayes Retro Racing, White Emperor Motors T-Shirt, Quick Fix (Gameplay), Cyan Check Puffer, Euros - Speed Trail (Livery), Never Barcode Print Hoodie, Hayes Modern Racing, Diversion (Gameplay), Gray Leather Bomber, Futo GTX - Chokusen Dorifuto (Livery), Karin Forwards Cap / Karin Backwards Cap, Cream Knit Sneakers, Private Takeover (Gameplay), Yellow Pfister Hoodie, Retro Turbofan (Wheel Mod), Red Check Sleeveless Puffer, White Hayes Retro Racing, Setup (Gameplay), Navy Emperor Motors T-Shirt, RT3000 - Stance Andreas (Livery), Red Check Puffer, Never Triangle Print Hoodie, Wingman (Gameplay), LTD Modern Racing, Jester RR - 10 Minute Car (Livery), Green Crowex Pro Racing Suit, Mustard Tan Leather Bomber
-	unlock_packed_bools(31860, 31863) --Omnis Forwards Cap / Omnis Backwards Cap, Conical Turbofan (Wheel Mod), Black Knit Sneakers, Green Emperor Classic Hoodie
+	unlock_packed_bools(31826, 31858) --Emperor Forwards Cap / Emperor Atráswards Cap, Beige Knit Sneakers, Gray Emperor Classic Hoodie, Pursuit Series (Gameplay), Cyan Check Sleeveless Puffer, Dinka SPL (Wheel Mod), Blue Hayes Retro Racing, White Emperor Motors T-Shirt, Quick Fix (Gameplay), Cyan Check Puffer, Euros - Velocidad Trail (Livery), Never Barcode Print Hoodie, Hayes Modern Racing, Diversion (Gameplay), Gray Leather Bomber, Futo GTX - Chokusen Dorifuto (Livery), Karin Forwards Cap / Karin Atráswards Cap, Cream Knit Sneakers, Private Quitarover (Gameplay), Yellow Pfister Hoodie, Retro Turbofan (Wheel Mod), Red Check Sleeveless Puffer, White Hayes Retro Racing, Preparación (Gameplay), Navy Emperor Motors T-Shirt, RT3000 - Stance Andreas (Livery), Red Check Puffer, Never Triangle Print Hoodie, Wingman (Gameplay), LTD Modern Racing, Jester RR - 10 Mínimoute Car (Livery), Green Crowex Pro Racing Suit, Mustard Tan Leather Bomber
+	unlock_packed_bools(31860, 31863) --Omnis Forwards Cap / Omnis Atráswards Cap, Conical Turbofan (Wheel Mod), Black Knit Sneakers, Green Emperor Classic Hoodie
 	unlock_packed_bools(31865, 31868) --Green Geo Sleeveless Puffer, ZR350 - Atomic Drift Team (Livery), White Globe Oil Retro Racing, Yellow Annis Rally T-Shirt
-	unlock_packed_bools(31870, 31928) --Green Geo Puffer, Warrener HKR - Classic Vulcar (Livery), Life ZigZag Print Hoodie, Blue Dinka Modern Racing, Gray Benefactor Racing Suit, Orange Tan Leather Bomber, Ice Storm (Wheel Mod), Annis Forwards Cap / Annis Backwards Cap, Gray & Purple Knit Sneakers, Black Crowex Pro Racing Suit, Gray Pfister Hoodie, Calico GTF - Fukaru Rally (Livery), Black Geo Sleeveless Puffer, Green Crowex Retro Racing, Blue Xero Gas Racing Suit, Blue Annis Noise T-Shirt, Remus - Blue Lightning (Livery), Black Geo Puffer, Life Static Print Hoodie, Dark Benefactor Racing Suit, Red Dinka Modern Racing, Super Turbine (Wheel Mod), Chestnut Tan Leather Bomber, Vapid Forwards Cap / Vapid Backwards Cap, Red Xero Gas Racing Suit, Gray & Magenta Knit Sneakers, Dominator GTT - Oldschool Oval (Livery), Black Vapid Ellie Hoodie, Cream Bigness Sleeveless Puffer, Wildstyle Racing Suit, Red Globe Oil Retro Racing, Tailgater S - Crevis Race (Livery), Light Dinka T-Shirt, Cream Bigness Puffer, Modern Mesh (Wheel Mod), Never Crosshair Print Hoodie, Euros - Drift Tribe (Livery), Yellow Vapid Modern Racing, Dark Tan Leather Bomber, Forged Star (Wheel Mod), Light Dinka Forwards Cap / Light Dinka Backwards Cap, Futo GTX - Drift King (Livery), Gray & Aqua Knit Sneakers, Gray Karin Hoodie, Showflake (Wheel Mod), Purple Bigness Sleeveless Puffer, RT3000 - Atomic Motorsport (Livery), Black Crowex Retro Racing, Black Annis Noise T-Shirt, Giga Mesh (Wheel Mod), Purple Bigness Puffer, Jester RR - Yogarishima (Livery), Hiding Print Hoodie, Ubermacht Modern Racing, Mesh Meister (Wheel Mod), Ox Blood Leather Bomber, ZR350 - Kisama Chevrons (Livery), Dark Dinka Forwards Cap / Dark Dinka Backwards Cap, White & Pink Knit Sneakers
+	unlock_packed_bools(31870, 31928) --Green Geo Puffer, Warrener HKR - Classic Vulcar (Livery), Life ZigZag Print Hoodie, Blue Dinka Modern Racing, Gray Benefactor Racing Suit, Orange Tan Leather Bomber, Ice Storm (Wheel Mod), Annis Forwards Cap / Annis Atráswards Cap, Gray & Purple Knit Sneakers, Black Crowex Pro Racing Suit, Gray Pfister Hoodie, Calico GTF - Fukaru Rally (Livery), Black Geo Sleeveless Puffer, Green Crowex Retro Racing, Blue Xero Gas Racing Suit, Blue Annis Noise T-Shirt, Remus - Blue Lightning (Livery), Black Geo Puffer, Life Static Print Hoodie, Dark Benefactor Racing Suit, Red Dinka Modern Racing, Super Turbine (Wheel Mod), Chestnut Tan Leather Bomber, Vapid Forwards Cap / Vapid Atráswards Cap, Red Xero Gas Racing Suit, Gray & Magenta Knit Sneakers, Dominator GTT - Oldschool Oval (Livery), Black Vapid Ellie Hoodie, Cream Bigness Sleeveless Puffer, Wildstyle Racing Suit, Red Globe Oil Retro Racing, Tailgater S - Crevis Race (Livery), Light Dinka T-Shirt, Cream Bigness Puffer, Modern Mesh (Wheel Mod), Never Crosshair Print Hoodie, Euros - Drift Tribe (Livery), Yellow Vapid Modern Racing, Dark Tan Leather Bomber, Forged Star (Wheel Mod), Light Dinka Forwards Cap / Light Dinka Atráswards Cap, Futo GTX - Drift King (Livery), Gray & Aqua Knit Sneakers, Gray Karin Hoodie, Showflake (Wheel Mod), Purple Bigness Sleeveless Puffer, RT3000 - Atomic Motorsport (Livery), Black Crowex Retro Racing, Black Annis Noise T-Shirt, Giga Mesh (Wheel Mod), Purple Bigness Puffer, Jester RR - Yogarishima (Livery), Hiding Print Hoodie, Ubermacht Modern Racing, Mesh Meister (Wheel Mod), Ox Blood Leather Bomber, ZR350 - Kisama Chevrons (Livery), Dark Dinka Forwards Cap / Dark Dinka Atráswards Cap, White & Pink Knit Sneakers
 	unlock_packed_bools(31930, 31933) --Navy Vapid Ellie Hoodie, Warrener HKR - Classic Vulcar Alt (Livery), Green Aztec Sleeveless Puffer, Calico GTF - Disruption Rally (Livery)
 	unlock_packed_bools(31935, 31938) --Blue Atomic Retro Racing, Remus - Annis Tech (Livery), Dark Dinka T-Shirt, Dominator GTT - Resto Mod Racer (Livery)
 	unlock_packed_bools(31940, 31943) --Green Aztec Puffer, Tailgater S - Redwood (Livery), Life Binary Print Hoodie, Euros - King Scorpion (Livery)
-	unlock_packed_bools(31945, 31948) --White Güffy Modern Racing, Futo GTX - Tandem Battle (Livery), Dark Nut Leather Bomber, RT3000 - Dinka Performance (Livery)
-	unlock_packed_bools(31950, 31953) --White Güffy Forwards Cap / White Güffy Backwards Cap, Jester RR - Fuque (Livery), Gray & Yellow Knit Sneakers, ZR350 - Winning is Winning (Livery)
+	unlock_packed_bools(31945, 31948) --White Güffy Modern Racing, Futo GTX - Tandem Battle (Livery), Dark Nut Leather Bomber, RT3000 - Dinka Rendimiento (Livery)
+	unlock_packed_bools(31950, 31953) --White Güffy Forwards Cap / White Güffy Atráswards Cap, Jester RR - Fuque (Livery), Gray & Yellow Knit Sneakers, ZR350 - Winning is Winning (Livery)
 	unlock_packed_bools(31955, 31958) --Navy Karin Hoodie, Warrener HKR - Redwood Racing (Livery), Black Aztec Sleeveless Puffer, Calico GTF - Redwood Rally (Livery)
-	unlock_packed_bools(31960, 31963) --Yellow Atomic Retro Racing, Remus - Atomic Motorsport (Livery), Light Vapid Ellie T-Shirt, Dominator GTT - Flame On (Livery)
+	unlock_packed_bools(31960, 31963) --Yellow Atomic Retro Racing, Remus - Atomic Motorsport (Livery), Light Vapid Ellie T-Shirt, Dominator GTT - Flame Activado (Livery)
 	unlock_packed_bools(31965, 31968) --Black Aztec Puffer, Tailgater S - Disruption Logistics (Livery), Lucky Penny Print Hoodie, Euros - Sprunk Light (Livery)
 	unlock_packed_bools(31970, 31973) --Black Güffy Modern Racing, Futo GTX - Itasha Drift (Livery), Navy Blue Leather Bomber, RT3000 - Shiny Wasabi Kitty (Livery)
-	unlock_packed_bools(31975, 31978) --Black Güffy Forwards Cap / Black Güffy Backwards Cap, Jester RR - Xero Gas Rally (Livery), Grayscale Knit Sneakers, ZR350 - Annis Racing Tribal (Livery)
+	unlock_packed_bools(31975, 31978) --Black Güffy Forwards Cap / Black Güffy Atráswards Cap, Jester RR - Xero Gas Rally (Livery), Grayscale Knit Sneakers, ZR350 - Annis Racing Tribal (Livery)
 	unlock_packed_bools(31980, 31983) --Light Obey Hoodie, Warrener HKR - Vulcar Turbo (Livery), Cream Splinter Sleeveless Puffer, Calico GTF - Prolaps Rally (Livery)
 	unlock_packed_bools(31985, 31988) --Blue Redwood Retro Racing, Remus - Shiny Wasabi Kitty (Livery), Dark Vapid Ellie T-Shirt, Dominator GTT - The Patriot (Livery)
 	unlock_packed_bools(31990, 31993) --Cream Splinter Puffer, Tailgater S - Colored Camo Livery (Livery), Light Dinka Modern Racing, Euros - Candybox Gold (Livery)
-	unlock_packed_bools(31995, 31998) --Dark Green Leather Bomber, Futo GTX - Stance Andreas (Livery), Hellion Forwards Cap / Hellion Backwards Cap, RT3000 - Total Fire (Livery)
+	unlock_packed_bools(31995, 31998) --Dark Green Leather Bomber, Futo GTX - Stance Andreas (Livery), Hellion Forwards Cap / Hellion Atráswards Cap, RT3000 - Total Fire (Livery)
 	unlock_packed_bools(32000, 32003) --Gray & Cyan Knit Sneakers, Jester RR - Split Siberia (Livery), Black Ubermacht Hoodie, ZR350 - Annis Racing Tribal Alt (Livery)
 	unlock_packed_bools(32005, 32008) --Dark Splinter Sleeveless Puffer, Warrener HKR - Vulcar Turbo Alt (Livery), White Logo Ruiner T-Shirt, Calico GTF - Xero Gas Rally (Livery)
 	unlock_packed_bools(32010, 32013) --Dark Splinter Puffer, Remus - Fukaru Motorsport (Livery), Dark Dinka Modern Racing, Dominator GTT - 70s Street Machine (Livery)
-	unlock_packed_bools(32015, 32018) --White Leather Bomber, Tailgater S - Army Camo Solid (Livery), Lampadati Forwards Cap / Lampadati Backwards Cap, Lilac Knit Sneakers
+	unlock_packed_bools(32015, 32018) --White Leather Bomber, Tailgater S - Army Camo Solid (Livery), Lampadati Forwards Cap / Lampadati Atráswards Cap, Lilac Knit Sneakers
 	unlock_packed_bools(32020, 32023) --Dark Obey Hoodie, Green Latin Sleeveless Puffer, Gray Vapid Truck T-Shirt, Green Latin Puffer
 	unlock_packed_bools(32025, 32028) --Blue Bravado Modern Racing, Red Leather Bomber, White Knit Sneakers, Red Ubermacht Hoodie
 	unlock_packed_bools(32030, 32033) --Black Latin Sleeveless Puffer, White Obey Omnis T-Shirt, Black Latin Puffer, Black Bravado Modern Racing
@@ -10859,7 +10859,7 @@ FRESH:add_button("Unlock All", function()
 	unlock_packed_bools(32060, 32063) --Orange Knit Sneakers, Light Dinka Hoodie, Blue Bravado Gauntlet T-Shirt, Pink Vibrant Knit Sneakers
 	unlock_packed_bools(32065, 32074) --Gold Lampadati Hoodie, Black Bravado Gauntlet T-Shirt, Lime Highlight Knit Sneakers, Dark Dinka Hoodie, Pfister Pocket T-Shirt, Purple Fade Knit Sneakers, Karin 90s T-Shirt, Teal Knit Sneakers, Black & Lime Knit Sneakers, Cyan Fade Knit Sneakers
 	unlock_packed_bools(32084, 32084) --Red Highlight Knit Sneakers
-	unlock_packed_bools(32094, 32094) --Broker Forwards Cap / Broker Backwards Cap
+	unlock_packed_bools(32094, 32094) --Broker Forwards Cap / Broker Atráswards Cap
 	unlock_packed_bools(32104, 32104) --Annis Hellion 4x4 T-Shirt
 	unlock_packed_bools(32114, 32114) --Pink Gradient Sleeveless Puffer
 	unlock_packed_bools(32124, 32124) --Fade Broker Modern Racing
@@ -10868,7 +10868,7 @@ FRESH:add_button("Unlock All", function()
 	unlock_packed_bools(32154, 32154) --Pink Gradient Puffer
 	unlock_packed_bools(32164, 32164) --Red Redwood Retro Racing
 	unlock_packed_bools(32174, 32174) --Crash Out Print Hoodie
-	unlock_packed_bools(32224, 32224) --Tuned For Speed Racing Suit
+	unlock_packed_bools(32224, 32224) --Tuned For Velocidad Racing Suit
 	unlock_packed_bools(32319, 32323) --police5 trade price
 	unlock_packed_bools(34262, 34361) --LD Organics
 	unlock_packed_bools(32273, 32273) --White Born x Raised T-Shirt
@@ -10879,23 +10879,23 @@ FRESH:add_button("Unlock All", function()
 	unlock_packed_bools(32366, 32366) --Declasse Draugur (Trade Price)
 	unlock_packed_bools(32407, 32408) --Bottom Dollar Jacket, The Bottom Dollar
 	unlock_packed_bools(34372, 34375) --Horror Pumpkin, Dinka Kanjo SJ (Trade Price), Dinka Postlude (Trade Price), Black LD Organics Cap / White LD Organics T-Shirt
-	unlock_packed_bools(34378, 34411) --Junk Energy Chute Bag, Junk Energy Chute, Pumpkin T-Shirt, Pacific Standard Varsity, Pacific Standard Sweater, Cliffford Varsity, Cliffford Hoodie, The Diamond Casino Varsity, The Diamond Strike Vest, Strickler Hat, Sinsimito Cuban Shirt, CLO_E1M_O_MUM, Manor Geo Forwards Cap, Apricot Perseus Forwards Cap, Still Slipping Tie-dye Forwards Cap, Lemon Festive Beer Hat, Bigness Hand-drawn Dome, Grimy Stitched, Pale Stitched, Gray Cracked Puppet, Blushed Cracked Puppet, Green Emissive Lady Liberty, President, Gold Beat Off Earphones, White Spiked Gauntlet (L), Manor Geo Hoodie, Pumpkin Hoodie, LS Smoking Jacket, Hand-Drawn Biker Bomber, Have You Seen Me? Sweater, Still Slipping Tie-dye T-Shirt, Manor Geo Track Pants, Apricot Perseus Track Pants, Sasquatch
-	unlock_packed_bools(34415, 34510) --Green Vintage Frank, Brown Vintage Frank, Gray Vintage Frank, Pale Vintage Mummy, Green Vintage Mummy, Weathered Vintage Mummy, Conquest, Death, Famine, War, Black Tech Demon, Gray Tech Demon, White Tech Demon, Green Tech Demon, Orange Tech Demon, Purple Tech Demon, Pink Tech Demon, Red Detail Tech Demon, Blue Detail Tech Demon, Yellow Detail Tech Demon, Green Detail Tech Demon, Pink Detail Tech Demon, Orange & Gray Tech Demon, Red Tech Demon, Camo Tech Demon, Aqua Camo Tech Demon, Brown Digital Tech Demon, Gold Tech Demon, Orange & Cream Tech Demon, Green & Yellow Tech Demon, Pink Floral Tech Demon, Black & Green Tech Demon, White & Red Tech Demon, Carbon Tech Demon, Carbon Teal Tech Demon, Black & White Tech Demon, Painted Tiger, Gray Painted Tiger, Gold Painted Tiger, Ornate Painted Tiger, Gray Yeti Flat Cap, Woodland Yeti Flat Cap, Green FB Flat Cap, Blue FB Flat Cap, Gray Lézard Flat Cap, Green Lézard Flat Cap, Light Plaid Lézard Flat Cap, Dark Plaid Lézard Flat Cap, White Striped Lézard Flat Cap, Red Striped Lézard Flat Cap, Brown Crevis Flat Cap, Gray Crevis Flat Cap, Black Broker Flat Cap, Burgundy Broker Flat Cap, White Beat Off Earphones, Yellow Beat Off Earphones, Salmon Beat Off Earphones, Orange Beat Off Earphones, Purple Beat Off Earphones, Pink Beat Off Earphones, Turquoise Beat Off Earphones, Blue Beat Off Earphones, Black Beat Off Earphones, Gray Beat Off Earphones, Teal Beat Off Earphones, Red Beat Off Earphones, Wild Striped Pool Sliders, Neon Striped Pool Sliders, Black SC Coin Pool Sliders, White SC Coin Pool Sliders, Black SC Pattern Pool Sliders, Pink SC Pattern Pool Sliders, Blue SC Pattern Pool Sliders, Camo Yeti Pool Sliders, Gray Camo Yeti Pool Sliders, Black Bigness Pool Sliders, Purple Bigness Pool Sliders, Camo Bigness Pool Sliders, Black Blagueurs Pool Sliders, White Blagueurs Pool Sliders, Pink Blagueurs Pool Sliders, Gray Cimicino Pool Sliders, Rouge Cimicino Pool Sliders, Navy DS Pool Sliders, Red DS Pool Sliders, Floral Güffy Pool Sliders, Green Güffy Pool Sliders, White Güffy Pool Sliders, Blue Heat Pool Sliders, Red ProLaps Pool Sliders, Black LD Organics T-Shirt, Green UFO Boxer Shorts, White UFO Boxer Shorts, Gray Believe Backwards Cap, Black Believe Backwards Cap, Glow Believe Backwards Cap
+	unlock_packed_bools(34378, 34411) --Junk Energy Chute Bag, Junk Energy Chute, Pumpkin T-Shirt, Pacific Standard Varsity, Pacific Standard Sweater, Cliffford Varsity, Cliffford Hoodie, The Diamond Casino Varsity, The Diamond Strike Vest, Strickler Hat, Sinsimito Cuban Shirt, CLO_E1M_O_MUM, Manor Geo Forwards Cap, Apricot Perseus Forwards Cap, Still Slipping Tie-dye Forwards Cap, Lemon Festive Beer Hat, Bigness Hand-drawn Dome, Grimy Stitched, Pale Stitched, Gray Cracked Puppet, Blushed Cracked Puppet, Green Emissive Lady Liberty, President, Gold Beat Desactivado Earphones, White Spiked Gauntlet (L), Manor Geo Hoodie, Pumpkin Hoodie, LS Smoking Jacket, Hand-Drawn Biker Bomber, Have You Seen Me? Sweater, Still Slipping Tie-dye T-Shirt, Manor Geo Track Pants, Apricot Perseus Track Pants, Sasquatch
+	unlock_packed_bools(34415, 34510) --Green Vintage Frank, Brown Vintage Frank, Gray Vintage Frank, Pale Vintage Mummy, Green Vintage Mummy, Climaed Vintage Mummy, Conquest, Death, Famine, War, Black Tech Demon, Gray Tech Demon, White Tech Demon, Green Tech Demon, Orange Tech Demon, Purple Tech Demon, Pink Tech Demon, Red Detail Tech Demon, Blue Detail Tech Demon, Yellow Detail Tech Demon, Green Detail Tech Demon, Pink Detail Tech Demon, Orange & Gray Tech Demon, Red Tech Demon, Camo Tech Demon, Aqua Camo Tech Demon, Brown Digital Tech Demon, Gold Tech Demon, Orange & Cream Tech Demon, Green & Yellow Tech Demon, Pink Floral Tech Demon, Black & Green Tech Demon, White & Red Tech Demon, Carbon Tech Demon, Carbon Teal Tech Demon, Black & White Tech Demon, Painted Tiger, Gray Painted Tiger, Gold Painted Tiger, Ornate Painted Tiger, Gray Yeti Flat Cap, Woodland Yeti Flat Cap, Green FB Flat Cap, Blue FB Flat Cap, Gray Lézard Flat Cap, Green Lézard Flat Cap, Light Plaid Lézard Flat Cap, Dark Plaid Lézard Flat Cap, White Striped Lézard Flat Cap, Red Striped Lézard Flat Cap, Brown Crevis Flat Cap, Gray Crevis Flat Cap, Black Broker Flat Cap, Burgundy Broker Flat Cap, White Beat Desactivado Earphones, Yellow Beat Desactivado Earphones, Salmon Beat Desactivado Earphones, Orange Beat Desactivado Earphones, Purple Beat Desactivado Earphones, Pink Beat Desactivado Earphones, Turquoise Beat Desactivado Earphones, Blue Beat Desactivado Earphones, Black Beat Desactivado Earphones, Gray Beat Desactivado Earphones, Teal Beat Desactivado Earphones, Red Beat Desactivado Earphones, Wild Striped Pool Sliders, Neon Striped Pool Sliders, Black SC Coin Pool Sliders, White SC Coin Pool Sliders, Black SC Pattern Pool Sliders, Pink SC Pattern Pool Sliders, Blue SC Pattern Pool Sliders, Camo Yeti Pool Sliders, Gray Camo Yeti Pool Sliders, Black Bigness Pool Sliders, Purple Bigness Pool Sliders, Camo Bigness Pool Sliders, Black Blagueurs Pool Sliders, White Blagueurs Pool Sliders, Pink Blagueurs Pool Sliders, Gray Cimicino Pool Sliders, Rouge Cimicino Pool Sliders, Navy DS Pool Sliders, Red DS Pool Sliders, Floral Güffy Pool Sliders, Green Güffy Pool Sliders, White Güffy Pool Sliders, Blue Heat Pool Sliders, Red ProLaps Pool Sliders, Black LD Organics T-Shirt, Green UFO Boxer Shorts, White UFO Boxer Shorts, Gray Believe Atráswards Cap, Black Believe Atráswards Cap, Glow Believe Atráswards Cap
 	unlock_packed_bools(34703, 34705) --White Vintage Vampire, Dark Green Vintage Vampire, Light Green Vintage Vampire
 	unlock_packed_bools(34730, 34737) --Green Festive Beer Hat, Red Snowflake Beer Hat, Blue Snowflake Beer Hat, Red Holly Beer Hat, Pisswasser Festive Beer Hat, Blarneys Festive Beer Hat, Red Reindeer Beer Hat, Borfmas Beer Hat
 	unlock_packed_bools(34761, 34761) --Gooch Outfit
 	unlock_packed_bools(36630, 36654) --Snowman
 	unlock_packed_bools(36699, 36770) --Ice Vinyl, Ice Vinyl Cut, Mustard Vinyl, Mustard Vinyl Cut, Dark Blue Vinyl, Dark Blue Vinyl Cut, Yellow SN Rooster Revere Collar, Red SC Dragon Revere Collar, Blue SC Dragon Revere Collar, Camo Roses Slab Denim, Orange Trickster Type Denim, Black VDG Cardigan, Blue DS Panthers Cardigan, Red DS Panthers Cardigan, Pink SC Baroque Cardigan, Downtown Cab Co. Revere Collar, Valentines Blazer, 420 Smoking Jacket, Yeti Year of the Rabbit T-Shirt, Gray Yeti Combat Shirt, Black Sprunk Festive, Dark Logger Festive, White Logger Festive, Green Logger Festive, Red Logger Festive, Blue Patriot Logo Festive, Black Patriot Logo Festive, Blue Patriot Festive, Red Patriot Festive, Red Pisswasser Festive, Gold Pisswasser Festive, Red Pisswasser Logo Festive, Gold Pisswasser Logo Festive, Green Pride Brew Festive, Yellow Pride Brew Festive, Yellow Holly Pride Festive, White Holly Pride Festive, Sprunk Snowflakes Festive, Broker Checkerboard T-Shirt, Yeti Ape Tucked T-Shirt, Black Bigness Ski, White Bigness Ski, Black Enema Flourish Ski, Teal Enema Flourish Ski, Magenta Enema Flourish Ski, Camo Roses Slab Forwards, Lime Leopard Slab Forwards, Red SC Dragon Embroidered, Classic DS Tiger Embroidered, Gray DS Tiger Embroidered, Black VDG Bandana Wide, Orange Trickster Type Wide, Gray Yeti Battle Pants, Broker Checkerboard Cargos, 420 Smoking Pants, Camo Roses Slab Canvas, Lime Leopard Slab Canvas, White Signs Squash Ugglies & Socks, Traditional Painted Rabbit, Twilight Painted Rabbit, Noh Painted Rabbit, Lime SC Coin Wraps, Pink SC Coin Wraps, Tan Bracelet Ensemble, Red Manor Round Brow Shades, Le Chien Whistle Necklace, Heartbreak Pendant, Rabbit, Budonk-adonk!, The Red-nosed, The Nutcracker, The GoPostal
-	unlock_packed_bools(36774, 36788) --Johnny On The Spot Polo, The Gooch Mask, Snowman Outfit, Gold New Year Glasses, Silver New Year Glasses, Rainbow New Year Glasses, Yellow Holly Beer Hat, Green Reindeer Beer Hat, Zebra Dome, Purple Snakeskin Spiked, Manor Surano Jacket, Pistol Mk II - Season's Greetings (Livery), Pump Shotgun - Dildodude Camo (Livery), Micro SMG - Dildodude Camo (Livery)
+	unlock_packed_bools(36774, 36788) --Johnny Activado The Spot Polo, The Gooch Mask, Snowman Outfit, Gold New Year Glasses, Silver New Year Glasses, Rainbow New Year Glasses, Yellow Holly Beer Hat, Green Reindeer Beer Hat, Zebra Dome, Purple Snakeskin Spiked, Manor Surano Jacket, Pistol Mk II - Season's Greetings (Livery), Pump Shotgun - Dildodude Camo (Livery), Micro SMG - Dildodude Camo (Livery)
 	unlock_packed_bools(36809, 36809) --Nemesis T-Shirts
 	unlock_packed_bools(41316, 41325) --Ghosts Exposed
 	unlock_packed_bools(41593, 41593) --The Merryweather Outfit
 	unlock_packed_bools(41656, 41659) --Squaddie (Trade Price), Suede Bucks Finish, Employee of the Month Finish, Uncle T Finish
 	unlock_packed_bools(41671, 41671) --Manchez Scout (Trade Price)
-	unlock_packed_bools(41802, 41802) --Johnny On The Spot Polo
+	unlock_packed_bools(41802, 41802) --Johnny Activado The Spot Polo
 	unlock_packed_bools(41894, 41894) --Hinterland Work T-Shirt
-	unlock_packed_bools(41897, 41902) --Love Fist T-Shirt, San Andreas Federal Reserve T-Shirt, Los Santos, San Andreas T-Shirt, Heist Mask T-Shirt, Los Santos Map T-Shirt, PRB T-Shirt
-	unlock_packed_bools(41915, 41980) --LS Pounders Cap, Vom Feuer Camo Cap, Western MC Cap, Red & White Ammu-Nation Cap, Santo Capra Cap, Alpine Hat, Alien Tracksuit Pants, Scarlet Vintage Devil Mask, Amber Vintage Devil Mask, Green Vintage Devil Mask, Green Vintage Witch Mask, Yellow Vintage Witch Mask, Orange Vintage Witch Mask, Green Vintage Skull Mask, White Vintage Skull Mask, Brown Vintage Skull Mask, Orange Vintage Werewolf Mask, Blue Vintage Werewolf Mask, Brown Vintage Werewolf Mask, Green Vintage Zombie Mask, Brown Vintage Zombie Mask, Teal Vintage Zombie Mask, Turkey Mask, Royal Calacas Mask, Maritime Calacas Mask, Romance Calacas Mask, Floral Calacas Mask, Stanier LE Cruiser (Trade Price), The Homie, The Retired Criminal, The Groupie, Black SC Ornate Mini Dress, Dark Manor Racing Suit, Bright Manor Racing Suit, Hinterland Bomber Jacket, Red Happy Moon T-Shirt, Black Happy Moon T-Shirt, White Happy Moon T-Shirt, Rockstar Says Relax Tucked T-Shirt, Trevor Heist Mask Tucked T-Shirt, Franklin Heist Mask Tucked T-Shirt, Michael Heist Mask Tucked T-Shirt, Bugstars Tucked T-Shirt, STD Contractors Tucked T-Shirt, Black Los Santos Tucked T-Shirt, San Andreas Republic Tucked T-Shirt, Go Go Space Monkey Tucked T-Shirt, Vom Feuer Camo Tucked T-Shirt, Black SC Ornate Tucked T-Shirt, Warstock Tucked T-Shirt, Western San Andreas Tucked T-Shirt, Ride or Die Tucked T-Shirt, Bourgeoix Tucked T-Shirt, Blêuter'd Tucked T-Shirt, Cherenkov Tucked T-Shirt, Moodymann Portrait Tucked T-Shirt, Rockstar Silver Jubilee Tucked T-Shirt, Rockstar NY Hoodie, Dollar Daggers Hoodie, Merryweather Hoodie, Go Go Space Monkey Hoodie, Rockstar Lion Crest T-Shirt, Ammu-Nation Baseball T-Shirt, Alien Hooded Tracksuit Top, Manor Benefactor Surano T-Shirt, LS Smoking Jacket
+	unlock_packed_bools(41897, 41902) --Love Fist T-Shirt, San Andreas Federal Reserve T-Shirt, Los Santos, San Andreas T-Shirt, Golpe Mask T-Shirt, Los Santos Map T-Shirt, PRB T-Shirt
+	unlock_packed_bools(41915, 41980) --LS Pounders Cap, Vom Feuer Camo Cap, Western MC Cap, Red & White Ammu-Nation Cap, Santo Capra Cap, Alpine Hat, Alien Tracksuit Pants, Scarlet Vintage Devil Mask, Amber Vintage Devil Mask, Green Vintage Devil Mask, Green Vintage Witch Mask, Yellow Vintage Witch Mask, Orange Vintage Witch Mask, Green Vintage Skull Mask, White Vintage Skull Mask, Brown Vintage Skull Mask, Orange Vintage Werewolf Mask, Blue Vintage Werewolf Mask, Brown Vintage Werewolf Mask, Green Vintage Zombie Mask, Brown Vintage Zombie Mask, Teal Vintage Zombie Mask, Turkey Mask, Royal Calacas Mask, Maritime Calacas Mask, Romance Calacas Mask, Floral Calacas Mask, Stanier LE Cruiser (Trade Price), The Homie, The Retired Criminal, The Groupie, Black SC Ornate Mínimoi Dress, Dark Manor Racing Suit, Bright Manor Racing Suit, Hinterland Bomber Jacket, Red Happy Moon T-Shirt, Black Happy Moon T-Shirt, White Happy Moon T-Shirt, Rockstar Says Relax Tucked T-Shirt, Trevor Golpe Mask Tucked T-Shirt, Franklin Golpe Mask Tucked T-Shirt, Michael Golpe Mask Tucked T-Shirt, Bugstars Tucked T-Shirt, STD Contractors Tucked T-Shirt, Black Los Santos Tucked T-Shirt, San Andreas Republic Tucked T-Shirt, Go Go Space Monkey Tucked T-Shirt, Vom Feuer Camo Tucked T-Shirt, Black SC Ornate Tucked T-Shirt, Warstock Tucked T-Shirt, Western San Andreas Tucked T-Shirt, Ride or Die Tucked T-Shirt, Bourgeoix Tucked T-Shirt, Blêuter'd Tucked T-Shirt, Cherenkov Tucked T-Shirt, Moodymann Portrait Tucked T-Shirt, Rockstar Silver Jubilee Tucked T-Shirt, Rockstar NY Hoodie, Dollar Daggers Hoodie, Merryweather Hoodie, Go Go Space Monkey Hoodie, Rockstar Lion Crest T-Shirt, Ammu-Nation Baseball T-Shirt, Alien Hooded Tracksuit Top, Manor Benefactor Surano T-Shirt, LS Smoking Jacket
 	unlock_packed_bools(41994, 41994) --Junk Energy Racing Suit
 	unlock_packed_bools(41996, 41996) --??? T-Shirt
 	unlock_packed_bools(42054, 42054) --Strapz Bandana
@@ -10906,20 +10906,20 @@ FRESH:add_button("Unlock All", function()
 	unlock_packed_bools(42125, 42125) --riot trade price
 	unlock_packed_bools(42128, 42146) --eCola Festive Sweater, Sprunk Festive Sweater, 1 Party Hat, 2 Party Hat, 3 Party Hat, 4 Party Hat, 5 Party Hat, 6 Party Hat, 7 Party Hat, 8 Party Hat, 9 Party Hat, 10 Party Hat, 11 Party Hat, 12 Party Hat, 13 Party Hat, 14 Party Hat, 15 Party Hat, Bronze Party Outfit, Silver Party Outfit
 	unlock_packed_bools(42148, 42149) --Snowball Launcher, DâM-FunK - Even the Score
-	unlock_packed_bools(42152, 42190) --The LSDS, The McTony Security, Wooden Dragon Mask, Contrast Dragon Mask, Regal Dragon Mask, Midnight Dragon Mask, Pink Heart Shades, Red Heart Shades, Orange Heart Shades, Yellow Heart Shades, Green Heart Shades, Blue Heart Shades, Purple Heart Shades, Black Heart Shades, Fireworks Bucket Hat, Stars and Stripes Bucket Hat, Lady Liberty Bucket Hat, Green Festive Tree Hat, Red Festive Tree Hat, Brown Festive Reindeer Hat, White Festive Reindeer Hat, Bronze New Year's Hat, Gold New Year's Hat, Silver New Year's Hat, Sprunk x eCola Bodysuit, Rockstar Racing Suit, Rockstar Helmet, Coil Earth Day Tee, IR Earth Day Tee, White High Brass Tee, Black High Brass Tee, Black Lunar New Year Tee, Bigness Carnival Sports Tee, Green 420 Dress, Red Lunar New Year Dress, Carnival Sun Dress, Carnival Bandana, Bigness Carnival Bucket Hat, Black 420 Forwards Cap
+	unlock_packed_bools(42152, 42190) --The LSDS, The McTony Security, Wooden Dragon Mask, Contrast Dragon Mask, Regal Dragon Mask, Midnight Dragon Mask, Pink Heart Shades, Red Heart Shades, Orange Heart Shades, Yellow Heart Shades, Green Heart Shades, Blue Heart Shades, Purple Heart Shades, Black Heart Shades, Fireworks Bucket Hat, Stars and Stripes Bucket Hat, Lady Liberty Bucket Hat, Green Festive Tree Hat, Red Festive Tree Hat, Brown Festive Reindeer Hat, White Festive Reindeer Hat, Bronze New Year's Hat, Gold New Year's Hat, Silver New Year's Hat, Sprunk x eCola Bodysuit, Rockstar Racing Suit, Rockstar Helmet, Coil Earth Día Tee, IR Earth Día Tee, White High Brass Tee, Black High Brass Tee, Black Lunar New Year Tee, Bigness Carnival Sports Tee, Green 420 Dress, Red Lunar New Year Dress, Carnival Sun Dress, Carnival Bandana, Bigness Carnival Bucket Hat, Black 420 Forwards Cap
 	unlock_packed_bools(42217, 42217) --Cluckin' Bell Forwards Cap
 	unlock_packed_bools(42233, 42234) --BOXVILLE6, BENSON2
 	unlock_packed_bools(42239, 42242) --CAVALCADE3, IMPALER5, POLGAUNTLET, DORADO
 	unlock_packed_bools(42244, 42247) --BALLER8, TERMINUS, BOXVILLE6, BENSON2
 	unlock_packed_bools(42249, 42249) --Candy Cane
-	unlock_packed_bools(42280, 42284) --Unlock pizzaboy, poldominator10, poldorado, polimpaler5, polimpaler6 trade price.
+	unlock_packed_bools(42280, 42284) --Desbloquear pizzaboy, poldominator10, poldorado, polimpaler5, polimpaler6 trade price.
 	unlock_packed_bools(42257, 42268) --The Street Artist, Ghosts Exposed 2024, Ghosts Exposed Outfit
-	unlock_packed_bools(42286, 42287) --Ludendorff Survivor, Pizza This... Forwards Cap, Pizza This... Backwards Cap, Pizza This... Outfit
+	unlock_packed_bools(42286, 42287) --Ludendorff Survivor, Pizza This... Forwards Cap, Pizza This... Atráswards Cap, Pizza This... Outfit
 	unlock_packed_bools(51189, 51189) -- Spray Can
 	unlock_packed_bools(51196, 51197) --The Shocker, Bottom Dollar Bail Enforcement tint for Stungun
-	unlock_packed_bools(51215, 51258) --Alpine Outfit, Brown Alpine Hat, Pisswasser Good Time Tee, Gold Pisswasser Shorts, Mid Autumn Festival Shirt, Mid Autumn Festival Sundress (female), Día de Muertos Tee, Halloween Spooky Tee, Black Demon Goat Mask, Red Demon Goat Mask, Tan Demon Goat Mask, Black Creepy Cat Mask, Gray Creepy Cat Mask, Brown Creepy Cat Mask, Gray Hooded Skull Mask, Red Hooded Skull Mask, Blue Hooded Skull Mask, Red Flaming Skull Mask, Green Flaming Skull Mask, Orange Flaming Skull Mask, Orange Glow Skeleton Onesie, Purple Glow Skeleton Onesie, Green Glow Skeleton Onesie, Tan Turkey, Brown Turkey, Rockstar Red Logo Sweater, Silver Gun Necklace, Black Gun Necklace, Gold Gun Necklace, Rose Gun Necklace, Bronze Gun Necklace, Black Yeti Fall Sweater, White Yeti Fall Sweater, Red Yeti Fall Sweater, The Diamond Jackpot Tee, Cobalt Jackal Racing Jersey, Cobalt Jackal Racing Pants, Khaki 247 Chino Pants, Demon Biker Jacket, Purple Güffy Cardigan, SA Denim Biker Jacket, Green 247 Shirt, Barbed Wire Shirt, Ride or Die Gaiter, Pizza This... Tee
+	unlock_packed_bools(51215, 51258) --Alpine Outfit, Brown Alpine Hat, Pisswasser Good Hora Tee, Gold Pisswasser Shorts, Mid Autumn Festival Shirt, Mid Autumn Festival Sundress (female), Día de Muertos Tee, Halloween Spooky Tee, Black Demon Goat Mask, Red Demon Goat Mask, Tan Demon Goat Mask, Black Creepy Cat Mask, Gray Creepy Cat Mask, Brown Creepy Cat Mask, Gray Hooded Skull Mask, Red Hooded Skull Mask, Blue Hooded Skull Mask, Red Flaming Skull Mask, Green Flaming Skull Mask, Orange Flaming Skull Mask, Orange Glow Skeleton Activadoesie, Purple Glow Skeleton Activadoesie, Green Glow Skeleton Activadoesie, Tan Turkey, Brown Turkey, Rockstar Red Logo Sweater, Silver Gun Necklace, Black Gun Necklace, Gold Gun Necklace, Rose Gun Necklace, Bronze Gun Necklace, Black Yeti Fall Sweater, White Yeti Fall Sweater, Red Yeti Fall Sweater, The Diamond Jackpot Tee, Cobalt Jackal Racing Jersey, Cobalt Jackal Racing Pants, Khaki 247 Chino Pants, Demon Biker Jacket, Purple Güffy Cardigan, SA Denim Biker Jacket, Green 247 Shirt, Barbed Wire Shirt, Ride or Die Gaiter, Pizza This... Tee
 	if is_player_male then
-		unlock_packed_bools(3483, 3492) --Death Defying T-Shirt (Male), For Hire T-Shirt (Male), Gimme That T-Shirt (Male), Asshole T-Shirt (Male), Can't Touch This T-Shirt (Male), Decorated T-Shirt (Male), Psycho Killer T-Shirt (Male), One Man Army T-Shirt (Male), Shot Caller T-Shirt (Male), Showroom T-Shirt (Male)
+		unlock_packed_bools(3483, 3492) --Death Defying T-Shirt (Male), For Hire T-Shirt (Male), Gimme That T-Shirt (Male), Asshole T-Shirt (Male), Can't Touch This T-Shirt (Male), Decorated T-Shirt (Male), Psycho Killer T-Shirt (Male), Activadoe Man Army T-Shirt (Male), Shot Caller T-Shirt (Male), Showroom T-Shirt (Male)
 		unlock_packed_bools(6082, 6083) --Black Benny's T-Shirt, White Benny's T-Shirt
 		unlock_packed_bools(6097, 6097) --I Heart LC (T-Shirt) (Male)
 		unlock_packed_bools(6169, 6169) --DCTL T-Shirt (Male)
@@ -10944,7 +10944,7 @@ FRESH:add_button("Unlock All", function()
 		unlock_packed_bools(41273, 41284) --Monkey (Tattoo) (Male), Dragon (Tattoo) (Male), Snake (Tattoo) (Male), Goat (Tattoo) (Male), Rat (Tattoo) (Male), Rabbit (Tattoo) (Male), Ox (Tattoo) (Male), Pig (Tattoo) (Male), Rooster (Tattoo) (Male), Dog (Tattoo) (Male), Horse (Tattoo) (Male), Tiger (Tattoo) (Male)
 		unlock_packed_bools(41293, 41293) --Hinterland Work T-Shirt (Male)
 	else
-		unlock_packed_bools(3496, 3505) --Death Defying Top (Female), For Hire Top (Female), Gimme That Top (Female), Asshole Top (Female), Can't Touch This Top (Female), Decorated Top (Female), Psycho Killer Top (Female), One Man Army Top (Female), Shot Caller Top (Female), Showroom Top (Female)
+		unlock_packed_bools(3496, 3505) --Death Defying Top (Female), For Hire Top (Female), Gimme That Top (Female), Asshole Top (Female), Can't Touch This Top (Female), Decorated Top (Female), Psycho Killer Top (Female), Activadoe Man Army Top (Female), Shot Caller Top (Female), Showroom Top (Female)
 		unlock_packed_bools(6091, 6092) --Black Benny's T-Shirt, White Benny's T-Shirt
 		unlock_packed_bools(6106, 6106) --I Heart LC (T-Shirt) (Female)
 		unlock_packed_bools(6181, 6181) --DCTL T-Shirt (Female)
@@ -12499,16 +12499,16 @@ FRESH:add_button("Unlock All", function()
 	stats.set_int(MPX() .. "LIFETIME_BKR_SELL_EARNINGS2", 20000000)
 	stats.set_int(MPX() .. "LIFETIME_BKR_SELL_EARNINGS3", 20000000)
 	stats.set_int(MPX() .. "LIFETIME_BKR_SELL_EARNINGS4", 20000000)
-	stats.set_int(MPX() .. "LFETIME_BIKER_BUY_COMPLET6", 10) --Allow buying of Stank Breath acid name.
-	stats.set_int(MPX() .. "LFETIME_BIKER_SELL_COMPLET6", 10) --Allow buying of Squatch Bait acid name.
-	stats.set_packed_stat_int(41241, 5) --Allow buying of Chair Shot acid name.
-	stats.set_int(MPX() .. "LIFETIME_BKR_SELL_EARNINGS6", 1000000) --Allow buying of Fck Your Sleep acid name.
+	stats.set_int(MPX() .. "LFETIME_BIKER_BUY_COMPLET6", 10) --Todosow buying of Stank Breath acid name.
+	stats.set_int(MPX() .. "LFETIME_BIKER_SELL_COMPLET6", 10) --Todosow buying of Squatch Bait acid name.
+	stats.set_packed_stat_int(41241, 5) --Todosow buying of Chair Shot acid name.
+	stats.set_int(MPX() .. "LIFETIME_BKR_SELL_EARNINGS6", 1000000) --Todosow buying of Fck Your Sleep acid name.
 	stats.set_packed_stat_int(7666, 25) --Fill CEO office with money
 	unlock_packed_bools(7553, 7594) --Fill CEO office with junk
 	stats.set_packed_stat_int(9357, 4) --Fill Clubhouse with money
 	unlock_packed_bools(9400, 9414) --Fill Clubhouse with junk
-	stats.set_int(MPX() .. "XMAS2023_ADV_MODE_WINS", 6) --Unlock Christmas 2023 liveries.
-	stats.set_int("MPPLY_XMAS23_PLATES0", 3) -- ECola & Sprunk Plates
+	stats.set_int(MPX() .. "XMAS2023_ADV_MODE_WINS", 6) --Desbloquear Christmas 2023 liveries.
+	stats.set_int("MPPLY_XMAS23_PLATES0", 3) -- ECola & Sprunk Matrículas
 	stats.set_int(MPX() .. "COUNT_HOTRING_RACE", 20) -- Liveries for hotring
 	stats.set_int(MPX() .. "FINISHED_SASS_RACE_TOP_3", 20) -- Trade price for hotring/everon2
 	stats.set_int(MPX() .. "AWD_DISPATCHWORK", 5) --Trade price for polgreenwood.
@@ -13409,14 +13409,14 @@ FRESH:add_button("Unlock All", function()
 	stats.set_packed_stat_int(18985, 3) --Parts of the Thruster (exhaust, small rotors and handlebars/joysticks)
 	stats.set_packed_stat_int(18986, 3) --Parts of the Avenger (wing, nose camera and rotor blade)
 	stats.set_packed_stat_int(22050, 5) --Oppressor MK2 Trade Price
-	stats.set_packed_stat_int(22051, 50) --Carved Wooden Box (Nightclub)
+	stats.set_packed_stat_int(22051, 50) --Carved Wooden Box (Nocheclub)
 	stats.set_packed_stat_int(22052, 100) --Ammo Box
 	stats.set_packed_stat_int(22053, 20) --Meth
 	stats.set_packed_stat_int(22054, 80) --Weed
 	stats.set_packed_stat_int(22055, 60) --Passports
 	stats.set_packed_stat_int(22056, 40) --Crumpled Cash
 	stats.set_packed_stat_int(22057, 10) --Impotent Rage Statue
-	stats.set_packed_stat_int(22058, 20) --Gold Business Battle Trophy (Nightclub)
+	stats.set_packed_stat_int(22058, 20) --Gold Business Battle Trophy (Nocheclub)
 	stats.set_packed_stat_int(22063, 20) --Dinka Go Go Monkey Blista
 	stats.set_packed_stat_int(41237, 10) --Taxi Livery
 	stats.set_int(MPX() .. "HOLDUPS_BITSET", -1)
@@ -13477,34 +13477,34 @@ FRESH:add_button("Unlock All", function()
 	stats.set_int(MPX() .. "RANKAP_UNLK_2", -1)
 	stats.set_int(MPX() .. "RANKAP_UNLK_3", -1)
 	stats.set_int(MPX() .. "CHAR_CREWUNLOCK_1_UNLCK", -1)
-	stats.set_int(MPX() .. "PISTOL_ENEMY_KILLS", 600) -- Weapon Tints for Pistol
-	stats.set_int(MPX() .. "CMBTPISTOL_ENEMY_KILLS", 600) -- Weapon Tints for Combat Pistol
-	stats.set_int(MPX() .. "APPISTOL_ENEMY_KILLS", 600) -- Weapon Tints for AP Pistol
-	stats.set_int(MPX() .. "MICROSMG_ENEMY_KILLS", 600) -- Weapon Tints for Micro SMG
-	stats.set_int(MPX() .. "SMG_ENEMY_KILLS", 600) -- Weapon Tints for SMG
-	stats.set_int(MPX() .. "ASLTSMG_ENEMY_KILLS", 600) -- Weapon Tints for Assault SMG
-	stats.set_int(MPX() .. "ASLTRIFLE_ENEMY_KILLS", 600) -- Weapon Tints for Assault Rifle
-	stats.set_int(MPX() .. "CRBNRIFLE_ENEMY_KILLS", 600) -- Weapon Tints for Carbine Rifle
-	stats.set_int(MPX() .. "ADVRIFLE_ENEMY_KILLS", 600) -- Weapon Tints for Advanced Rifle
-	stats.set_int(MPX() .. "MG_ENEMY_KILLS", 600) -- Weapon Tints for MG
-	stats.set_int(MPX() .. "CMBTMG_ENEMY_KILLS", 600) -- Weapon Tints for Combat MG
-	stats.set_int(MPX() .. "PUMP_ENEMY_KILLS", 600) -- Weapon Tints for Pump Shotgun
-	stats.set_int(MPX() .. "SAWNOFF_ENEMY_KILLS", 600) -- Weapon Tints for Sawed-Off Shotgun
-	stats.set_int(MPX() .. "ASLTSHTGN_ENEMY_KILLS", 600) -- Weapon Tints for Assault Shotgun
-	stats.set_int(MPX() .. "SNIPERRFL_ENEMY_KILLS", 600) -- Weapon Tints for Sniper Rifle
-	stats.set_int(MPX() .. "HVYSNIPER_ENEMY_KILLS", 600) -- Weapon Tints for Heavy Sniper
-	stats.set_int(MPX() .. "GRNLAUNCH_ENEMY_KILLS", 600) -- Weapon Tints for Grenade Launcher
-	stats.set_int(MPX() .. "RPG_ENEMY_KILLS", 600) -- Weapon Tints for Rocket Launcher
-	stats.set_int(MPX() .. "MINIGUNS_ENEMY_KILLS", 600) -- Weapon Tints for Minigun
-	unlock_packed_bools(25010, 25010) -- Skip arena wall help.
-	unlock_packed_bools(25014, 25014) -- Skip arena wall tutorial.
+	stats.set_int(MPX() .. "PISTOL_ENEMY_KILLS", 600) -- Arma Tints for Pistol
+	stats.set_int(MPX() .. "CMBTPISTOL_ENEMY_KILLS", 600) -- Arma Tints for Combat Pistol
+	stats.set_int(MPX() .. "APPISTOL_ENEMY_KILLS", 600) -- Arma Tints for AP Pistol
+	stats.set_int(MPX() .. "MICROSMG_ENEMY_KILLS", 600) -- Arma Tints for Micro SMG
+	stats.set_int(MPX() .. "SMG_ENEMY_KILLS", 600) -- Arma Tints for SMG
+	stats.set_int(MPX() .. "ASLTSMG_ENEMY_KILLS", 600) -- Arma Tints for Assault SMG
+	stats.set_int(MPX() .. "ASLTRIFLE_ENEMY_KILLS", 600) -- Arma Tints for Assault Rifle
+	stats.set_int(MPX() .. "CRBNRIFLE_ENEMY_KILLS", 600) -- Arma Tints for Carbine Rifle
+	stats.set_int(MPX() .. "ADVRIFLE_ENEMY_KILLS", 600) -- Arma Tints for Advanced Rifle
+	stats.set_int(MPX() .. "MG_ENEMY_KILLS", 600) -- Arma Tints for MG
+	stats.set_int(MPX() .. "CMBTMG_ENEMY_KILLS", 600) -- Arma Tints for Combat MG
+	stats.set_int(MPX() .. "PUMP_ENEMY_KILLS", 600) -- Arma Tints for Pump Shotgun
+	stats.set_int(MPX() .. "SAWNOFF_ENEMY_KILLS", 600) -- Arma Tints for Sawed-Desactivado Shotgun
+	stats.set_int(MPX() .. "ASLTSHTGN_ENEMY_KILLS", 600) -- Arma Tints for Assault Shotgun
+	stats.set_int(MPX() .. "SNIPERRFL_ENEMY_KILLS", 600) -- Arma Tints for Sniper Rifle
+	stats.set_int(MPX() .. "HVYSNIPER_ENEMY_KILLS", 600) -- Arma Tints for Heavy Sniper
+	stats.set_int(MPX() .. "GRNLAUNCH_ENEMY_KILLS", 600) -- Arma Tints for Grenade Launcher
+	stats.set_int(MPX() .. "RPG_ENEMY_KILLS", 600) -- Arma Tints for Rocket Launcher
+	stats.set_int(MPX() .. "MINIGUNS_ENEMY_KILLS", 600) -- Arma Tints for Mínimoigun
+	unlock_packed_bools(25010, 25010) -- Saltar arena wall help.
+	unlock_packed_bools(25014, 25014) -- Saltar arena wall tutorial.
 	stats.set_int(MPX() .. "FIXER_HQ_OWNED", 1) -- Trade Price for buffalo4
 	unlock_packed_bools(32312, 32312)
 	stats.set_int(MPX() .. "REV_NV_KILLS", 50) -- Navy Revolver Kills
-	stats.set_int(MPX() .. "XM22_FLOW", -1) -- Acid Lab Unlock
-	stats.set_int(MPX() .. "XM22_MISSIONS", -1) -- Acid Lab Unlock
-	stats.set_int(MPX() .. "AWD_CALLME", tunables.get_int(654710993)) -- Acid Lab Equipment Unlock
-	stats.set_int(MPX() .. "H3_VEHICLESUSED", -1) -- Trade Price for Golpe del Casino Diamond Finale.
+	stats.set_int(MPX() .. "XM22_FLOW", -1) -- Acid Lab Desbloquear
+	stats.set_int(MPX() .. "XM22_MISSIONS", -1) -- Acid Lab Desbloquear
+	stats.set_int(MPX() .. "AWD_CALLME", tunables.get_int(654710993)) -- Acid Lab Equipment Desbloquear
+	stats.set_int(MPX() .. "H3_VEHICLESUSED", -1) -- Trade Price for Golpe del Casino Diamond Final.
 	stats.set_int(MPX() .. "H4_H4_DJ_MISSIONS", -1) -- Trade Price for weevil
 	stats.set_int(MPX() .. "H4_PROGRESS", -1) -- Trade Price for winky
 	stats.set_int(MPX() .. "TUNER_GEN_BS", -1) -- Trade Price for tailgater2
@@ -13523,7 +13523,7 @@ FRESH:add_button("Unlock All", function()
 end)
 FRESH:add_separator()
 Text("==========================")
-FRESH:add_button("Time Related Stats 1 Click Only", function()
+FRESH:add_button("Hora Related Estadísticas 1 Click Activadoly", function()
 	stats.set_int("MPPLY_TOTAL_PLAYING_TIME", 2073600000)
 	stats.set_int("MPPLY_LEADERBOARD_PLAYING_TIME", 2073600000)
 	stats.set_int("MPPLY_MP_PLAYING_TIME_NEW", 2073600000)
@@ -13592,7 +13592,7 @@ FRESH:add_button("Time Related Stats 1 Click Only", function()
 end)
 FRESH:add_separator()
 Text("==========================")
-FRESH:add_button("Bools Unlocks 1 Click Only", function()
+FRESH:add_button("Bools Desbloquears 1 Click Activadoly", function()
 	stats.set_bool(MPX() .. "AWD_TEEING_OFF", true)
 	stats.set_bool(MPX() .. "AWD_PARTY_NIGHT", true)
 	stats.set_bool(MPX() .. "AWD_BILLIONAIRE_GAMES", true)
@@ -13834,7 +13834,7 @@ FRESH:add_button("Bools Unlocks 1 Click Only", function()
 end)
 
 FRESH:add_separator()
-FRESH:add_button("Unlock Golpe del Casino Diamond Outfits", function()
+FRESH:add_button("Desbloquear Golpe del Casino Diamond Outfits", function()
 	stats.set_bool_masked(MPX() .. "CASINOHSTPSTAT_BOOL1", true, 63) -- Refuse Collectors
 	stats.set_bool_masked(MPX() .. "CASINOHSTPSTAT_BOOL2", true, 0) -- Undertakers
 	stats.set_bool_masked(MPX() .. "CASINOHSTPSTAT_BOOL2", true, 1) -- Valet Outfits
@@ -13842,12 +13842,12 @@ FRESH:add_button("Unlock Golpe del Casino Diamond Outfits", function()
 	stats.set_bool_masked(MPX() .. "CASINOHSTPSTAT_BOOL2", true, 4) -- FIB Suits
 	stats.set_bool_masked(MPX() .. "CASINOHSTPSTAT_BOOL2", true, 6) -- Gruppe Sechs Gear
 	stats.set_bool_masked(MPX() .. "CASINOHSTPSTAT_BOOL2", true, 7) -- Bugstars Uniforms
-	stats.set_bool_masked(MPX() .. "CASINOHSTPSTAT_BOOL2", true, 8) -- Maintenance
+	stats.set_bool_masked(MPX() .. "CASINOHSTPSTAT_BOOL2", true, 8) -- Principaltenance
 	stats.set_bool_masked(MPX() .. "CASINOHSTPSTAT_BOOL2", true, 9) -- Yung Ancestors
 	stats.set_bool_masked(MPX() .. "CASINOHSTPSTAT_BOOL2", true, 10) -- Firefighter Gear
-	stats.set_bool_masked(MPX() .. "CASINOHSTPSTAT_BOOL2", true, 11) -- Orderly Armor
-	stats.set_bool_masked(MPX() .. "CASINOHSTPSTAT_BOOL2", true, 12) -- Upscale Armor
-	stats.set_bool_masked(MPX() .. "CASINOHSTPSTAT_BOOL2", true, 13) -- Evening Armor
+	stats.set_bool_masked(MPX() .. "CASINOHSTPSTAT_BOOL2", true, 11) -- Orderly Armadura
+	stats.set_bool_masked(MPX() .. "CASINOHSTPSTAT_BOOL2", true, 12) -- Upscale Armadura
+	stats.set_bool_masked(MPX() .. "CASINOHSTPSTAT_BOOL2", true, 13) -- Evening Armadura
 	stats.set_bool_masked(MPX() .. "CASINOHSTPSTAT_BOOL2", true, 14) -- Reinforced: Padded Combat
 	stats.set_bool_masked(MPX() .. "CASINOHSTPSTAT_BOOL2", true, 15) -- Reinforced: Bulk Combat
 	stats.set_bool_masked(MPX() .. "CASINOHSTPSTAT_BOOL2", true, 16) -- Reinforced: Compact Combat
@@ -13860,44 +13860,44 @@ FRESH:add_button("Unlock Golpe del Casino Diamond Outfits", function()
 end)
 
 FRESH:add_separator()
-FRESH:add_button("Unlock All Tattos", function()
+FRESH:add_button("Desbloquear todo Tattos", function()
 	stats.set_int(MPX() .. "TATTOO_FM_CURRENT_32", -1)
 	for i = 0, 53 do
 		stats.set_int(MPX() .. "TATTOO_FM_UNLOCKS_" .. i, -1)
 	end
 end)
 
-FRESH:add_button("Unlock Skull Tatoo", function()
+FRESH:add_button("Desbloquear Skull Tatoo", function()
 	stats.set_bool(MPX() .. "AWD_500_HEADSHOTS", true)
 end)
 
 FRESH:add_separator()
-FRESH:add_button("Unlock Taxi Livery for Eudora", function()
+FRESH:add_button("Desbloquear Taxi Livery for Eudora", function()
 	stats.set_masked_int(MPX() .. "DLC22022PSTAT_INT536", 10, 16, 8)
 end)
 
-FRESH:add_button("Unlock Taxi Livery for Broadway", function()
+FRESH:add_button("Desbloquear Taxi Livery for Broadway", function()
 	stats.set_int(MPX() .. "AWD_TAXIDRIVER", 50)
 end)
 
-FRESH:add_button("Unlock Oppressor MKII Trade Price", function()
+FRESH:add_button("Desbloquear Oppressor MKII Trade Price", function()
 	stats.set_masked_int(MPX() .. "BUSINESSBATPSTAT_INT379", 5, 5, 5) --Pegassi Oppressor Mk II (Trade Price)
 end)
 
-Text("Join New Session Once And")
-Text("Notifications Will Stop")
+Text("Unirse New Sesión Activadoce And")
+Text("Notificaciones Will Stop")
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-LSCMUnlockeRecovery = Recoverys:add_tab("LSCM Unlocker")
+LSCMUnlockeRecovery = Recoverys:add_tab("LSCM Desbloquearer")
 
-LSCMUnlockeRecovery:add_button("Unlock All Rep Lvl 1000", function()
+LSCMUnlockeRecovery:add_button("Desbloquear todo Rep Lvl 1000", function()
 	for i = 262145 + 30958, 262145 + 30987 do
 		globals.set_float(i, 100000)
 	end
 end)
 
-LSCMUnlockeRecovery:add_button("LSCM Prize Ride Unlock", function()
+LSCMUnlockeRecovery:add_button("LSCM Prize Ride Desbloquear", function()
 	stats.set_bool(MPX() .. "CARMEET_PV_CHLLGE_CMPLT", true)
 end)
 
@@ -13914,11 +13914,11 @@ LSCMNote:add_text("before, all unlocks will be temporary only", function() end)
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
---© 2025 CSYON's Official Discord Server. All Rights Reserved--
+--© 2025 CSYON's Desactivadoicial Discord Server. Todos Rights Reserved--
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-CSYON7 = CSYON:add_tab("Csyon's Money Methods")
+CSYON7 = CSYON:add_tab("Csyon's Dinero Methods")
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -13936,9 +13936,9 @@ CARGO7 = 262145 + 22498
 CARGO8 = 262145 + 22499
 CARGO9 = 262145 + 22500
 
-local hanvalue = AirCargos:add_input_int("Crate Value")
+local hanvalue = AirCargos:add_input_int("Crate Valor")
 
-AirCargos:add_button("Set Value", function()
+AirCargos:add_button("Set Valor", function()
 	local HangarCrateVlaue = hanvalue:get_value()
 		globals.get_int(CARGO1, HangarCrateVlaue)
 	    globals.set_int(CARGO2, HangarCrateVlaue)
@@ -13950,14 +13950,14 @@ AirCargos:add_button("Set Value", function()
 	    globals.set_int(CARGO8, HangarCrateVlaue)
 		globals.set_int(CARGO9, HangarCrateVlaue)
 		gui.show_message(
-			"Crate Value Setter",
-			"Your Crates Values was set to " .. HangarCrateVlaue .. ".")
+			"Crate Valor Setter",
+			"Your Crates Valors was set to " .. HangarCrateVlaue .. ".")
 end)
 
 AirCargos:add_separator()
 
-RRC = AirCargos:add_checkbox("Remove Ron's Cut")
-script.register_looped("RonCutRemover", function(script)
+RRC = AirCargos:add_checkbox("Eliminar Ron's Cut")
+script.register_looped("RonCutEliminarr", function(script)
 	script:yield()
 	if RRC:is_enabled() then
 		globals.set_float(262145 + 22475, 0)
@@ -13968,8 +13968,8 @@ end)
 
 AirCargos:add_separator()
 
-DPRPG = AirCargos:add_checkbox("Disable Player RP Gain")
-script.register_looped("PlayerRPGainDisabler", function(script)
+DPRPG = AirCargos:add_checkbox("Desactivar Jugador RP Gain")
+script.register_looped("JugadorRPGainDesactivarr", function(script)
 	script:yield()
 	if DPRPG:is_enabled() then
 		globals.set_float(FMg + 1, 0)
@@ -13994,7 +13994,7 @@ DataEditiorAC = AirCargos:add_tab("Air Cargo Data Editor")
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-DataEditiorAC:add_button("Reset Crate Sell Stats-0/0 Sales", function()
+DataEditiorAC:add_button("Restablecer Crate Sell Estadísticas-0/0 Sales", function()
 	stats.set_int(MPX() .. "LFETIME_HANGAR_BUY_COMPLET", 0)
 	stats.set_int(MPX() .. "LFETIME_HANGAR_BUY_UNDERTAK", 0)
 	stats.set_int(MPX() .. "LFETIME_HANGAR_SEL_COMPLET", 0)
@@ -14003,20 +14003,20 @@ DataEditiorAC:add_button("Reset Crate Sell Stats-0/0 Sales", function()
 	stats.set_int(MPX() .. "HANGAR_CONTRABAND_TOTAL", 0)
 	stats.set_int(MPX() .. "LFETIME_HANGAR_EARN_BONUS", 0)
 	stats.set_int(MPX() .. "RIVAL_HANGAR_CRATES_STOLEN", 0)
-	globals.set_int(1575036, 11) ----PlayerSessionBlank--------
-	globals.set_int(1574589, 1) ----PlayerSessionNew----------
-	globals.set_int(1574589, 0) ----PlayerSessionNew------
+	globals.set_int(1575036, 11) ----JugadorSesiónBlank--------
+	globals.set_int(1574589, 1) ----JugadorSesiónNew----------
+	globals.set_int(1574589, 0) ----JugadorSesiónNew------
 end)
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-MoneyRemover = CSYON7:add_tab("Money Remover")
+MoneyRemover = CSYON7:add_tab("Dinero Eliminarr")
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 moneyremovervalue = globals.get_int(BV)
 MoneyRemover:add_imgui(function()
-	moneyremovervalue, used = ImGui.DragInt("Set Valor balístico", moneyremovervalue, 1000000, 1000000, 2147483647)
+	moneyremovervalue, used = ImGui.DragInt("Set Ballastic Valor", moneyremovervalue, 1000000, 1000000, 2147483647)
 	if used then
 		globals.set_int(BV, moneyremovervalue)
 	end
@@ -14210,19 +14210,19 @@ end
 
 local function render_weapon_editor()
 	ImGui.SetNextWindowSize(700, 420)
-	ImGui.OpenPopup("Weapon Editor")
+	ImGui.OpenPopup("Arma Editor")
 
 	if
 		ImGui.BeginPopupModal(
-			"Weapon Editor",
+			"Arma Editor",
 			weapon_editor_popup,
 			ImGuiWindowFlags.NoResize | ImGuiWindowFlags.NoCollapse | ImGuiWindowFlags.NoMove | ImGuiWindowFlags.Modal
 		)
 	then
 		selected_slot =
-			ImGui.Combo("Select Slot", selected_slot, { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" }, 10)
+			ImGui.Combo("Seleccionar Slot", selected_slot, { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" }, 10)
 
-		filter_text = ImGui.InputText("Weapon Name", filter_text, 100)
+		filter_text = ImGui.InputText("Arma Nombre", filter_text, 100)
 		if ImGui.IsItemActive() then
 			is_typing = true
 		else
@@ -14242,7 +14242,7 @@ local function render_weapon_editor()
 			ImGui.EndListBox()
 		end
 
-		if ImGui.Button("Set Weapon") then
+		if ImGui.Button("Set Arma") then
 			local is_weapon_valid = weapons.get_weapon_display_name(weapon_name) ~= ""
 
 			if is_weapon_valid then
@@ -14254,7 +14254,7 @@ local function render_weapon_editor()
 
 		ImGui.SameLine()
 
-		if ImGui.Button("Remove Weapon") then
+		if ImGui.Button("Quitar arma") then
 			tunables.set_int("XM22_GUN_VAN_SLOT_WEAPON_TYPE_" .. selected_slot, 0)
 		end
 
@@ -14263,7 +14263,7 @@ local function render_weapon_editor()
 			filter_text = ""
 			weapon_name = ""
 			weapon_editor_popup = false
-			ImGui.CerrarCurrentPopup()
+			ImGui.CloseCurrentPopup()
 		end
 
 		ImGui.EndPopup()
@@ -14317,15 +14317,15 @@ gun_van_tab:add_imgui(function()
 
 	ImGui.SameLine()
 
-	if ImGui.Button("Teleport") then
+	if ImGui.Button("Teletransportar") then
 		script.run_in_fiber(function()
 			local coords = gunvan_locations[selected_loc + 1]
 			PED.SET_PED_COORDS_KEEP_VEHICLE(self.get_ped(), coords.x, coords.y, coords.z)
 		end)
 	end
 
-	weapon_skins, on_tick = ImGui.Checkbox("Weapon Skins", weapon_skins)
-	help_marker("Enables the special liveries for Knife and Baseball Bat.")
+	weapon_skins, on_tick = ImGui.Checkbox("Arma Skins", weapon_skins)
+	help_marker("Activars the special liveries for Knife and Baseball Bat.")
 
 	if on_tick then
 		if not weapon_skins then
@@ -14333,9 +14333,9 @@ gun_van_tab:add_imgui(function()
 		end
 	end
 
-	livery_lock, on_tick = ImGui.Checkbox("Remove Livery Lock", livery_lock)
+	livery_lock, on_tick = ImGui.Checkbox("Eliminar Livery Lock", livery_lock)
 	help_marker(
-		"Removes the hard-coded lock on special weapon liveries, such as Season's Greetings, Employee of the Month etc."
+		"Eliminars the hard-coded lock on special weapon liveries, such as Season's Greetings, Employee of the Month etc."
 	)
 
 	if on_tick then
@@ -14359,7 +14359,7 @@ gun_van_tab:add_imgui(function()
 
 	ImGui.Separator()
 
-	if ImGui.TreeNode("Weapons") then
+	if ImGui.TreeNode("Armas") then
 		for i = 0, 9 do
 			local weapon_hash = tunables.get_int("XM22_GUN_VAN_SLOT_WEAPON_TYPE_" .. i)
 
@@ -14372,7 +14372,7 @@ gun_van_tab:add_imgui(function()
 			end
 		end
 
-		if ImGui.Button("Edit Weapons") then
+		if ImGui.Button("Edit Armas") then
 			weapon_editor_popup = true
 		end
 
@@ -14397,18 +14397,18 @@ gun_van_tab:add_imgui(function()
 		ImGui.TreePop()
 	end
 
-	if ImGui.TreeNode("Body Armor") then
+	if ImGui.TreeNode("Body Armadura") then
 		local armour_discounts = {}
 
 		for i = 0, 4 do
 			armour_discounts[i + 1] = math.floor(tunables.get_float("XM22_GUN_VAN_SLOT_ARMOUR_DISCOUNT_" .. i) * 100.0)
 		end
 
-		ImGui.Text("Super Light Armor (" .. armour_discounts[1] .. "%)")
-		ImGui.Text("Light Armor (" .. armour_discounts[2] .. "%)")
-		ImGui.Text("Standard Armor (" .. armour_discounts[3] .. "%)")
-		ImGui.Text("Heavy Armor (" .. armour_discounts[4] .. "%)")
-		ImGui.Text("Super Heavy Armor (" .. armour_discounts[5] .. "%)")
+		ImGui.Text("Super Light Armadura (" .. armour_discounts[1] .. "%)")
+		ImGui.Text("Light Armadura (" .. armour_discounts[2] .. "%)")
+		ImGui.Text("Standard Armadura (" .. armour_discounts[3] .. "%)")
+		ImGui.Text("Heavy Armadura (" .. armour_discounts[4] .. "%)")
+		ImGui.Text("Super Heavy Armadura (" .. armour_discounts[5] .. "%)")
 
 		ImGui.TreePop()
 	end
@@ -14416,9 +14416,9 @@ end)
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-NightClubSafe = CSYON7:add_tab("NightClub Safe Loop")
+NightClubSafe = CSYON7:add_tab("NocheClub Safe Loop")
 
-NCSCB = NightClubSafe:add_checkbox("Enable Nitghtclub $300k/3.5s (Safe AFK)")
+NCSCB = NightClubSafe:add_checkbox("Activar Nitghtclub $300k/3.5s (Safe AFK)")
 script.register_looped("nightclubloop", function(script)
 	script:yield()
 	if NCSCB:is_enabled() == true then
@@ -14430,41 +14430,41 @@ end)
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-HeistsDataEditor = CSYON:add_tab("Heists Data Editor")
+HeistsDataEditor = CSYON:add_tab("Golpes Data Editor")
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ApartmentDataEditor = HeistsDataEditor:add_tab("Apartment Data Editor")
 
-ApartmentDataEditor:add_button("Skip Current Golpe del Apartamento Preps", function()
+ApartmentDataEditor:add_button("Saltar Current Golpe del Apartamento Preps", function()
 	stats.set_int(MPX() .. "HEIST_PLANNING_STAGE", -1)
 end)
 
 ApartmentDataEditor:add_sameline()
 
-ApartmentDataEditor:add_button("Reset Current Golpe del Apartamento Preps", function()
+ApartmentDataEditor:add_button("Restablecer Current Golpe del Apartamento Preps", function()
 	stats.set_int(MPX() .. "HEIST_PLANNING_STAGE", 0)
 end)
 
 ApartmentDataEditor:add_text("")
 ApartmentDataEditor:add_text("For Fleeca:")
 ApartmentDataEditor:add_text(
-	'Pay for the preparation, start the first mission and as soon as you are sent to scout\nchange the session, come back to planning room, press "Complete Preps" near white board and press "E"'
+	'Pay for the preparation, start the first mission and as soon as you are sent to scout\nchange the session, come back to planning room, press "Completar Preps" near white board and press "E"'
 )
-ApartmentDataEditor:add_text("For Other Heist:")
+ApartmentDataEditor:add_text("For Other Golpe:")
 ApartmentDataEditor:add_text(
-	'Start the mission and leave after the 1st cutscene ends, press "Complete Preps" near white board and press "E"'
+	'Start the mission and leave after the 1st cutscene ends, press "Completar Preps" near white board and press "E"'
 )
 
 ApartmentDataEditor:add_separator()
-ApartmentDataEditor:add_text("Cuts to All")
-ApartmentDataEditor:add_text("Fleeca Job Heist:")
+ApartmentDataEditor:add_text("Cuts to Todos")
+ApartmentDataEditor:add_text("Fleeca Job Golpe:")
 ApartmentDataEditor:add_button("100", function()
 	globals.set_int(ACg1, -200)
 	globals.set_int(ACg2, 100)
 end)
 ApartmentDataEditor:add_text("")
-ApartmentDataEditor:add_text("Other Heists:")
+ApartmentDataEditor:add_text("Other Golpes:")
 ApartmentDataEditor:add_button("100", function()
 	globals.set_int(ACg1, -300)
 	globals.set_int(ACg2, 100)
@@ -14477,7 +14477,7 @@ local apartCut2 = 0
 local apartCut3 = 0
 local apartCut4 = 0
 ApartmentDataEditor:add_imgui(function()
-	ImGui.Text("Custom Cuts:")
+	ImGui.Text("Personalizado Cuts:")
 	ImGui.SetNextItemWidth(150)
 	apartCut1 = ImGui.InputInt("Cut 1", apartCut1)
 	ImGui.SameLine()
@@ -14488,12 +14488,12 @@ ApartmentDataEditor:add_imgui(function()
 	ImGui.SameLine()
 	ImGui.SetNextItemWidth(150)
 	apartCut4 = ImGui.InputInt("Cut 4", apartCut4)
-	ImGui.Text("For Fleeca Heist")
+	ImGui.Text("For Fleeca Golpe")
 	if ImGui.Button("Set Cuts") then
 		globals.set_int(ACg1, 100 - (apartCut1 * 2))
 		globals.set_int(ACg2, apartCut2)
 	end
-	ImGui.Text("For Other Heists")
+	ImGui.Text("For Other Golpes")
 	if ImGui.Button("Set Cuts") then
 		globals.set_int(ACg1, 100 - (apartCut1 * 4))
 		globals.set_int(ACg2, apartCut2)
@@ -14514,7 +14514,7 @@ ApartmentDataEditor:add_button("Bypass Fleeca Drill", function()
 	locals.set_float(FMC, AFDl, 100)
 end)
 ApartmentDataEditor:add_sameline()
-ApartmentDataEditor:add_button("Unlock All Jobs", function()
+ApartmentDataEditor:add_button("Desbloquear todo Jobs", function()
 	stats.set_int(MPX() .. "HEIST_SAVED_STRAND_0", globals.get_int(AUAJg1))
 	stats.set_int(MPX() .. "HEIST_SAVED_STRAND_0_L", 5)
 	stats.set_int(MPX() .. "HEIST_SAVED_STRAND_1", globals.get_int(AUAJg2))
@@ -14532,13 +14532,13 @@ ApartmentDataEditor:add_button("Instant Finish", function()
 	locals.set_int(FMC, AIFl4, 99999)
 	locals.set_int(FMC, AIFl5, 99999)
 end)
-ApartmentDataEditor:add_text("Note: After Clicking Unlock All jobs, restart the game")
+ApartmentDataEditor:add_text("Note: After Clicking Desbloquear todo jobs, restart the game")
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-CasinoHeistEditor = HeistsDataEditor:add_tab("Casino Heist")
+CasinoHeistEditor = HeistsDataEditor:add_tab("Casino Golpe")
 
-CasinoHeistEditor:add_button("One Click Setup Casino Silent&Sneaky", function()
+CasinoHeistEditor:add_button("Activadoe Click Preparación Casino Silent&Sneaky", function()
 	stats.set_int(MPX() .. "H3OPT_APPROACH", 1)
 	stats.set_int(MPX() .. "H3_LAST_APPROACH", 3)
 	stats.set_int(MPX() .. "H3OPT_TARGET", 3)
@@ -14554,7 +14554,7 @@ CasinoHeistEditor:add_button("One Click Setup Casino Silent&Sneaky", function()
 	stats.set_int(MPX() .. "H3OPT_MASKS", 2)
 end)
 
-CasinoHeistEditor:add_button("One Click Setup Casino The Big Con. Mode", function()
+CasinoHeistEditor:add_button("Activadoe Click Preparación Casino The Big Con. Mode", function()
 	stats.set_int(MPX() .. "H3OPT_APPROACH", 2)
 	stats.set_int(MPX() .. "H3_LAST_APPROACH", 3)
 	stats.set_int(MPX() .. "H3OPT_TARGET", 3)
@@ -14570,7 +14570,7 @@ CasinoHeistEditor:add_button("One Click Setup Casino The Big Con. Mode", functio
 	stats.set_int(MPX() .. "H3OPT_MASKS", 2)
 end)
 
-CasinoHeistEditor:add_button("One Click Setup Casino Agrresive Mode", function()
+CasinoHeistEditor:add_button("Activadoe Click Preparación Casino Agrresive Mode", function()
 	stats.set_int(MPX() .. "H3OPT_APPROACH", 3)
 	stats.set_int(MPX() .. "H3_LAST_APPROACH", 1)
 	stats.set_int(MPX() .. "H3OPT_TARGET", 3)
@@ -14618,7 +14618,7 @@ CasinoHeistEditor:add_button("Cash", function()
 	stats.set_int(MPX() .. "H3OPT_TARGET", 0)
 end)
 CasinoHeistEditor:add_separator()
-CasinoHeistEditor:add_text("Select Apprach")
+CasinoHeistEditor:add_text("Seleccionar Apprach")
 CasinoHeistEditor:add_button("Silent & Sneaky", function()
 	CasinoApproachSetter(2, 1, 3, 1)
 	STATS.STAT_SET_INT(MPX() .. "H3OPT_BITSET1", 127)
@@ -14663,7 +14663,7 @@ local GunManLoadoutBC = {
 	"Karl Abolaji/Double Barrel Shotgun",
 	"Charlie Reed/Machine Pistol",
 	"Charlie Reed/Sweeper Shotgun",
-	"Patrick McReary/Sawed-Off Shotgun",
+	"Patrick McReary/Sawed-Desactivado Shotgun",
 	"Patrick McReary/Compact Rifle",
 	"Gustavo Mota/Carbine Rifle",
 	"Gustavo Mota/Assault Shotgun",
@@ -14671,7 +14671,7 @@ local GunManLoadoutBC = {
 	"Chester McCoy/Bullpup Rifle Mk II",
 }
 local GunManLoadoutAg = {
-	"Karl Abolaji/Sawed-Off Shotgun",
+	"Karl Abolaji/Sawed-Desactivado Shotgun",
 	"Karl Abolaji/Heavy Revolver",
 	"Charlie Reed/Assault SMG",
 	"Charlie Reed/Pump Shotgun",
@@ -14705,7 +14705,7 @@ local DriverLoad = {
 	"Chester McCoy/Everon",
 }
 local hackerLoad = {
-	"Select",
+	"Seleccionar",
 	"Rickie Lukens",
 	"Christian Feltz",
 	"Yohan Blair",
@@ -14713,10 +14713,10 @@ local hackerLoad = {
 	"Page Harris",
 }
 local maskLoad = {
-	"Select",
+	"Seleccionar",
 	"Geometic Set",
 	"Hunter Set",
-	"Oni Half Mask Set",
+	"Activadoi Half Mask Set",
 	"Emoji Set",
 	"Ornate Skull Set",
 	"Lucky Fruit Set",
@@ -14724,7 +14724,7 @@ local maskLoad = {
 	"Clown Set",
 	"Animal Set",
 	"Riot Set",
-	"Oni Full Mask Set",
+	"Activadoi Full Mask Set",
 	"Hockey Set",
 }
 CasinoHeistEditor:add_imgui(function()
@@ -14759,10 +14759,10 @@ CasinoHeistEditor:add_imgui(function()
 		end
 	end
 	ImGui.Separator()
-	ImGui.Text("Getaway Vehicles")
+	ImGui.Text("Getaway Vehículos")
 	ImGui.SetNextItemWidth(265)
 	driver = ImGui.Combo("", driver, DriverLoad, 20)
-	if ImGui.Button("Set Getaway Vehicle") then
+	if ImGui.Button("Set Getaway Vehículo") then
 		ImGui.Text(driver)
 		if driver <= 3 then
 			stats.set_int(MPX() .. "H3OPT_CREWDRIVER", 1)
@@ -14799,7 +14799,7 @@ CasinoHeistEditor:add_imgui(function()
 		stats.set_int(MPX() .. "H3OPT_MASKS", mask)
 	end
 	ImGui.Separator()
-	if ImGui.Button("Complete preps") then
+	if ImGui.Button("Completar preps") then
 		CasinoCompletePreps()
 	end
 	ImGui.Separator()
@@ -14808,11 +14808,11 @@ CasinoHeistEditor:add_imgui(function()
 	if ImGui.Button("Set Cut to 100") then
 		CutsPresetter(DCCg1, DCCg4, 100)
 	end
-	casinoPc1 = ImGui.InputInt("Player Cut 1", casinoPc1)
-	casinoPc2 = ImGui.InputInt("Player Cut 2", casinoPc2)
-	casinoPc3 = ImGui.InputInt("Player Cut 3", casinoPc3)
-	casinoPc4 = ImGui.InputInt("Player Cut 4", casinoPc4)
-	if ImGui.Button("Set Player Cuts") then
+	casinoPc1 = ImGui.InputInt("Jugador Cut 1", casinoPc1)
+	casinoPc2 = ImGui.InputInt("Jugador Cut 2", casinoPc2)
+	casinoPc3 = ImGui.InputInt("Jugador Cut 3", casinoPc3)
+	casinoPc4 = ImGui.InputInt("Jugador Cut 4", casinoPc4)
+	if ImGui.Button("Set Jugador Cuts") then
 		globals.set_int(DCCg1, casinoPc1)
 		globals.set_int(DCCg2, casinoPc2)
 		globals.set_int(DCCg3, casinoPc3)
@@ -14820,16 +14820,16 @@ CasinoHeistEditor:add_imgui(function()
 	end
 end)
 CasinoHeistEditor:add_separator()
-CasinoHeistEditor:add_button("Reload Planning Screen", function()
+CasinoHeistEditor:add_button("Recargar Planning Screen", function()
 	locals.set_int("gb_casino_heist_planning", DCRBl, 2)
 end)
 
 CasinoHeistEditor:add_separator()
-CasinoHeistEditor:add_text("Instant Heist Passed")
+CasinoHeistEditor:add_text("Instant Golpe Passed")
 CasinoHeistEditor:add_button("Instant Finish $$", function()
 	locals.set_int(FMC2020, 50150, 9)
 	locals.set_int(FMC2020, 50150 + 1770 + 1, 50)
-	gui.show_message("Instant Heist Passed", "Activated")
+	gui.show_message("Instant Golpe Passed", "Activard")
 end)
 
 local CasinoHeistExtra = CasinoHeistEditor:add_tab("Extras")
@@ -14858,19 +14858,19 @@ CasinoHeistExtra:add_button("Bypass Drill Vault Door", function()
 end)
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
--- Updated by DeadlineEm, I used your modest menu version for ideas for this.
+-- Actualizado by DeadlineEm, I used your modest menu version for ideas for this.
 
 -- Deleting enemies does not allow the keycards to drop, so teleport into the
 -- seondary buildings to grab the loot, you can open the door for others from
 -- the inside
 local CayoHeistEditor = HeistsDataEditor:add_tab("Cayo Perico Editor")
 
-CayoHeistEditor:add_text("Cuts to All")
+CayoHeistEditor:add_text("Cuts to Todos")
 CayoHeistEditor:add_button("100", function()
 	CutsPresetter(CPCg1, CPCg4, 100)
 end)
 CayoHeistEditor:add_text("")
-CayoHeistEditor:add_text("Custom Cut")
+CayoHeistEditor:add_text("Personalizado Cut")
 local cayocut1 = CayoHeistEditor:add_input_int("Cut 1")
 local cayocut2 = CayoHeistEditor:add_input_int("Cut 2")
 local cayocut3 = CayoHeistEditor:add_input_int("Cut 3")
@@ -14920,8 +14920,8 @@ CayoHeistEditor:add_button("Panther/Gold (Hard)", function()
 	stats.set_int(MPX() .. "H4_MISSIONS", 65535)
 	stats.set_int(MPX() .. "H4_PLAYTHROUGH_STATUS", 32)
 
-	gui.show_message("Cayo Heist", "Panther Hard Mode has been set up!")
-	gui.show_message("Cayo Heist", "Reset the board to see the changes")
+	gui.show_message("Cayo Golpe", "Panther Hard Mode has been set up!")
+	gui.show_message("Cayo Golpe", "Restablecer the board to see the changes")
 end)
 CayoHeistEditor:add_sameline()
 CayoHeistEditor:add_button("Diamond/Gold (Hard)", function()
@@ -14959,8 +14959,8 @@ CayoHeistEditor:add_button("Diamond/Gold (Hard)", function()
 	stats.set_int(MPX() .. "H4_MISSIONS", 65535)
 	stats.set_int(MPX() .. "H4_PLAYTHROUGH_STATUS", 32)
 
-	gui.show_message("Cayo Heist", "Diamond Hard Mode has been set up!")
-	gui.show_message("Cayo Heist", "Reset the board to see the changes")
+	gui.show_message("Cayo Golpe", "Diamond Hard Mode has been set up!")
+	gui.show_message("Cayo Golpe", "Restablecer the board to see the changes")
 end)
 
 CayoHeistEditor:add_sameline()
@@ -14999,8 +14999,8 @@ CayoHeistEditor:add_button("Bonds/Gold (Hard)", function()
 	stats.set_int(MPX() .. "H4_MISSIONS", 65535)
 	stats.set_int(MPX() .. "H4_PLAYTHROUGH_STATUS", 32)
 
-	gui.show_message("Cayo Heist", "Bonds Hard Mode has been set up!")
-	gui.show_message("Cayo Heist", "Reset the board to see the changes")
+	gui.show_message("Cayo Golpe", "Bonds Hard Mode has been set up!")
+	gui.show_message("Cayo Golpe", "Restablecer the board to see the changes")
 end)
 
 CayoHeistEditor:add_sameline()
@@ -15039,8 +15039,8 @@ CayoHeistEditor:add_button("Necklace/Gold (Hard)", function()
 	stats.set_int(MPX() .. "H4_MISSIONS", 65535)
 	stats.set_int(MPX() .. "H4_PLAYTHROUGH_STATUS", 32)
 
-	gui.show_message("Cayo Heist", "Necklace Hard Mode has been set up!")
-	gui.show_message("Cayo Heist", "Reset the board to see the changes")
+	gui.show_message("Cayo Golpe", "Necklace Hard Mode has been set up!")
+	gui.show_message("Cayo Golpe", "Restablecer the board to see the changes")
 end)
 
 CayoHeistEditor:add_sameline()
@@ -15079,8 +15079,8 @@ CayoHeistEditor:add_button("Tequila/Gold (Hard)", function()
 	stats.set_int(MPX() .. "H4_MISSIONS", 65535)
 	stats.set_int(MPX() .. "H4_PLAYTHROUGH_STATUS", 32)
 
-	gui.show_message("Cayo Heist", "Tequila Hard Mode has been set up!")
-	gui.show_message("Cayo Heist", "Reset the board to see the changes")
+	gui.show_message("Cayo Golpe", "Tequila Hard Mode has been set up!")
+	gui.show_message("Cayo Golpe", "Restablecer the board to see the changes")
 end)
 CayoHeistEditor:add_separator()
 CayoHeistEditor:add_text("Legit Presets")
@@ -15093,7 +15093,7 @@ CayoHeistEditor:add_button("Panther/Gold (L. Hard)", function()
 	stats.set_int(MPX() .. "H4CNF_WEP_DISRP", 3)
 	stats.set_int(MPX() .. "H4CNF_ARM_DISRP", 3)
 	stats.set_int(MPX() .. "H4CNF_HEL_DISRP", 3)
-	stats.set_int(MPX() .. "H4CNF_TARGET", 5) --Primary Target Values: 0. Tequila, 1. Necklace, 2. Bonds, 3. Diamond, 4. Medrazo Files, 5. Panther
+	stats.set_int(MPX() .. "H4CNF_TARGET", 5) --Primary Target Valors: 0. Tequila, 1. Necklace, 2. Bonds, 3. Diamond, 4. Medrazo Files, 5. Panther
 	stats.set_int(MPX() .. "H4CNF_TROJAN", 2)
 	stats.set_int(MPX() .. "H4CNF_APPROACH", -1)
 	-- Island Loot // -1 shows all, 0 shows none
@@ -15121,15 +15121,15 @@ CayoHeistEditor:add_button("Panther/Gold (L. Hard)", function()
 	stats.set_int(MPX() .. "H4LOOT_GOLD_C_SCOPED", -1)
 	stats.set_int(MPX() .. "H4LOOT_PAINT_SCOPED", 0)
 
-	-- Payout Values // Set to "Normal" values.  Each value is multiplied by 8, bc there are 8 locations for them.
+	-- Payout Valors // Set to "Normal" values.  Each value is multiplied by 8, bc there are 8 locations for them.
 	stats.set_int(MPX() .. "H4LOOT_GOLD_V", 45375)
-	globals.set_int(PSV, 1900000) -- Panther Value -- 1900000 shows as 2,090,000 in-game on the board. 190,000 difference.
+	globals.set_int(PSV, 1900000) -- Panther Valor -- 1900000 shows as 2,090,000 in-game on the board. 190,000 difference.
 
 	stats.set_int(MPX() .. "H4_MISSIONS", 65535)
 	stats.set_int(MPX() .. "H4_PLAYTHROUGH_STATUS", 32)
 
-	gui.show_message("Cayo Heist", "Panther Hard Mode (Legit) has been set up!")
-	gui.show_message("Cayo Heist", "Reset the board to see the changes")
+	gui.show_message("Cayo Golpe", "Panther Hard Mode (Legit) has been set up!")
+	gui.show_message("Cayo Golpe", "Restablecer the board to see the changes")
 end)
 
 CayoHeistEditor:add_sameline()
@@ -15142,7 +15142,7 @@ CayoHeistEditor:add_button("Diamond/Gold (L. Hard)", function()
 	stats.set_int(MPX() .. "H4CNF_WEP_DISRP", 3)
 	stats.set_int(MPX() .. "H4CNF_ARM_DISRP", 3)
 	stats.set_int(MPX() .. "H4CNF_HEL_DISRP", 3)
-	stats.set_int(MPX() .. "H4CNF_TARGET", 3) --Primary Target Values: 0. Tequila, 1. Necklace, 2. Bonds, 3. Diamond, 4. Medrazo Files, 5. Panther
+	stats.set_int(MPX() .. "H4CNF_TARGET", 3) --Primary Target Valors: 0. Tequila, 1. Necklace, 2. Bonds, 3. Diamond, 4. Medrazo Files, 5. Panther
 	stats.set_int(MPX() .. "H4CNF_TROJAN", 2)
 	stats.set_int(MPX() .. "H4CNF_APPROACH", -1)
 	-- Island Loot // -1 shows all, 0 shows none
@@ -15170,15 +15170,15 @@ CayoHeistEditor:add_button("Diamond/Gold (L. Hard)", function()
 	stats.set_int(MPX() .. "H4LOOT_GOLD_C_SCOPED", -1)
 	stats.set_int(MPX() .. "H4LOOT_PAINT_SCOPED", 0)
 
-	-- Payout Values // Set to "Normal" values.  Each value is multiplied by 8, bc there are 8 locations for them.
+	-- Payout Valors // Set to "Normal" values.  Each value is multiplied by 8, bc there are 8 locations for them.
 	stats.set_int(MPX() .. "H4LOOT_GOLD_V", 45375)
-	globals.set_int(PDIAMOND, 1300000) -- Diamond Value  -- 1300000 shows as 1,430,000 in-game. 130,000 difference.
+	globals.set_int(PDIAMOND, 1300000) -- Diamond Valor  -- 1300000 shows as 1,430,000 in-game. 130,000 difference.
 
 	stats.set_int(MPX() .. "H4_MISSIONS", 65535)
 	stats.set_int(MPX() .. "H4_PLAYTHROUGH_STATUS", 32)
 
-	gui.show_message("Cayo Heist", "Diamond Hard Mode (Legit) has been set up!")
-	gui.show_message("Cayo Heist", "Reset the board to see the changes")
+	gui.show_message("Cayo Golpe", "Diamond Hard Mode (Legit) has been set up!")
+	gui.show_message("Cayo Golpe", "Restablecer the board to see the changes")
 end)
 
 CayoHeistEditor:add_sameline()
@@ -15191,7 +15191,7 @@ CayoHeistEditor:add_button("Bonds/Gold (L. Hard)", function()
 	stats.set_int(MPX() .. "H4CNF_WEP_DISRP", 3)
 	stats.set_int(MPX() .. "H4CNF_ARM_DISRP", 3)
 	stats.set_int(MPX() .. "H4CNF_HEL_DISRP", 3)
-	stats.set_int(MPX() .. "H4CNF_TARGET", 2) --Primary Target Values: 0. Tequila, 1. Necklace, 2. Bonds, 3. Diamond, 4. Medrazo Files, 5. Panther
+	stats.set_int(MPX() .. "H4CNF_TARGET", 2) --Primary Target Valors: 0. Tequila, 1. Necklace, 2. Bonds, 3. Diamond, 4. Medrazo Files, 5. Panther
 	stats.set_int(MPX() .. "H4CNF_TROJAN", 2)
 	stats.set_int(MPX() .. "H4CNF_APPROACH", -1)
 	-- Island Loot // -1 shows all, 0 shows none
@@ -15219,15 +15219,15 @@ CayoHeistEditor:add_button("Bonds/Gold (L. Hard)", function()
 	stats.set_int(MPX() .. "H4LOOT_GOLD_C_SCOPED", -1)
 	stats.set_int(MPX() .. "H4LOOT_PAINT_SCOPED", 0)
 
-	-- Payout Values // Set to "Normal" values.  Each value is multiplied by 8, bc there are 8 locations for them.
+	-- Payout Valors // Set to "Normal" values.  Each value is multiplied by 8, bc there are 8 locations for them.
 	stats.set_int(MPX() .. "H4LOOT_GOLD_V", 45375)
-	globals.set_int(BB, 770000) -- Bonds Value -- 770000 shows as 847,000 in-game.  77,000 difference.
+	globals.set_int(BB, 770000) -- Bonds Valor -- 770000 shows as 847,000 in-game.  77,000 difference.
 
 	stats.set_int(MPX() .. "H4_MISSIONS", 65535)
 	stats.set_int(MPX() .. "H4_PLAYTHROUGH_STATUS", 32)
 
-	gui.show_message("Cayo Heist", "Bonds Hard Mode (Legit) has been set up!")
-	gui.show_message("Cayo Heist", "Reset the board to see the changes")
+	gui.show_message("Cayo Golpe", "Bonds Hard Mode (Legit) has been set up!")
+	gui.show_message("Cayo Golpe", "Restablecer the board to see the changes")
 end)
 
 CayoHeistEditor:add_sameline()
@@ -15240,7 +15240,7 @@ CayoHeistEditor:add_button("Necklace/Gold (L. Hard)", function()
 	stats.set_int(MPX() .. "H4CNF_WEP_DISRP", 3)
 	stats.set_int(MPX() .. "H4CNF_ARM_DISRP", 3)
 	stats.set_int(MPX() .. "H4CNF_HEL_DISRP", 3)
-	stats.set_int(MPX() .. "H4CNF_TARGET", 1) --Primary Target Values: 0. Tequila, 1. Necklace, 2. Bonds, 3. Diamond, 4. Medrazo Files, 5. Panther
+	stats.set_int(MPX() .. "H4CNF_TARGET", 1) --Primary Target Valors: 0. Tequila, 1. Necklace, 2. Bonds, 3. Diamond, 4. Medrazo Files, 5. Panther
 	stats.set_int(MPX() .. "H4CNF_TROJAN", 2)
 	stats.set_int(MPX() .. "H4CNF_APPROACH", -1)
 	-- Island Loot // -1 shows all, 0 shows none
@@ -15268,15 +15268,15 @@ CayoHeistEditor:add_button("Necklace/Gold (L. Hard)", function()
 	stats.set_int(MPX() .. "H4LOOT_GOLD_C_SCOPED", -1)
 	stats.set_int(MPX() .. "H4LOOT_PAINT_SCOPED", 0)
 
-	-- Payout Values // Set to "Normal" values.  Each value is multiplied by 8, bc there are 8 locations for them.
+	-- Payout Valors // Set to "Normal" values.  Each value is multiplied by 8, bc there are 8 locations for them.
 	stats.set_int(MPX() .. "H4LOOT_GOLD_V", 45375)
-	globals.set_int(RN, 700000) -- Necklace Value -- 700000 shows as 770,000 in-game. 70,000 difference.
+	globals.set_int(RN, 700000) -- Necklace Valor -- 700000 shows as 770,000 in-game. 70,000 difference.
 
 	stats.set_int(MPX() .. "H4_MISSIONS", 65535)
 	stats.set_int(MPX() .. "H4_PLAYTHROUGH_STATUS", 32)
 
-	gui.show_message("Cayo Heist", "Necklace Hard Mode (Legit) has been set up!")
-	gui.show_message("Cayo Heist", "Reset the board to see the changes")
+	gui.show_message("Cayo Golpe", "Necklace Hard Mode (Legit) has been set up!")
+	gui.show_message("Cayo Golpe", "Restablecer the board to see the changes")
 end)
 
 CayoHeistEditor:add_sameline()
@@ -15289,7 +15289,7 @@ CayoHeistEditor:add_button("Tequila/Gold (L. Hard)", function()
 	stats.set_int(MPX() .. "H4CNF_WEP_DISRP", 3)
 	stats.set_int(MPX() .. "H4CNF_ARM_DISRP", 3)
 	stats.set_int(MPX() .. "H4CNF_HEL_DISRP", 3)
-	stats.set_int(MPX() .. "H4CNF_TARGET", 0) --Primary Target Values: 0. Tequila, 1. Necklace, 2. Bonds, 3. Diamond, 4. Medrazo Files, 5. Panther
+	stats.set_int(MPX() .. "H4CNF_TARGET", 0) --Primary Target Valors: 0. Tequila, 1. Necklace, 2. Bonds, 3. Diamond, 4. Medrazo Files, 5. Panther
 	stats.set_int(MPX() .. "H4CNF_TROJAN", 2)
 	stats.set_int(MPX() .. "H4CNF_APPROACH", -1)
 	-- Island Loot // -1 shows all, 0 shows none
@@ -15317,20 +15317,20 @@ CayoHeistEditor:add_button("Tequila/Gold (L. Hard)", function()
 	stats.set_int(MPX() .. "H4LOOT_GOLD_C_SCOPED", -1)
 	stats.set_int(MPX() .. "H4LOOT_PAINT_SCOPED", 0)
 
-	-- Payout Values // Set to "Normal" values.  Each value is multiplied by 8, bc there are 8 locations for them.
+	-- Payout Valors // Set to "Normal" values.  Each value is multiplied by 8, bc there are 8 locations for them.
 	stats.set_int(MPX() .. "H4LOOT_GOLD_V", 45375)
-	globals.set_int(TEQUILA, 693000) -- Tequila Value -- 630000 shows as 693,000. 63,000 difference.
+	globals.set_int(TEQUILA, 693000) -- Tequila Valor -- 630000 shows as 693,000. 63,000 difference.
 
 	stats.set_int(MPX() .. "H4_MISSIONS", 65535)
 	stats.set_int(MPX() .. "H4_PLAYTHROUGH_STATUS", 32)
 
-	gui.show_message("Cayo Heist", "Tequila Hard Mode (Legit) has been set up!")
-	gui.show_message("Cayo Heist", "Reset the board to see the changes")
+	gui.show_message("Cayo Golpe", "Tequila Hard Mode (Legit) has been set up!")
+	gui.show_message("Cayo Golpe", "Restablecer the board to see the changes")
 end)
 
 CayoHeistEditor:add_separator()
-CayoHeistEditor:add_text("Reset Presets Completely")
-CayoHeistEditor:add_button("Reset Heist Completely", function()
+CayoHeistEditor:add_text("Restablecer Presets Completarly")
+CayoHeistEditor:add_button("Restablecer Golpe Completarly", function()
 	stats.set_int(MPX() .. "H4_MISSIONS", 0)
 	stats.set_int(MPX() .. "H4_PROGRESS", 0)
 	stats.set_int(MPX() .. "H4_PLAYTHROUGH_STATUS", 0)
@@ -15341,34 +15341,34 @@ end)
 
 CayoHeistEditor:add_separator()
 CayoHeistEditor:add_text(
-	"Press this after clicking one of the above presets or after the reset heist Completely Option"
+	"Press this after clicking one of the above presets or after the reset heist Completarly Opción"
 )
-CayoHeistEditor:add_button("Reset Kosatka Board", function()
+CayoHeistEditor:add_button("Restablecer Kosatka Board", function()
 	locals.set_int(HIP, 1546, 2)
-	gui.show_message("Cayo Heist", "Planning board has been reset!")
+	gui.show_message("Cayo Golpe", "Planning board has been reset!")
 end)
 
 CayoHeistEditor:add_separator()
-CayoHeistEditor:add_text("During Heist")
-CayoHeistEditor:add_button("Skip Drainage Cut", function()
+CayoHeistEditor:add_text("During Golpe")
+CayoHeistEditor:add_button("Saltar Drainage Cut", function()
 	locals.set_int(FMC2020, CPSTCl, 6)
-	gui.show_message("Cayo Heist", "Bypassed Drainage Cut")
+	gui.show_message("Cayo Golpe", "Bypassed Drainage Cut")
 end)
 
 CayoHeistEditor:add_sameline()
-CayoHeistEditor:add_button("Skip Fingerprint Scanner", function()
+CayoHeistEditor:add_button("Saltar Fingerprint Scanner", function()
 	locals.set_int(FMC2020, CPFHl, 5)
-	gui.show_message("Cayo Heist", "Bypassed Fingerprint Scanner")
+	gui.show_message("Cayo Golpe", "Bypassed Fingerprint Scanner")
 end)
 
 CayoHeistEditor:add_sameline()
-CayoHeistEditor:add_button("Skip Glass Cut", function()
+CayoHeistEditor:add_button("Saltar Glass Cut", function()
 	locals.set_float(FMC2020, CPPCCl, 100.0)
-	gui.show_message("Cayo Heist", "Bypassed Plasma Cutter")
+	gui.show_message("Cayo Golpe", "Bypassed Plasma Cutter")
 end)
 
 CayoHeistEditor:add_sameline()
-CayoHeistEditor:add_button("Remove All CCTV's", function()
+CayoHeistEditor:add_button("Eliminar Todos CCTV's", function()
 	for _, ent in pairs(entities.get_all_objects_as_handles()) do
 		for __, cam in pairs(CamList) do
 			if ENTITY.GET_ENTITY_MODEL(ent) == cam then
@@ -15397,7 +15397,7 @@ CamList = {
 }
 
 CayoHeistEditor:add_sameline()
-CayoHeistEditor:add_button("Delete Mission NPC's", function() -- Thanks to RazorGamerX for the help on this
+CayoHeistEditor:add_button("Eliminar Misión NPC's", function() -- Thanks to RazorGamerX for the help on this
 	for index, ped in ipairs(entities.get_all_peds_as_handles()) do
 		local model = ENTITY.GET_ENTITY_MODEL(ped)
 		if model == 0x7ED5AD78 or model == 0x6C8C08E5 or model == 0x995B3F9F or model == 0xB881AEE then
@@ -15408,62 +15408,62 @@ CayoHeistEditor:add_button("Delete Mission NPC's", function() -- Thanks to Razor
 end)
 
 CayoHeistEditor:add_separator()
-CayoHeistEditor:add_text("After Heist")
-CayoHeistEditor:add_button("Skip Cooldown", function()
-	-- Solo Skip
+CayoHeistEditor:add_text("After Golpe")
+CayoHeistEditor:add_button("Saltar Enfriamiento", function()
+	-- Solo Saltar
 	stats.set_int("MP0_H4_TARGET_POSIX", 1659643454)
 	stats.set_int("MP0_H4_COOLDOWN", 0)
 	stats.set_int("MP0_H4_COOLDOWN_HARD", 0)
-	-- Multiplayer Skip
+	-- Multiplayer Saltar
 	stats.set_int("MP0_H4_TARGET_POSIX", 1659429119)
 	stats.set_int("MP0_H4_COOLDOWN", 0)
 	stats.set_int("MP0_H4_COOLDOWN_HARD", 0)
-	-- Solo Skip (Second Character)
+	-- Solo Saltar (Second Character)
 	stats.set_int("MP1_H4_TARGET_POSIX", 1659643454)
 	stats.set_int("MP1_H4_COOLDOWN", 0)
 	stats.set_int("MP1_H4_COOLDOWN_HARD", 0)
-	-- Multiplayer Skip (Second Character)
+	-- Multiplayer Saltar (Second Character)
 	stats.set_int("MP1_H4_TARGET_POSIX", 1659429119)
 	stats.set_int("MP1_H4_COOLDOWN", 0)
 	stats.set_int("MP1_H4_COOLDOWN_HARD", 0)
 
-	gui.show_message("Cayo Heist", "Skipped Cayo Perico Cooldown for all characters")
-	gui.show_message("Cayo Heist", "Go to story mode and come back to apply the reset")
+	gui.show_message("Cayo Golpe", "Saltarped Cayo Perico Enfriamiento for all characters")
+	gui.show_message("Cayo Golpe", "Go to story mode and come back to apply the reset")
 end)
 CayoHeistEditor:add_separator()
-CayoHeistEditor:add_text("How to Set Up or Bypass Cooldown:")
+CayoHeistEditor:add_text("How to Set Up or Bypass Enfriamiento:")
 CayoHeistEditor:add_text(
 	"Make sure you have completed the heist and you are standing in front of the planning screen"
 )
-CayoHeistEditor:add_text("Click Skip Cooldown, then click on your Preset and click Reset Kosatka Board")
+CayoHeistEditor:add_text("Click Saltar Enfriamiento, then click on your Preset and click Restablecer Kosatka Board")
 
 CayoHeistEditor:add_separator()
-CayoHeistEditor:add_text("Instant Heist Passed")
+CayoHeistEditor:add_text("Instant Golpe Passed")
 CayoHeistEditor:add_button("Instant Finish $$", function()
 	locals.set_int(FMC2020, 50150, 9)
 	locals.set_int(FMC2020, 50150 + 1770 + 1, 50)
-	gui.show_message("Instant Heist Passed", "Activated")
+	gui.show_message("Instant Golpe Passed", "Activard")
 end)
 
--- Cayo Tamaño de la bolsa & Value Editor
-local cayoSizeEditor = CayoHeistEditor:add_tab("Size/Value Editor")
-cayoSizeEditor:add_text("Tamaño de la bolsa Editor")
+-- Cayo Bag Size & Valor Editor
+local cayoSizeEditor = CayoHeistEditor:add_tab("Size/Valor Editor")
+cayoSizeEditor:add_text("Bag Size Editor")
 bagSizeVal = 1800
 cayoSizeEditor:add_imgui(function()
-	bagSizeVal, used = ImGui.SliderInt("Tamaño de la bolsa", bagSizeVal, 1800, 7200) -- 7200 = 4 players, this works if you want more money solo and it adjusts so you can always have full bags
+	bagSizeVal, used = ImGui.SliderInt("Bag Size", bagSizeVal, 1800, 7200) -- 7200 = 4 players, this works if you want more money solo and it adjusts so you can always have full bags
 	if used then
 		globals.set_int(BAS1, bagSizeVal)
-		gui.show_message("Tamaño de la bolsa Modified!")
+		gui.show_message("Bag Size Modified!")
 	end
 end)
 
-cayoSizeEditor:add_text("Custom Tamaño de la bolsa Editor")
+cayoSizeEditor:add_text("Personalizado Bag Size Editor")
 custombagSizeVal = 1800
 cayoSizeEditor:add_imgui(function()
-	custombagSizeVal, used = ImGui.SliderInt("Custom Tamaño de la bolsa", custombagSizeVal, 1800, 2147483646)
+	custombagSizeVal, used = ImGui.SliderInt("Personalizado Bag Size", custombagSizeVal, 1800, 2147483646)
 	if used then
 		globals.set_int(BAS1, custombagSizeVal)
-		gui.show_message("Custom Tamaño de la bolsa Modified!")
+		gui.show_message("Personalizado Bag Size Modified!")
 	end
 end)
 
@@ -15471,56 +15471,56 @@ cayoSizeEditor:add_separator()
 cayoSizeEditor:add_text("Primary Target Editors")
 pantherSizeVal = 1900000
 cayoSizeEditor:add_imgui(function()
-	pantherSizeVal, used = ImGui.SliderInt("Panther Value", pantherSizeVal, 1900000, 3800000) -- Double the original price
-	out = "Reset the board to see changes"
+	pantherSizeVal, used = ImGui.SliderInt("Panther Valor", pantherSizeVal, 1900000, 3800000) -- Double the original price
+	out = "Restablecer the board to see changes"
 
 	if used then
 		globals.set_int(PSV, pantherSizeVal)
-		gui.show_message("Panther Value Modified!", out)
+		gui.show_message("Panther Valor Modified!", out)
 	end
 end)
 
 diamondSizeVal = 1300000
 cayoSizeEditor:add_imgui(function()
-	diamondSizeVal, used = ImGui.SliderInt("Diamond Value", diamondSizeVal, 1300000, 2600000) -- Double the original price
-	out = "Reset the board to see changes"
+	diamondSizeVal, used = ImGui.SliderInt("Diamond Valor", diamondSizeVal, 1300000, 2600000) -- Double the original price
+	out = "Restablecer the board to see changes"
 
 	if used then
 		globals.set_int(PDIAMOND, diamondSizeVal)
-		gui.show_message("Diamond Value Modified!", out)
+		gui.show_message("Diamond Valor Modified!", out)
 	end
 end)
 
 bondSizeVal = 770000
 cayoSizeEditor:add_imgui(function()
-	bondSizeVal, used = ImGui.SliderInt("Bonds Value", bondSizeVal, 770000, 1540000) -- Double the original price
-	out = "Reset the board to see changes"
+	bondSizeVal, used = ImGui.SliderInt("Bonds Valor", bondSizeVal, 770000, 1540000) -- Double the original price
+	out = "Restablecer the board to see changes"
 
 	if used then
 		globals.set_int(BB, bondSizeVal)
-		gui.show_message("Bonds Value Modified!", out)
+		gui.show_message("Bonds Valor Modified!", out)
 	end
 end)
 
 necklaceSizeVal = 700000
 cayoSizeEditor:add_imgui(function()
-	necklaceSizeVal, used = ImGui.SliderInt("Necklace Value", necklaceSizeVal, 700000, 1400000) -- Double the original price
-	out = "Reset the board to see changes"
+	necklaceSizeVal, used = ImGui.SliderInt("Necklace Valor", necklaceSizeVal, 700000, 1400000) -- Double the original price
+	out = "Restablecer the board to see changes"
 
 	if used then
 		globals.set_int(RN, necklaceSizeVal)
-		gui.show_message("Necklace Value Modified!", out)
+		gui.show_message("Necklace Valor Modified!", out)
 	end
 end)
 
 tequilaSizeVal = 693000
 cayoSizeEditor:add_imgui(function()
-	tequilaSizeVal, used = ImGui.SliderInt("Tequila Value", tequilaSizeVal, 693000, 1400000) -- Double the original price
-	out = "Reset the board to see changes"
+	tequilaSizeVal, used = ImGui.SliderInt("Tequila Valor", tequilaSizeVal, 693000, 1400000) -- Double the original price
+	out = "Restablecer the board to see changes"
 
 	if used then
 		globals.set_int(TEQUILA, tequilaSizeVal)
-		gui.show_message("Tequila Value Modified!", out)
+		gui.show_message("Tequila Valor Modified!", out)
 	end
 end)
 
@@ -15529,82 +15529,82 @@ cayoSizeEditor:add_text("Secondary Target Editors")
 
 goldSizeVal = 45375
 cayoSizeEditor:add_imgui(function()
-	goldSizeVal, used = ImGui.SliderInt("Gold Value", goldSizeVal, 45375, 181500) -- Quadruple the original price
-	out = "Reset the board to see changes"
+	goldSizeVal, used = ImGui.SliderInt("Gold Valor", goldSizeVal, 45375, 181500) -- Quadruple the original price
+	out = "Restablecer the board to see changes"
 
 	if used then
 		stats.set_int(MPX() .. "H4LOOT_GOLD_V", goldSizeVal)
-		gui.show_message("Gold Value Modified!", out)
+		gui.show_message("Gold Valor Modified!", out)
 	end
 end)
 
 cokeSizeVal = 25312
 cayoSizeEditor:add_imgui(function()
-	cokeSizeVal, used = ImGui.SliderInt("Coke Value", cokeSizeVal, 25312, 101248) -- Quadruple the original price
-	out = "Reset the board to see changes"
+	cokeSizeVal, used = ImGui.SliderInt("Coke Valor", cokeSizeVal, 25312, 101248) -- Quadruple the original price
+	out = "Restablecer the board to see changes"
 
 	if used then
 		stats.set_int(MPX() .. "H4LOOT_COKE_V", cokeSizeVal)
-		gui.show_message("Coke Value Modified!", out)
+		gui.show_message("Coke Valor Modified!", out)
 	end
 end)
 
 paintSizeVal = 22500
 cayoSizeEditor:add_imgui(function()
-	paintSizeVal, used = ImGui.SliderInt("Paintings Value", paintSizeVal, 22500, 90000) -- Quadruple the original price
-	out = "Reset the board to see changes"
+	paintSizeVal, used = ImGui.SliderInt("Paintings Valor", paintSizeVal, 22500, 90000) -- Quadruple the original price
+	out = "Restablecer the board to see changes"
 
 	if used then
 		stats.set_int(MPX() .. "H4LOOT_PAINT_V", paintSizeVal)
-		gui.show_message("Paintings Value Modified!", out)
+		gui.show_message("Paintings Valor Modified!", out)
 	end
 end)
 
 weedSizeVal = 16875
 cayoSizeEditor:add_imgui(function()
-	weedSizeVal, used = ImGui.SliderInt("Weed Value", weedSizeVal, 16875, 67500) -- Quadruple the original price
-	out = "Reset the board to see changes"
+	weedSizeVal, used = ImGui.SliderInt("Weed Valor", weedSizeVal, 16875, 67500) -- Quadruple the original price
+	out = "Restablecer the board to see changes"
 
 	if used then
 		stats.set_int(MPX() .. "H4LOOT_WEED_V", weedSizeVal)
-		gui.show_message("Weed Value Modified!", out)
+		gui.show_message("Weed Valor Modified!", out)
 	end
 end)
 
 cashSizeVal = 10406
 cayoSizeEditor:add_imgui(function()
-	cashSizeVal, used = ImGui.SliderInt("Cash Value", cashSizeVal, 10406, 41624) -- Quadruple the original price
-	out = "Reset the board to see changes"
+	cashSizeVal, used = ImGui.SliderInt("Cash Valor", cashSizeVal, 10406, 41624) -- Quadruple the original price
+	out = "Restablecer the board to see changes"
 
 	if used then
 		stats.set_int(MPX() .. "H4LOOT_WEED_V", cashSizeVal)
-		gui.show_message("Cash Value Modified!", out)
+		gui.show_message("Cash Valor Modified!", out)
 	end
 end)
 cayoSizeEditor:add_text("These values seem incorrect, but the game reads them properly.")
-cayoSizeEditor:add_text("Minimum values are exact defaults for ALL targets.")
+cayoSizeEditor:add_text("Mínimoimum values are exact defaults for ALL targets.")
 cayoSizeEditor:add_separator()
 cayoSizeEditor:add_text("Press this after setting values.")
-cayoSizeEditor:add_button("Reset Kosatka Board", function()
+cayoSizeEditor:add_button("Restablecer Kosatka Board", function()
 	locals.set_int(HIP, 1546, 2)
-	gui.show_message("Cayo Heist", "Planning board has been reset!")
+	gui.show_message("Cayo Golpe", "Planning board has been reset!")
 end)
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 DoomsdayHeistEditor = HeistsDataEditor:add_tab("Golpe del Juicio Final Editor")
 
-DoomsdayHeistEditor:add_button("One Click Setup Act 1: The Data Breaches", function()
+DoomsdayHeistEditor:add_button("Activadoe Click Preparación Act 1: The Data Breaches", function()
 	stats.set_int(MPX() .. "GANGOPS_FLOW_MISSION_PROG", 7)
 	stats.set_int(MPX() .. "GANGOPS_FM_MISSION_PROG", 7)
 end)
 
-DoomsdayHeistEditor:add_button("One Click Setup Act 2: The Bodgan Problem", function()
+DoomsdayHeistEditor:add_button("Activadoe Click Preparación Act 2: The Bodgan Problem", function()
 	stats.set_int(MPX() .. "GANGOPS_FLOW_MISSION_PROG", 240)
 	stats.set_int(MPX() .. "GANGOPS_FM_MISSION_PROG", 248)
 end)
 
-DoomsdayHeistEditor:add_button("One Click Setup Act 3: Doomsday Scenario", function()
+DoomsdayHeistEditor:add_button("Activadoe Click Preparación Act 3: Doomsday Scenario", function()
 	stats.set_int(MPX() .. "GANGOPS_FLOW_MISSION_PROG", 15872)
 	stats.set_int(MPX() .. "GANGOPS_FM_MISSION_PROG", 16128)
 end)
@@ -15614,7 +15614,7 @@ DoomsdayHeistEditor:add_text("Preset Cut")
 DoomsdayHeistEditor:add_button("100", function()
 	CutsPresetter(DCg1, DCg4, 100)
 end)
-DoomsdayHeistEditor:add_text("Custom Cuts")
+DoomsdayHeistEditor:add_text("Personalizado Cuts")
 local dmsdyCut1 = DoomsdayHeistEditor:add_input_int("Cut 1")
 local dmsdyCut2 = DoomsdayHeistEditor:add_input_int("Cut 2")
 local dmsdyCut3 = DoomsdayHeistEditor:add_input_int("Cut 3")
@@ -15628,12 +15628,12 @@ end)
 
 DoomsdayHeistEditor:add_separator()
 DoomsdayHeistEditor:add_text("Preps")
-DoomsdayHeistEditor:add_button("Reset Preps", function()
+DoomsdayHeistEditor:add_button("Restablecer Preps", function()
 	DoomsdayActSetter(240, 0)
 end)
 
 DoomsdayHeistEditor:add_sameline()
-DoomsdayHeistEditor:add_button("Complete Preps", function()
+DoomsdayHeistEditor:add_button("Completar Preps", function()
 	stats.set_int(MPX() .. "GANGOPS_FM_MISSION_PROG", -1)
 end)
 
@@ -15644,32 +15644,32 @@ DoomsdayHeistEditor:add_button("By Act III Pass hack", function()
 end)
 
 DoomsdayHeistEditor:add_separator()
-DoomsdayHeistEditor:add_text("Instant Heist Passed")
+DoomsdayHeistEditor:add_text("Instant Golpe Passed")
 DoomsdayHeistEditor:add_button("Instant Finish $$", function()
 	locals.set_int(FMC, 19746, 12)
 	locals.set_int(FMC, 19746 + 2686, 10000000)
 	locals.set_int(FMC, 28365 + 1, 99999)
 	locals.set_int(FMC, 31621 + 69, 99999)
-	gui.show_message("Instant Heist Passed", "Activated")
+	gui.show_message("Instant Golpe Passed", "Activard")
 end)
 
 
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-MissionsSelectorAndCooldown = CSYON:add_tab("Missions Selector And cooldown")
+MissionsSelectorAndCooldown = CSYON:add_tab("Misiones Seleccionaror And cooldown")
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-MissionsSelectorAndCooldown:add_button("Remove Dax CoolDown", function()
+MissionsSelectorAndCooldown:add_button("Eliminar Dax CoolDown", function()
 	stats.set_int(MPX() .. "XM22JUGGALOWORKCDTIMER", -1)
 end)
 
-MissionsSelectorAndCooldown:add_button("Remove VIP/MC Cool Down", function()
+MissionsSelectorAndCooldown:add_button("Eliminar VIP/MC Cool Down", function()
 	stats.set_int("MPPLY_VIPGAMEPLAYDISABLEDTIMER", 0)
 end)
 
-MissionsSelectorAndCooldown:add_button("Skip Yacht Misions", function()
+MissionsSelectorAndCooldown:add_button("Saltar Yacht Misions", function()
 	stats.set_int(MPX() .. "YACHT_MISSION_PROG", 0)
 	stats.set_int(MPX() .. "YACHT_MISSION_FLOW", 21845)
 	stats.set_int(MPX() .. "CASINO_DECORATION_GIFT_1", -1)
@@ -15677,7 +15677,7 @@ end)
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-ArcadeGames = CSYON:add_tab("Arcade Game Option")
+ArcadeGames = CSYON:add_tab("Arcade Game Opción")
 GoGoSpaceMonkey = ArcadeGames:add_tab("Go Go Space Monkey 3")
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -15697,40 +15697,40 @@ end)
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-Credits = CSYON:add_tab("Credits")
+Credits = CSYON:add_tab("Créditos")
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 Yimura = Credits:add_tab("Yimura")
-Yimura:add_text("Yim Menu Cheat Developer")
+Yimura:add_text("Yim Menú Cheat Developer")
 Yimura:add_text("Cheat on GitHub:")
-Yimura:add_text("https://github.com/YimMenu/YimMenu")
+Yimura:add_text("https://github.com/YimMenú/YimMenú")
 
 L7NEG = Credits:add_tab("L7NEG")
 L7NEG:add_text("Thanks to him for little Help <3")
 L7NEG:add_text("Source:")
-L7NEG:add_text("https://github.com/YimMenu-Lua/Utimate-Menu")
+L7NEG:add_text("https://github.com/YimMenú-Lua/Utimate-Menú")
 
 CSYOND3V = Credits:add_tab("CSYON")
-CSYOND3V:add_text("Owner and Codded This W Script With <3 To You All")
+CSYOND3V:add_text("Owner and Codded This W Script With <3 To You Todos")
 
 PyxalonDev = Credits:add_tab("Pyxalon")
-PyxalonDev:add_text("Maintenance & Updates")
+PyxalonDev:add_text("Principaltenance & Updates")
 
 PLANTINDESK = Credits:add_tab("plantindesk")
-PLANTINDESK:add_text("For His W Cuts Editor And Useful Heists Hax")
+PLANTINDESK:add_text("For His W Cuts Editor And Useful Golpes Hax")
 PLANTINDESK:add_text("Source:")
-PLANTINDESK:add_text("https://github.com/plantindesk/Silent-Night")
+PLANTINDESK:add_text("https://github.com/plantindesk/Silent-Noche")
 
 SILENTSALO = Credits:add_tab("Silent")
-SILENTSALO:add_text("For His W Useful Unlocls Along With Casino And Gunvan Menu")
+SILENTSALO:add_text("For His W Useful Unlocls Along With Casino And Gunvan Menú")
 SILENTSALO:add_text("Source:")
-SILENTSALO:add_text("https://github.com/SilentSal0/Silent-Night")
+SILENTSALO:add_text("https://github.com/SilentSal0/Silent-Noche")
 
 visionary2709 = Credits:add_tab("visionary2709")
-visionary2709:add_text("For His W Updated Globals of 200 Vehicles")
+visionary2709:add_text("For His W Actualizado Globals of 200 Vehículos")
 visionary2709:add_text("Source:")
-visionary2709:add_text("https://github.com/YimMenu-Lua/Removed-vehicles")
+visionary2709:add_text("https://github.com/YimMenú-Lua/Eliminard-vehicles")
 
 SLON = Credits:add_tab("SLON")
 SLON:add_text("For ''YimCeo v0.6 by Slon_.lua'' Code")
@@ -15738,9 +15738,9 @@ SLON:add_text("Source:")
 SLON:add_text("https://www.unknowncheats.me/forum/grand-theft-auto-v/591335-yimceo-ceo-crates-method-yimmenu.html")
 
 Alestarov = Credits:add_tab("Alestarov")
-Alestarov:add_text("For 1 Click Cayo Setup")
+Alestarov:add_text("For 1 Click Cayo Preparación")
 Alestarov:add_text("Source:")
-Alestarov:add_text("https://github.com/YimMenu-Lua/Alestarov-Menu")
+Alestarov:add_text("https://github.com/YimMenú-Lua/Alestarov-Menú")
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 --[[
