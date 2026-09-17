@@ -1,4 +1,5 @@
-local SOLO_MISSIONS <const> = gui.add_tab("Solo Missions")
+```lua
+local SOLO_MISSIONS <const> = gui.add_tab("Misiones en solitario")
 
 function locals.set_bits(scriptName, index, ...)
     local value = locals.get_int(scriptName, index)
@@ -29,9 +30,9 @@ local FREEMODE <const> = "freemode"
 -- VARIABLES
 ----------------------------------------
 
-local TARGET_VERSION <const> = "1.73-3889"
+local TARGET_VERSION <const> = "1.73-3889.0"
 
--- search in fmmc_launcher.c
+-- buscar en fmmc_launcher.c
 local scrGlobals = {
     minNumParticipants = 4718592 + 3769,       -- regex: Global_\d+\.f_\d+\s?=.+?"minNu"
     numberOfTeams = 4718592 + 3772,            -- regex: Global_\d+\.f_\d+\s?=.+?"dtn"
@@ -59,13 +60,13 @@ local scrLocals = {
     ["fm_mission_controller_2020"] = {
         serverBitSet = 56070 + 1,
         serverBitSet2 = 56070 + 2,
-        nextMission = 56070 + 1589,   -- regex: same as above
-        teamScore = 56070 + 1776 + 1, -- regex: same as above
+        nextMission = 56070 + 1589,   -- regex: igual que arriba
+        teamScore = 56070 + 1776 + 1, -- regex: igual que arriba
     }
 }
 
 ----------------------------------------
--- SOLO MISSION
+-- MISIÓN EN SOLITARIO
 ----------------------------------------
 
 local soloEnabled = false
@@ -74,29 +75,29 @@ local casinoHeistPatch = nil
 
 SOLO_MISSIONS:add_imgui(function()
     if not IsOnline() then
-        ImGui.Text("Unavailable in Single Player.")
+        ImGui.Text("No disponible en el modo de un jugador.")
         return
     end
 
-    ImGui.Text("Compatible Game Version: " .. TARGET_VERSION)
-    ImGui.Text("Please check your game version before using!")
+    ImGui.Text("Versión del juego compatible: " .. TARGET_VERSION)
+    ImGui.Text("¡Comprueba la versión de tu juego antes de usarlo!")
 
     ImGui.Dummy(1, 10)
-    ImGui.SeparatorText("Solo Missions")
+    ImGui.SeparatorText("Misiones en solitario")
     ImGui.Spacing()
 
-    soloEnabled, _ = ImGui.Checkbox("Enable Solo Missions", soloEnabled)
+    soloEnabled, _ = ImGui.Checkbox("Activar misiones en solitario", soloEnabled)
 
     ImGui.Spacing()
 
-    if ImGui.Button("Skip to Next Checkpoint") then
+    if ImGui.Button("Saltar al siguiente punto de control") then
         local mscript = GetMissionScript()
         if not mscript then return end
 
         locals.set_bits(mscript, scrLocals[mscript].serverBitSet2, 17)
     end
 
-    if ImGui.Button("Instant Finish") then
+    if ImGui.Button("Finalización instantánea") then
         local mscript = GetMissionScript()
         if not mscript then return end
 
@@ -111,7 +112,7 @@ SOLO_MISSIONS:add_imgui(function()
 
     ImGui.SameLine()
 
-    if ImGui.Button("Force Fail") then
+    if ImGui.Button("Forzar fallo") then
         local mscript = GetMissionScript()
         if not mscript then return end
 
@@ -119,10 +120,10 @@ SOLO_MISSIONS:add_imgui(function()
     end
 
     ImGui.Dummy(1, 10)
-    ImGui.SeparatorText("Casino Heist Patch")
+    ImGui.SeparatorText("Parche del Golpe al Casino")
     ImGui.Spacing()
 
-    casinoHeistPatchEnabled, Clicked = ImGui.Checkbox("Enable Patch", casinoHeistPatchEnabled)
+    casinoHeistPatchEnabled, Clicked = ImGui.Checkbox("Activar parche", casinoHeistPatchEnabled)
 
     if Clicked then
         script.run_in_fiber(function()
@@ -148,16 +149,16 @@ SOLO_MISSIONS:add_imgui(function()
     end
 
     ImGui.Dummy(1, 10)
-    ImGui.BulletText("Allows you to set up the final planning board.")
-    ImGui.BulletText("Make sure it's enabled before launching the heist\nand disabled after completing the heist.")
-    ImGui.BulletText("It is not recommended to keep it enabled continuously.")
+    ImGui.BulletText("Te permite configurar el panel de planificación final.")
+    ImGui.BulletText("Asegúrate de que esté activado antes de iniciar el golpe\n y desactívalo después de completar el golpe.")
+    ImGui.BulletText("No se recomienda mantenerlo activado continuamente.")
 end)
 
 ----------------------------------------
--- MISSION LAUNCHER
+-- LANZADOR DE MISIONES
 ----------------------------------------
 
-local MISSION_LAUNCHER <const> = SOLO_MISSIONS:add_tab("  > Mission Launcher")
+local MISSION_LAUNCHER <const> = SOLO_MISSIONS:add_tab("  > Lanzador de misiones")
 
 local fmMissionId = 0
 local fmVariation = 0
@@ -168,26 +169,26 @@ local skipPrepPatch = nil
 
 MISSION_LAUNCHER:add_imgui(function()
     if not IsOnline() then
-        ImGui.Text("Unavailable in Single Player.")
+        ImGui.Text("No disponible en el modo de un jugador.")
         return
     end
 
-    ImGui.TextColored(0.9, 0, 0, 1, "WARNING!")
-    ImGui.TextColored(0.9, 0, 0, 1, "These are advanced features and might not work well.\nIncorrect use may cause game script errors or even game crashes!")
+    ImGui.TextColored(0.9, 0, 0, 1, "¡ADVERTENCIA!")
+    ImGui.TextColored(0.9, 0, 0, 1, "Estas son funciones avanzadas y podrían no funcionar correctamente.\n¡Un uso incorrecto puede provocar errores en los scripts del juego o incluso bloqueos!")
 
     --------------------------------
-    -- LAUNCH FREEMODE MISSION
+    -- INICIAR MISIÓN DE FREEMODE
     --------------------------------
 
     ImGui.Spacing()
-    ImGui.SeparatorText("Launch Freemode Mission")
+    ImGui.SeparatorText("Iniciar misión de Freemode")
     ImGui.Spacing()
 
-    fmMissionId, _ = ImGui.InputInt("Freemode Mission ID", fmMissionId, 1)
-    fmVariation, _ = ImGui.InputInt("Freemode Mission Variation", fmVariation, 1)
-    fmSubVariation, _ = ImGui.InputInt("Freemode Mission Sub-Variation", fmSubVariation, 1)
+    fmMissionId, _ = ImGui.InputInt("ID de misión de Freemode", fmMissionId, 1)
+    fmVariation, _ = ImGui.InputInt("Variación de misión de Freemode", fmVariation, 1)
+    fmSubVariation, _ = ImGui.InputInt("Subvariación de misión de Freemode", fmSubVariation, 1)
 
-    if ImGui.Button("Check Mission Name") then
+    if ImGui.Button("Comprobar nombre de la misión") then
         script.run_in_fiber(function()
             if fmMissionId < -1 or fmVariation < -1 or fmSubVariation < -1 then return end
             if NETWORK.NETWORK_IS_ACTIVITY_SESSION() then return end
@@ -199,18 +200,17 @@ MISSION_LAUNCHER:add_imgui(function()
                     { "int", fmSubVariation }
                 })
 
-
             if not name or name == "" then
-                name = "Invalid mission"
+                name = "Misión no válida"
             end
-            gui.show_message("Check Mission Name", tostring(name))
+            gui.show_message("Comprobar nombre de la misión", tostring(name))
         end)
     end
 
     ImGui.SameLine()
-    ImGui.Text("Check if the mission is valid")
+    ImGui.Text("Comprueba si la misión es válida")
 
-    if ImGui.Button("Launch Freemode Mission") then
+    if ImGui.Button("Iniciar misión de Freemode") then
         script.run_in_fiber(function()
             if fmMissionId < -1 or fmVariation < -1 or fmSubVariation < -1 then return end
             if NETWORK.NETWORK_IS_ACTIVITY_SESSION() then return end
@@ -226,7 +226,7 @@ MISSION_LAUNCHER:add_imgui(function()
 
     ImGui.SameLine()
 
-    if ImGui.Button("Clear Freemode Mission") then
+    if ImGui.Button("Borrar misión de Freemode") then
         script.run_in_fiber(function()
             if NETWORK.NETWORK_IS_ACTIVITY_SESSION() then return end
 
@@ -239,27 +239,27 @@ MISSION_LAUNCHER:add_imgui(function()
     end
 
     ImGui.Spacing()
-    ImGui.BulletText("Most missions require you to be a boss to launch.")
-    ImGui.BulletText("Some missions require you to own the corresponding property to launch.")
-    ImGui.BulletText("If you fail to launch try clearing mission to reset.")
+    ImGui.BulletText("La mayoría de las misiones requieren que seas jefe para iniciarlas.")
+    ImGui.BulletText("Algunas misiones requieren que seas propietario de la propiedad correspondiente para iniciarlas.")
+    ImGui.BulletText("Si no puedes iniciar la misión, intenta borrarla para restablecerla.")
 
     --------------------------------
-    -- LAUNCH MISSION
+    -- INICIAR MISIÓN
     --------------------------------
 
     ImGui.Dummy(1, 10)
-    ImGui.SeparatorText("Launch Mission")
+    ImGui.SeparatorText("Iniciar misión")
     ImGui.Spacing()
 
-    missionId, _ = ImGui.InputText("Mission ID/Hash", missionId, 64)
+    missionId, _ = ImGui.InputText("ID/Hash de la misión", missionId, 64)
 
     ImGui.SameLine()
 
-    if ImGui.Button("Paste") then
+    if ImGui.Button("Pegar") then
         missionId = ImGui.GetClipboardText()
     end
 
-    if ImGui.Button("Launch Mission") then
+    if ImGui.Button("Iniciar misión") then
         script.run_in_fiber(function()
             if missionId == "" then return end
 
@@ -274,7 +274,7 @@ MISSION_LAUNCHER:add_imgui(function()
             local index = MISC.GET_CONTENT_ID_INDEX(missionHash)
             if index == -1 then return end
 
-            stats.set_packed_stat_bool(17, true) -- close matchmaking
+            stats.set_packed_stat_bool(17, true) -- cerrar el emparejamiento
 
             scr_function.call_script_function(FMMC_LAUNCHER, "launch_v2_corona",
                 "2D 09 19 00 00 38 01", "void", {
@@ -293,10 +293,10 @@ MISSION_LAUNCHER:add_imgui(function()
 
     ImGui.SameLine()
 
-    skipPrepPatchEnabled, Clicked2 = ImGui.Checkbox("Skip Prep Check", skipPrepPatchEnabled)
+    skipPrepPatchEnabled, Clicked2 = ImGui.Checkbox("Omitir comprobación de preparativos", skipPrepPatchEnabled)
 
     if ImGui.IsItemHovered() then
-        ImGui.SetTooltip("So you can launch some missions without completing the preps.")
+        ImGui.SetTooltip("Permite iniciar algunas misiones sin completar los preparativos.")
     end
 
     if Clicked2 then
@@ -323,13 +323,13 @@ MISSION_LAUNCHER:add_imgui(function()
     end
 
     ImGui.Spacing()
-    ImGui.BulletText("Some jobs require you to be a boss and own the corresponding property.")
-    ImGui.BulletText("Unstable! You might get kicked, or the game could even crash.")
+    ImGui.BulletText("Algunos trabajos requieren que seas jefe y que seas propietario de la propiedad correspondiente.")
+    ImGui.BulletText("¡Inestable! Podrían expulsarte de la sesión o incluso hacer que el juego se bloquee.")
 end)
 
 
 ----------------------------------------
--- LOOP
+-- BUCLE
 ----------------------------------------
 
 script.register_looped("SOLO_MISSIONS", function()
@@ -358,3 +358,4 @@ event.register_handler(menu_event.ScriptsReloaded, function()
         skipPrepPatch:disable_patch()
     end
 end)
+```
