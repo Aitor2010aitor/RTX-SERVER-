@@ -1,45 +1,23 @@
 --[[
-    SilentNight Script - YimMenu Legacy Edition
-    Instant Finish basado en SoloMissions.lua
+    SilentNight - YimMenu Legacy
+    Versión funcional con botones visibles
 ]]
 
 -- ==================== CONFIGURACIÓN ====================
 local SilentNight = {
-    VERSION = "1.11.4",
-    TARGET_VERSION = "1.73-3889.0"
+    VERSION = "1.0",
+    solo_enabled = false
 }
 
--- ==================== UTILIDADES ====================
-local function notify(message)
-    gui.show_message("SilentNight", message)
+-- ==================== FUNCIONES BÁSICAS ====================
+local function notify(msg)
+    gui.show_message("SilentNight", msg)
 end
 
 local function sleep(ms)
     script:sleep(ms)
 end
 
--- ==================== ESTRUCTURA DE LOCALS (de SoloMissions) ====================
-local scrLocals = {
-    ["fm_mission_controller"] = {
-        serverBitSet = 19808 + 1,      -- Para instant finish
-        serverBitSet2 = 19808 + 2,      -- Para skip checkpoint
-        nextMission = 19808 + 1062,     -- Para instant finish
-        teamScore = 19808 + 1232 + 1,   -- Para instant finish
-    },
-    ["fm_mission_controller_2020"] = {
-        serverBitSet = 56070 + 1,       -- Para instant finish
-        serverBitSet2 = 56070 + 2,      -- Para skip checkpoint
-        nextMission = 56070 + 1589,     -- Para instant finish
-        teamScore = 56070 + 1776 + 1,   -- Para instant finish
-    }
-}
-
--- ==================== GLOBALS ====================
-local scrGlobals = {
-    nextContentID = 4718592 + 133252,
-}
-
--- ==================== FUNCIONES BASE ====================
 local function IsOnline()
     return network.is_session_started() and not script.is_active("maintransition")
 end
@@ -54,7 +32,7 @@ local function GetMissionScript()
     return nil
 end
 
--- Función para setear bits (de SoloMissions)
+-- ==================== SET BITS ====================
 local function set_bits(scriptName, index, ...)
     local value = locals.get_int(scriptName, index)
     for _, bit in ipairs({...}) do
@@ -63,341 +41,207 @@ local function set_bits(scriptName, index, ...)
     locals.set_int(scriptName, index, value)
 end
 
--- ==================== INSTANT FINISH CORREGIDO ====================
+-- ==================== INSTANT FINISH ====================
 local InstantFinish = {}
 
 function InstantFinish.SkipCheckpoint()
-    if not IsOnline() then
-        notify("No estás en línea")
-        return
-    end
-    
     local mscript = GetMissionScript()
     if not mscript then
-        notify("No estás en un heist/misión")
+        notify("No estás en un heist!")
         return
     end
     
-    -- Setea el bit 17 en serverBitSet2 para skip checkpoint
-    set_bits(mscript, scrLocals[mscript].serverBitSet2, 17)
-    notify("[Skip Checkpoint] Checkpoint skipped")
+    local bitset2 = (mscript == "fm_mission_controller") and 19810 or 56072
+    set_bits(mscript, bitset2, 17)
+    notify("Skip Checkpoint aplicado!")
 end
 
 function InstantFinish.Finish()
-    if not IsOnline() then
-        notify("No estás en línea")
-        return
-    end
-    
     local mscript = GetMissionScript()
     if not mscript then
-        notify("No estás en un heist/misión")
+        notify("No estás en un heist!")
         return
     end
     
-    -- Limpia el nextContentID (6 strings)
+    -- Limpiar nextContentID
     for i = 0, 5 do
-        globals.set_string(scrGlobals.nextContentID + 1 + i * 6, "", 0)
+        globals.set_string(4718592 + 133252 + 1 + i * 6, "", 0)
     end
     
-    -- Setea nextMission a 5 (termina la misión)
-    locals.set_int(mscript, scrLocals[mscript].nextMission, 5)
+    -- Locals según el script
+    local nextMission = (mscript == "fm_mission_controller") and 20870 or 57659
+    local teamScore = (mscript == "fm_mission_controller") and 22041 or 58377
+    local bitset = (mscript == "fm_mission_controller") and 19809 or 56071
     
-    -- Setea teamScore alto
-    locals.set_int(mscript, scrLocals[mscript].teamScore, 999999)
+    locals.set_int(mscript, nextMission, 5)
+    locals.set_int(mscript, teamScore, 999999)
+    set_bits(mscript, bitset, 9, 16)
     
-    -- Setea bits 9 y 16 en serverBitSet
-    set_bits(mscript, scrLocals[mscript].serverBitSet, 9, 16)
-    
-    notify("[Instant Finish] Heist/Misión terminada!")
+    notify("INSTANT FINISH APLICADO!")
 end
 
-function InstantFinish.ForceFail()
-    if not IsOnline() then
-        notify("No estás en línea")
-        return
-    end
-    
-    local mscript = GetMissionScript()
-    if not mscript then
-        notify("No estás en un heist/misión")
-        return
-    end
-    
-    -- Setea bits 16 y 20 para forzar fail
-    set_bits(mscript, scrLocals[mscript].serverBitSet, 16, 20)
-    notify("[Force Fail] Misión fallada")
-end
-
--- ==================== SOLO MISSIONS (de SoloMissions.lua) ====================
-local SoloMissions = {
-    enabled = false
-}
-
-function SoloMissions.Enable()
-    SoloMissions.enabled = true
-    notify("[Solo Missions] Activado - Ahora puedes jugar heists solo")
-end
-
-function SoloMissions.Disable()
-    SoloMissions.enabled = false
-    notify("[Solo Missions] Desactivado")
-end
-
--- Loop para Solo Missions
-script.register_looped("SOLO_MISSIONS_LOOP", function()
-    if SoloMissions.enabled and IsOnline() then
-        -- Para fmmc_launcher
-        if script.is_active("fmmc_launcher") then
-            local index = locals.get_int("fmmc_launcher", 20194 + 34) -- missionVariation
-            if index > 0 then
-                locals.set_int("fmmc_launcher", 20194 + 15, 1) -- minPlayers
-                globals.set_int(794989 + 4 + 1 + index * 95 + 75, 1) -- MissionHeaderMinPlayers
-            end
-        end
-        
-        -- Globals para permitir solo missions
-        globals.set_int(4718592 + 3769, 1)   -- minNumParticipants
-        globals.set_int(4718592 + 3775 + 1, 1) -- numPlayersPerTeam
-        globals.set_int(4718592 + 190163 + 1, 0) -- criticalMinimumForTeam
-        globals.set_int(4718592 + 3772, 1)   -- numberOfTeams
-        globals.set_int(4718592 + 3773, 1)   -- maxNumberOfTeams
+-- ==================== SOLO MISSIONS ====================
+script.register_looped("SOLO_MISSIONS", function()
+    if SilentNight.solo_enabled and IsOnline() then
+        globals.set_int(4718592 + 3769, 1)
+        globals.set_int(4718592 + 3772, 1)
+        globals.set_int(4718592 + 3773, 1)
+        globals.set_int(4718592 + 3776, 1)
+        globals.set_int(4718592 + 190164, 0)
     end
 end)
 
--- ==================== HEIST SPECIFIC FUNCTIONS ====================
-local HeistTool = {}
+-- ==================== CORTES ====================
+local cut_values = {100, 0, 0, 0}
 
-function HeistTool.ForceReadyAll()
-    -- Apartment Ready (globals)
-    for i = 0, 3 do
-        globals.set_int(2658291 + 1 + (i * 468) + 270, 6)
-    end
-    notify("[Force Ready] Todos listos (Apartment)")
+local function ApplyCutsApartment()
+    globals.set_int(1935536 + 2, cut_values[1])
+    globals.set_int(1935536 + 3, cut_values[2])
+    globals.set_int(1935536 + 4, cut_values[3])
+    globals.set_int(1935536 + 5, cut_values[4])
+    notify("Cuts Apartment aplicados!")
 end
 
-function HeistTool.SetCutsApartment(p1, p2, p3, p4)
-    globals.set_int(1935536 + 1 + 1, p1)
-    globals.set_int(1935536 + 1 + 2, p2)
-    globals.set_int(1935536 + 1 + 3, p3)
-    globals.set_int(1935536 + 1 + 4, p4)
-    notify(string.format("[Cuts] Apartment: P1:%d%% P2:%d%% P3:%d%% P4:%d%%", p1, p2, p3, p4))
+local function ApplyCutsCayo()
+    globals.set_int(1978756 + 888, cut_values[1])
+    globals.set_int(1978756 + 889, cut_values[2])
+    globals.set_int(1978756 + 890, cut_values[3])
+    globals.set_int(1978756 + 891, cut_values[4])
+    notify("Cuts Cayo aplicados!")
 end
 
-function HeistTool.SetCutsCayo(p1, p2, p3, p4)
-    globals.set_int(1978756 + 831 + 56 + 1, p1)
-    globals.set_int(1978756 + 831 + 56 + 2, p2)
-    globals.set_int(1978756 + 831 + 56 + 3, p3)
-    globals.set_int(1978756 + 831 + 56 + 4, p4)
-    notify(string.format("[Cuts] Cayo: P1:%d%% P2:%d%% P3:%d%% P4:%d%%", p1, p2, p3, p4))
-end
-
-function HeistTool.SetCutsCasino(p1, p2, p3, p4)
-    globals.set_int(1971952 + 1497 + 736 + 92 + 1, p1)
-    globals.set_int(1971952 + 1497 + 736 + 92 + 2, p2)
-    globals.set_int(1971952 + 1497 + 736 + 92 + 3, p3)
-    globals.set_int(1971952 + 1497 + 736 + 92 + 4, p4)
-    notify(string.format("[Cuts] Casino: P1:%d%% P2:%d%% P3:%d%% P4:%d%%", p1, p2, p3, p4))
-end
-
--- ==================== BUSINESS TOOL ====================
-local BusinessTool = {}
-
-function BusinessTool.BunkerInstantSell()
-    if script.is_active("gb_gunrunning") then
-        locals.set_int("gb_gunrunning", 1945, 0)
-        notify("[Bunker] Instant Sell aplicado")
-    else
-        notify("No estás en venta de Bunker")
-    end
-end
-
-function BusinessTool.BunkerMaximizePrice()
-    tunables.set_int("GR_SALE_VALUE_MULTIPLIER", 2500000)
-    notify("[Bunker] Precio maximizado")
-end
-
-function BusinessTool.HangarInstantSell()
-    if script.is_active("gb_smuggler") then
-        local delivered = locals.get_int("gb_smuggler", 1987)
-        locals.set_int("gb_smuggler", 1986, delivered)
-        notify("[Hangar] Instant Sell aplicado")
-    else
-        notify("No estás en venta de Hangar")
-    end
-end
-
-function BusinessTool.NightclubCollectSafe()
-    globals.set_int(2708832, 1)
-    notify("[Nightclub] Safe recolectado")
+local function ApplyCutsCasino()
+    globals.set_int(1971952 + 2326, cut_values[1])
+    globals.set_int(1971952 + 2327, cut_values[2])
+    globals.set_int(1971952 + 2328, cut_values[3])
+    globals.set_int(1971952 + 2329, cut_values[4])
+    notify("Cuts Casino aplicados!")
 end
 
 -- ==================== TELEPORTS ====================
-local Teleports = {
-    Facility = {x = 489.062, y = -1303.906, z = 29.306},
-    Bunker = {x = 2110.976, y = 3320.326, z = 45.361},
-    Hangar = {x = -1267.071, y = -3380.069, z = 14.007},
-    Nightclub = {x = -1569.532, y = -3016.619, z = -74.406},
-    Arcade = {x = 2737.962, y = -374.760, z = -47.993},
-    Kosatka = {x = 1561.224, y = -486.318, z = -62.226},
-    Agency = {x = -1011.083, y = -480.368, z = 39.073},
-    Casino = {x = 935.073, y = 46.635, z = 81.095},
-    MazeBank = {x = -75.015, y = -818.215, z = 326.176},
-}
-
-local function teleport_to(coords)
-    local player_ped = player.get_player_ped(player.player_id())
-    entity.set_entity_coords_no_offset(player_ped, coords.x, coords.y, coords.z)
-    notify("Teletransportado")
+local function Teleport(x, y, z)
+    local ped = player.get_player_ped(player.player_id())
+    entity.set_entity_coords_no_offset(ped, x, y, z)
+    notify("Teletransportado!")
 end
 
--- ==================== GUI ====================
-local cut_values = {100, 100, 100, 100}
-
-local function render_main_tab()
-    if ImGui.BeginTabItem("Main") then
-        
-        -- Solo Missions Toggle
-        local solo_changed = false
-        SoloMissions.enabled, solo_changed = ImGui.Checkbox("Enable Solo Missions", SoloMissions.enabled)
-        if solo_changed then
-            if SoloMissions.enabled then
-                SoloMissions.Enable()
-            else
-                SoloMissions.Disable()
-            end
-        end
-        
-        ImGui.Separator()
-        ImGui.Text("--- Instant Finish (Método SoloMissions) ---")
-        
-        if ImGui.Button("Skip Checkpoint") then
-            InstantFinish.SkipCheckpoint()
-        end
-        ImGui.SameLine()
-        
-        if ImGui.Button("INSTANT FINISH") then
-            InstantFinish.Finish()
-        end
-        ImGui.SameLine()
-        
-        if ImGui.Button("Force Fail") then
-            InstantFinish.ForceFail()
-        end
-        
-        ImGui.Separator()
-        ImGui.Text("--- Cuts ---")
-        
-        cut_values[1] = ImGui.InputInt("Player 1 %", cut_values[1])
-        cut_values[2] = ImGui.InputInt("Player 2 %", cut_values[2])
-        cut_values[3] = ImGui.InputInt("Player 3 %", cut_values[3])
-        cut_values[4] = ImGui.InputInt("Player 4 %", cut_values[4])
-        
-        if ImGui.Button("Apply Apartment Cuts") then
-            HeistTool.SetCutsApartment(cut_values[1], cut_values[2], cut_values[3], cut_values[4])
-        end
-        ImGui.SameLine()
-        if ImGui.Button("Apply Cayo Cuts") then
-            HeistTool.SetCutsCayo(cut_values[1], cut_values[2], cut_values[3], cut_values[4])
-        end
-        ImGui.SameLine()
-        if ImGui.Button("Apply Casino Cuts") then
-            HeistTool.SetCutsCasino(cut_values[1], cut_values[2], cut_values[3], cut_values[4])
-        end
-        
-        ImGui.EndTabItem()
-    end
-end
-
-local function render_business_tab()
-    if ImGui.BeginTabItem("Business") then
-        
-        ImGui.Text("--- Bunker ---")
-        if ImGui.Button("Instant Sell") then
-            BusinessTool.BunkerInstantSell()
-        end
-        ImGui.SameLine()
-        if ImGui.Button("Max Price") then
-            BusinessTool.BunkerMaximizePrice()
-        end
-        
-        ImGui.Separator()
-        ImGui.Text("--- Hangar ---")
-        if ImGui.Button("Hangar Instant Sell") then
-            BusinessTool.HangarInstantSell()
-        end
-        
-        ImGui.Separator()
-        ImGui.Text("--- Nightclub ---")
-        if ImGui.Button("Collect Safe") then
-            BusinessTool.NightclubCollectSafe()
-        end
-        
-        ImGui.EndTabItem()
-    end
-end
-
-local function render_teleport_tab()
-    if ImGui.BeginTabItem("Teleports") then
-        
-        if ImGui.Button("Facility") then
-            teleport_to(Teleports.Facility)
-        end
-        ImGui.SameLine()
-        if ImGui.Button("Bunker") then
-            teleport_to(Teleports.Bunker)
-        end
-        ImGui.SameLine()
-        if ImGui.Button("Hangar") then
-            teleport_to(Teleports.Hangar)
-        end
-        
-        if ImGui.Button("Nightclub") then
-            teleport_to(Teleports.Nightclub)
-        end
-        ImGui.SameLine()
-        if ImGui.Button("Arcade") then
-            teleport_to(Teleports.Arcade)
-        end
-        ImGui.SameLine()
-        if ImGui.Button("Kosatka") then
-            teleport_to(Teleports.Kosatka)
-        end
-        
-        if ImGui.Button("Agency") then
-            teleport_to(Teleports.Agency)
-        end
-        ImGui.SameLine()
-        if ImGui.Button("Casino") then
-            teleport_to(Teleports.Casino)
-        end
-        ImGui.SameLine()
-        if ImGui.Button("Maze Bank") then
-            teleport_to(Teleports.MazeBank)
-        end
-        
-        ImGui.EndTabItem()
-    end
-end
-
--- ==================== RENDER PRINCIPAL ====================
-local function render_menu()
+-- ==================== MENÚ PRINCIPAL ====================
+local function RenderMenu()
+    -- Verificar si está en línea
     if not IsOnline() then
-        ImGui.Text("Unavailable in Single Player")
+        ImGui.TextColored(1.0, 0.0, 0.0, 1.0, "SOLO DISPONIBLE EN ONLINE")
         return
     end
     
-    ImGui.Text("Game Version: " .. SilentNight.TARGET_VERSION)
-    ImGui.Dummy(1, 10)
+    ImGui.Text("SilentNight v" .. SilentNight.VERSION)
+    ImGui.Separator()
     
-    if ImGui.BeginTabBar("SilentNightTabs") then
-        render_main_tab()
-        render_business_tab()
-        render_teleport_tab()
-        ImGui.EndTabBar()
+    -- ========== SOLO MISSIONS ==========
+    local changed = false
+    SilentNight.solo_enabled, changed = ImGui.Checkbox("Enable Solo Missions", SilentNight.solo_enabled)
+    if changed then
+        notify(SilentNight.solo_enabled and "Solo Missions ON" or "Solo Missions OFF")
+    end
+    
+    ImGui.Separator()
+    ImGui.Text("--- INSTANT FINISH ---")
+    
+    -- ========== BOTONES PRINCIPALES ==========
+    if ImGui.Button("SKIP CHECKPOINT", 150, 30) then
+        InstantFinish.SkipCheckpoint()
+    end
+    
+    ImGui.SameLine()
+    
+    if ImGui.Button("INSTANT FINISH", 150, 30) then
+        InstantFinish.Finish()
+    end
+    
+    ImGui.Separator()
+    ImGui.Text("--- CORTES ---")
+    
+    -- Inputs de cortes
+    cut_values[1] = ImGui.InputInt("P1 %", cut_values[1])
+    cut_values[2] = ImGui.InputInt("P2 %", cut_values[2])
+    cut_values[3] = ImGui.InputInt("P3 %", cut_values[3])
+    cut_values[4] = ImGui.InputInt("P4 %", cut_values[4])
+    
+    -- Botones de aplicar cortes
+    if ImGui.Button("Apartment", 100, 25) then
+        ApplyCutsApartment()
+    end
+    ImGui.SameLine()
+    if ImGui.Button("Cayo", 100, 25) then
+        ApplyCutsCayo()
+    end
+    ImGui.SameLine()
+    if ImGui.Button("Casino", 100, 25) then
+        ApplyCutsCasino()
+    end
+    
+    ImGui.Separator()
+    ImGui.Text("--- TELEPORTS ---")
+    
+    -- Teleports en fila
+    if ImGui.Button("Kosatka", 80, 25) then
+        Teleport(1561.224, -486.318, -62.226)
+    end
+    ImGui.SameLine()
+    if ImGui.Button("Arcade", 80, 25) then
+        Teleport(2737.962, -374.760, -47.993)
+    end
+    ImGui.SameLine()
+    if ImGui.Button("Bunker", 80, 25) then
+        Teleport(2110.976, 3320.326, 45.361)
+    end
+    ImGui.SameLine()
+    if ImGui.Button("Facility", 80, 25) then
+        Teleport(489.062, -1303.906, 29.306)
+    end
+    
+    -- Segunda fila
+    if ImGui.Button("Agency", 80, 25) then
+        Teleport(-1011.083, -480.368, 39.073)
+    end
+    ImGui.SameLine()
+    if ImGui.Button("Casino", 80, 25) then
+        Teleport(935.073, 46.635, 81.095)
+    end
+    ImGui.SameLine()
+    if ImGui.Button("MazeBank", 80, 25) then
+        Teleport(-75.015, -818.215, 326.176)
+    end
+    ImGui.SameLine()
+    if ImGui.Button("Hangar", 80, 25) then
+        Teleport(-1267.071, -3380.069, 14.007)
+    end
+    
+    ImGui.Separator()
+    ImGui.Text("--- BUSINESS ---")
+    
+    if ImGui.Button("Bunker Instant Sell", 150, 30) then
+        if script.is_active("gb_gunrunning") then
+            locals.set_int("gb_gunrunning", 1945, 0)
+            notify("Bunker Instant Sell!")
+        else
+            notify("No estás en venta de Bunker")
+        end
+    end
+    
+    ImGui.SameLine()
+    
+    if ImGui.Button("Hangar Instant Sell", 150, 30) then
+        if script.is_active("gb_smuggler") then
+            local delivered = locals.get_int("gb_smuggler", 1987)
+            locals.set_int("gb_smuggler", 1986, delivered)
+            notify("Hangar Instant Sell!")
+        else
+            notify("No estás en venta de Hangar")
+        end
     end
 end
 
--- ==================== REGISTRO ====================
-gui.add_tab("SilentNight", render_menu)
-notify("SilentNight v" .. SilentNight.VERSION .. " loaded!")
+-- ==================== REGISTRAR MENÚ ====================
+gui.add_tab("SilentNight", RenderMenu)
+
+notify("SilentNight cargado! Abre el menú para ver los botones.")
