@@ -124,22 +124,4 @@ Registra **3 `scr_patch`** sobre el script `appinternet` (el navegador del juego
 
 > 🏁 **Csyon SubMenu V9.4 Legacy 1.73 Edition Español** es un submenú para YimMenu centrado en **drift, NOS, efectos de escape, luces RGB y personalización de vehículos**, con constantes preparadas para heists y traducido al español para GTA V 1.73. 🎮💨
 
----
-
-## 📌 Callouts estilo GitHub
-
-> [!NOTE]
-> 📝 Este script está pensado para **uso personal o servidores privados** con YimMenu. No es un menú de trampas genérico.
-
-> [!TIP]
-> 💡 Si quieres aprovechar al máximo el **Drift Mode**, prueba primero la intensidad **1 (Balanced)** y ve subiendo.
-
-> [!IMPORTANT]
-> ⚙️ Necesitas **YimMenu** con **Game Build 3889.0** para que funcione correctamente.
-
-> [!WARNING]
-> ⚠️ Muchas constantes de heist están definidas pero **no tienen interfaz visible** en esta versión. No busques botones que no existen (todavía).
-
-> [!CAUTION]
-> 🚨 Usar mods en **GTA Online** puede conllevar **riesgo de ban**. Úsalo bajo tu responsabilidad, preferiblemente en **Historia o servidores privados**.
 
