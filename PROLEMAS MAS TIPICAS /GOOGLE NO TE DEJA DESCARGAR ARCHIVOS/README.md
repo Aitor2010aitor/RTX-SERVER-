@@ -1,16 +1,17 @@
-⚠️ Problema al descargar archivos en el navegador 
+> [!NOTE]  
+> ## 1. **🚫 GOOGLE NO DEJA DESCARGAR EL ARCHIVO**
+> 
+> ****QUÉ PASA:** EL NAVEGADOR BLOQUEA LA DESCARGA O LA MARCA COMO PELIGROSA.**
+> 
+> ****POR QUÉ:** LOS NAVEGADORES TIENEN UN SISTEMA DE SEGURIDAD INTEGRADO. MUCHOS MOD MENUS APARECEN COMO FALSOS POSITIVOS PORQUE MODIFICAN EL JUEGO, INYECTAN ARCHIVOS O HACEN CAMBIOS QUE LOS ANTIVIRUS CONSIDERAN SOSPECHOSOS.**
+> 
+> ****CÓMO SOLUCIONARLO:****
+> 
+> 1. **ABRE LA LISTA DE DESCARGAS DEL NAVEGADOR (`CTRL + J` EN CHROME).**
+> 2. **BUSCA LA DESCARGA BLOQUEADA Y PULSA LOS TRES PUNTOS O LA FLECHA JUNTO A ELLA.**
+> 3. **ELIGE **CONSERVAR** O **DESCARGAR DE TODOS MODOS**.**
+> 4. **SI WINDOWS BORRA EL ARCHIVO JUSTO DESPUÉS, SIGUE CON EL PUNTO 2.**
 
- veces los navegadores no te dejan descargar archivos porque tienen un sistema de seguridad integrado (como un “antivirus”).
-Esto puede bloquear descargas aunque no sean peligrosas.
-
-💡 Importante:
-Muchos mod menus se detectan como falsos positivos, es decir, parecen virus pero en realidad no lo son.
-
-📌 Esto pasa porque:
-
-Modifican el juego
-Inyectan archivos
-O hacen cambios que los antivirus consideran sospechosos
 
 👇 Video de cómo solucionarlo paso a paso: 
 [![202603260906.gif](https://i.postimg.cc/02fJZ7Wg/202603260906.gif)](https://postimg.cc/1f8t3V1M)
