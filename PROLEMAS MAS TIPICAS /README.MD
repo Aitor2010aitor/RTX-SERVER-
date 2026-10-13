@@ -1,4 +1,4 @@
-
+**
 > [!IMPORTANT]  
 > # 🛠️ PROBLEMAS MÁS TÍPICOS: SOLUCIONES EN TEXTO
 > 
@@ -14,3 +14,4 @@
 > 6. [Error de expulsión en partidas](#6--error-de-expulsión-en-partidas)
 > 7. [FSL ERROR CODE: 10000003](#7--fsl-error-code-10000003)
 > 8. [Error 0xc0e90008 al inyectar la DLL](#8--error-0xc0e90008-al-inyectar-la-dll)
+> **
