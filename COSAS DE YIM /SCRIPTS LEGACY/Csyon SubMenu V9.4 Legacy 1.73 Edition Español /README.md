@@ -8,13 +8,7 @@
 
 **Csyon SubMenu V9.4 Legacy 1.73 Edition Español** es un **script Lua para YimMenu** (menú de mods para GTA V) que añade un submenú personalizado con funciones avanzadas de **conducción, estética y heists**. Está traducido al español y adaptado a la versión **1.73** del juego.
 
-| 🏷️ Dato | 📌 Valor |
-|---|---|
-| 👤 Autor original | CSYON |
-| 🎯 Compatibilidad | YimMenu — Game Build 3889.0 |
-| 🔢 Versión | v9.4 |
-| 🗣️ Idioma | Español |
-| 🎮 Juego | GTA V (Online / Historia) |
+
 
 ---
 
