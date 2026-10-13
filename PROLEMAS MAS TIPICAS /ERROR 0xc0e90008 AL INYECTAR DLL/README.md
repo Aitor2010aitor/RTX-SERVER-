@@ -10,6 +10,9 @@
 > 3. **DESACTIVA **CONTROL INTELIGENTE DE APLICACIONES** (SMART APP CONTROL) Y, SI HACE FALTA, LA **PROTECCIÓN BASADA EN LA REPUTACIÓN**.**
 > 4. ****REINICIA EL PC.****
 > 5. **VUELVE A INYECTAR LA DLL.**
+> 6. > [!WARNING]  
+> 
+> ⚠️ **Aviso:** en Windows 11, si desactivas el *Control inteligente de aplicaciones* no se puede volver a activar sin reinstalar o restablecer Windows. Hazlo solo si de verdad lo necesitas.
 >  
 ## Desactiva control de aplicaciones y navegador y reinicia Pc.
 [![2026-03-27-15-29-45.gif](https://i.postimg.cc/xT21fR2b/2026-03-27-15-29-45.gif)](https://postimg.cc/Btm0N2tq)
