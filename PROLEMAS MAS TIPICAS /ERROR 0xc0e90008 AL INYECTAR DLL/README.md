@@ -1,6 +1,16 @@
-## ❌ ERROR 0xc0e90008 AL INYECTAR DLL
-----
-
+> [!NOTE]  
+> ## 8. **❌ ERROR 0XC0E90008 AL INYECTAR LA DLL**
+> 
+> ****QUÉ PASA:** EL INYECTOR MUESTRA EL ERROR `0XC0E90008` Y NO INYECTA LA DLL.**
+> 
+> ****CÓMO SOLUCIONARLO:****
+> 
+> 1. **ABRE **SEGURIDAD DE WINDOWS**.**
+> 2. **ENTRA EN **CONTROL DE APLICACIONES Y NAVEGADOR**.**
+> 3. **DESACTIVA **CONTROL INTELIGENTE DE APLICACIONES** (SMART APP CONTROL) Y, SI HACE FALTA, LA **PROTECCIÓN BASADA EN LA REPUTACIÓN**.**
+> 4. ****REINICIA EL PC.****
+> 5. **VUELVE A INYECTAR LA DLL.**
+>  
 ## Desactiva control de aplicaciones y navegador y reinicia Pc.
 [![2026-03-27-15-29-45.gif](https://i.postimg.cc/xT21fR2b/2026-03-27-15-29-45.gif)](https://postimg.cc/Btm0N2tq)
 ---
