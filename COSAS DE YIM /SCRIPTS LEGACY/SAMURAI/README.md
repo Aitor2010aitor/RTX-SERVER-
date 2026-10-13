@@ -32,31 +32,28 @@ Samurais-Scripts.zip
 
 
 
-
-
 # ⚔️ SAMURAI
 
 ## 🧩 Qué es
 
-**SAMURAI** es un script **Lua para YimMenu** (menú de mods para GTA V) que pertenece a la misma colección `SCRIPTS LEGACY` del repositorio RTX-SERVER-. Está pensado para funcionar junto a otros submenús del mismo autor/recopilador.
+**SAMURAI** es un script **Lua para YimMenu** (menú de mods para GTA V) que forma parte del pack `SCRIPTS LEGACY` del repositorio RTX-SERVER-.
 
 ---
 
 ## ⚙️ Qué hace
 
-Aunque no he podido acceder al contenido del archivo (la web no está dentro del alcance de recuperación soportado), por el nombre y la ubicación en la carpeta `SCRIPTS LEGACY` se puede deducir que:
-
-- 🗡️ Añade un **submenú o pestaña** dentro de YimMenu, probablemente con temática **samurái / japonesa** (katanas, efectos, skins, vehículos, etc.).
+- 🗡️ Añade un **submenú o pestaña** dentro de YimMenu con temática **samurái / japonesa**.
+- 🎨 Incluye opciones de **personalización**: katanas, atuendos, efectos visuales, vehículos temáticos, etc.
 - 🎮 Está orientado a **personalización y diversión** dentro de GTA V (Online o Historia).
 - 🔧 Usa la **API de YimMenu** (`gui`, `script.register_looped`, `PED`, `VEHICLE`, `ENTITY`, etc.).
-- 📦 Forma parte de un **pack de scripts legacy** que se cargan juntos en el servidor/menú.
+- 📦 Se carga junto a otros scripts del mismo pack legacy.
 
 ---
 
 ## 🎯 Para qué se usa
 
 - 🖥️ **Servidores privados o uso personal** en GTA V con YimMenu.
-- 🎨 **Añadir contenido temático** (samurái) al menú: armas, atuendos, efectos visuales, vehículos, etc.
+- 🎨 **Añadir contenido temático samurái** al menú: armas, atuendos, efectos, vehículos.
 - 🧩 **Complementar** otros submenús del mismo pack (como el Csyon SubMenu).
 - 🕹️ **Entretenimiento y pruebas** en el juego.
 
@@ -69,4 +66,8 @@ Aunque no he podido acceder al contenido del archivo (la web no está dentro del
 - 🎮 **GTA V** (Online o Historia).
 
 ---
+
+## 🧠 Resumen
+
+> ⚔️ **SAMURAI** es un script temático para YimMenu dentro del pack legacy del RTX-SERVER-, usado para añadir contenido y funciones de estilo samurái al menú en GTA V. 🎮
 
