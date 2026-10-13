@@ -1,25 +1,13 @@
+## 7. **⚠️ FSL ERROR CODE: 10000003**
 
-> [!IMPORTANT]
-> 🚨 Error: FSL ERROR CODE: 10000003
+****CÓMO SOLUCIONARLO:****
 
-## 📂 Pasos para solucionarlo
+1. **VE A `C:\USERS\TU_USUARIO\APPDATA\ROAMING` (CAMBIA `TU_USUARIO` POR TU NOMBRE DE USUARIO DE WINDOWS).**
+2. **ENTRA EN LA CARPETA `FSL`.**
+3. ****BORRA TODO EL CONTENIDO** DE LA CARPETA.**
+4. **ABRE EL JUEGO DE NUEVO.**
 
-1. Ve a:
-   `C:\Users\TU_USUARIO\AppData\Roaming`
 
-2. Entra en la carpeta `FSL`
-
-3. Borra todo el contenido
-
----
-
-> [!WARNING]
-> Esto eliminará configuración, progreso y datos guardados de FSL.
-
----
-
-## 🛠️ Estado
-De momento es la única solución encontrada.
-
----
-[![Captura-de-pantalla-2026-05-09-235431.png](https://i.postimg.cc/9fNNvgNz/Captura-de-pantalla-2026-05-09-235431.png)](https://postimg.cc/Tyg9b0xX)
+> [!WARNING]  
+> **⚠️ ESTO ELIMINA LA CONFIGURACIÓN, EL PROGRESO Y LOS DATOS GUARDADOS DE FSL. DE MOMENTO ES LA ÚNICA SOLUCIÓN ENCONTRADA.**
+> 
