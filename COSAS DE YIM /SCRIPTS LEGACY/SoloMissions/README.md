@@ -11,7 +11,6 @@
 - 🎮 Añade un **submenú o pestaña** dentro de YimMenu centrado en **misiones en solitario**.
 - 🧍 Permite jugar **misiones y heists sin necesidad de otros jugadores** (modo solo).
 - 🚀 Facilita **iniciar, completar o saltar** misiones de GTA Online estando solo.
-- 🔧 Usa la **API de YimMenu** (`gui`, `script.register_looped`, `NETWORK`, `SCRIPT`, etc.).
 - 📦 Se carga junto a otros scripts del mismo pack legacy.
 
 ---
@@ -20,7 +19,6 @@
 
 - 🖥️ **Jugar misiones de GTA Online en solitario** sin depender de otros jugadores.
 - 🏦 **Completar heists solo** (Apartment, Doomsday, Casino, Cayo Perico, etc.).
-- 🧪 **Probar misiones** de forma rápida y controlada.
 - 🎮 **Servidores privados o uso personal** en GTA V con YimMenu.
 
 ---
