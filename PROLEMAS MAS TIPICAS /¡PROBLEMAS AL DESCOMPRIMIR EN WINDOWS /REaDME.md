@@ -1,4 +1,7 @@
 **
+
+[![image.webp](https://i.postimg.cc/Qt121QQp/image.webp)](https://postimg.cc/2bj9fBX6)
+ 
 > [!NOTE]  
 > ## 3. **📦 PROBLEMAS AL DESCOMPRIMIR EN WINDOWS 11**
 > 
@@ -12,6 +15,3 @@
 > 
 > ****SI YA TIENES WINRAR:** EN WINDOWS 11 HAZ CLIC DERECHO, PULSA **MOSTRAR MÁS OPCIONES** Y AHÍ APARECERÁ LA OPCIÓN DE EXTRAER.**
 > 
-**
-
-[![image.webp](https://i.postimg.cc/Qt121QQp/image.webp)](https://postimg.cc/2bj9fBX6)
