@@ -1,6 +1,6 @@
 # 🎮 Csyon SubMenu V9.4 Legacy 1.73 Edition Español
 
-> 📄 **Archivo original:** [Csyon SubMenu V9.4 Legacy 1.73 Edition Español.lua](https://github.com/Aitor2010aitor/RTX-SERVER-/blob/main/COSAS%20DE%20YIM%20/SCRIPTS%20LEGACY/Csyon%20SubMenu%20V9.4%20Legacy%201.73%20Edition%20Espa%C3%B1ol%20/Csyon%20SubMenu%20V9.4%20Legacy%201.73%20Edition%20Espa%C3%B1ol%20.lua)
+
 
 ---
 
